@@ -36,7 +36,6 @@ set number
 set backspace=indent,eol,start
 set history=1000
 set showcmd
-set showmode
 set gcr=a:blinkon0
 set visualbell
 set autoread
@@ -49,7 +48,6 @@ set incsearch
 set smartcase
 set autoindent
 set smartindent
-set autochdir
 set laststatus=2
 set nobackup
 set nowb
@@ -59,15 +57,11 @@ set linespace=8
 set backspace=2
 set scrolloff=7
 set scrolljump=5
-set title
 set foldmethod=indent
 set foldlevelstart=1
 set foldnestmax=3
 set pastetoggle=<F2>
 set list listchars=tab:\ \ ,trail:·
-
-" Better leader
-let mapleader = ","
 
 " Indentation via DetectIndent http://www.vim.org/scripts/script.php?script_id=1171
 autocmd BufReadPost * :DetectIndent
@@ -75,13 +69,19 @@ let g:detectindent_preferred_expandtab = 1
 let g:detectindent_preferred_indent = 2
 
 " Custom filetype tab exceptions...
-au FileType snippets set tabstop=2 softtabstop=2 shiftwidth=2 noexpandtab
-au FileType make set tabstop=2 softtabstop=2 shiftwidth=4 noexpandtab
-au FileType go set tabstop=2 softtabstop=2 shiftwidth=4 noexpandtab
+au FileType snippets let g:detectindent_preferred_expandtab = 0
+au FileType make let g:detectindent_preferred_expandtab = 0
+au FileType go let g:detectindent_preferred_expandtab = 0
+
+" Better leader
+let mapleader = ","
 
 " Treat long lines as break lines (useful when moving around in them)
 map j gj
 map k gk
+
+" Easy out.
+imap jj <esc>
 
 " Fast saving
 nmap <leader>w :w!<cr>
@@ -94,9 +94,6 @@ nmap td :tabclose<CR>
 nmap <C-Right> :tabnext<cr>
 nmap <C-Left> :tabprev<cr>
 
-" Fast saving
-nmap <leader>w :w!<cr>
-
 " Folding.
 nmap <space> za
 nmap <leader><space> zR
@@ -107,9 +104,6 @@ vmap <C-c> :w !pbcopy<CR><CR>
 
 " open NERDTree with Ctrl+n
 map <C-n> :NERDTreeToggle<CR>
-
-" Easy out.
-imap jj <esc>
 
 " Easy motion
 map <Leader>h <Plug>(easymotion-linebackward)
