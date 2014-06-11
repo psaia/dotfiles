@@ -41,7 +41,9 @@ set gcr=a:blinkon0
 set visualbell
 set autoread
 set hidden
-set nowrap
+set wrap
+set textwidth=0
+set wrapmargin=0
 set hlsearch
 set incsearch
 set smartcase
