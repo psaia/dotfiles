@@ -15,7 +15,8 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'ciaranm/detectindent'
 Plugin 'othree/html5.vim'
 Plugin 'scrooloose/nerdtree'
-Plugin 'vim-scripts/PHP-correct-Indenting'
+" Plugin 'vim-scripts/PHP-correct-Indenting'
+Plugin 'spf13/PIV'
 Plugin 'msanders/snipmate.vim'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'kchmck/vim-coffee-script'
@@ -59,7 +60,6 @@ set scrolloff=7
 set scrolljump=5
 set foldmethod=indent
 set foldlevelstart=1
-set foldnestmax=3
 set pastetoggle=<F2>
 set list listchars=tab:\ \ ,trail:·
 
