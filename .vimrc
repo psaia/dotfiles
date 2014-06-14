@@ -1,6 +1,4 @@
 set nocompatible
-
-" Set the runtime path to include Vundle and initialize.
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -65,10 +63,7 @@ set list listchars=tab:\ \ ,trail:·
 " Indentation.
 set autoindent
 set cindent
-set shiftwidth=2
-set tabstop=2
-set expandtab
-
+set shiftwidth=2 tabstop=2 softtabstop=2 expandtab
 au FileType make,go,snippets,sh setlocal noexpandtab
 
 " Syntax colors & color scheme
