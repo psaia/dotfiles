@@ -66,9 +66,10 @@ set list listchars=tab:\ \ ,trail:·
 set autoindent
 set cindent
 set shiftwidth=2
-set softtabstop=2
+set tabstop=2
 set expandtab
-au FileType make,go,snippets setlocal noexpandtab
+
+au FileType make,go,snippets,sh setlocal noexpandtab
 
 " Syntax colors & color scheme
 let g:solarized_termtrans = 1
