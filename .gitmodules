@@ -1,0 +1,6 @@
+[submodule "dict/vim-node-dict"]
+	path = dict/vim-node-dict
+	url = https://github.com/guileen/vim-node-dict
+[submodule "dict/vim-php-dictionary"]
+	path = dict/vim-php-dictionary
+	url = https://github.com/nishigori/vim-php-dictionary.git
