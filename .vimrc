@@ -12,10 +12,11 @@ Plugin 'Lokaltog/vim-easymotion'
 Plugin 'scrooloose/syntastic'
 Plugin 'kien/ctrlp.vim'
 Plugin 'pangloss/vim-javascript'
-Plugin 'ciaranm/detectindent'
 Plugin 'othree/html5.vim'
 Plugin 'scrooloose/nerdtree'
-" Plugin 'vim-scripts/PHP-correct-Indenting'
+Plugin 'mileszs/ack.vim'
+Plugin 'moll/vim-node'
+Plugin 'godlygeek/tabular'
 Plugin 'spf13/PIV'
 Plugin 'msanders/snipmate.vim'
 Plugin 'tomtom/tcomment_vim'
@@ -47,8 +48,6 @@ set wrapmargin=0
 set hlsearch
 set incsearch
 set smartcase
-set autoindent
-set smartindent
 set laststatus=2
 set nobackup
 set nowb
@@ -63,15 +62,17 @@ set foldlevelstart=1
 set pastetoggle=<F2>
 set list listchars=tab:\ \ ,trail:·
 
-" Indentation via DetectIndent http://www.vim.org/scripts/script.php?script_id=1171
-autocmd BufReadPost * :DetectIndent
-let g:detectindent_preferred_expandtab = 1
-let g:detectindent_preferred_indent = 2
+" Indentation.
+set autoindent
+set cindent
+set shiftwidth=2
+set softtabstop=2
+set expandtab
+au FileType make,go,snippets setlocal noexpandtab
 
-" Custom filetype tab exceptions...
-au FileType snippets let g:detectindent_preferred_expandtab = 0
-au FileType make let g:detectindent_preferred_expandtab = 0
-au FileType go let g:detectindent_preferred_expandtab = 0
+" Dictionaries.
+au FileType javascript set dictionary+=$HOME/.vim/dict/vim-node-dict/dict/node.dict
+au FileType php set dictionary+=$HOME/.vim/dict/vim-php-dictionary/dict/PHP.dict
 
 " Better leader
 let mapleader = ","
@@ -93,6 +94,9 @@ nmap tn :tabnew<CR>
 nmap td :tabclose<CR>
 nmap <C-Right> :tabnext<cr>
 nmap <C-Left> :tabprev<cr>
+
+" Autocomplete tags
+iabbrev </ </<C-X><C-O>
 
 " Folding.
 nmap <space> za
