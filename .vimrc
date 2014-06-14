@@ -70,9 +70,26 @@ set softtabstop=2
 set expandtab
 au FileType make,go,snippets setlocal noexpandtab
 
+" Syntax colors & color scheme
+let g:solarized_termtrans = 1
+if $ITERM_ENV == 'dark'
+  set background=dark
+elseif $ITERM_ENV == 'light'
+  set background=light
+else
+  set background=dark
+endif
+colorscheme solarized
+
 " Dictionaries.
 au FileType javascript set dictionary+=$HOME/.vim/dict/vim-node-dict/dict/node.dict
 au FileType php set dictionary+=$HOME/.vim/dict/vim-php-dictionary/dict/PHP.dict
+
+" Highlight JSON as JavaScript.
+autocmd BufNewFile,BufRead *.json set ft=javascript
+
+" Source vimrc on save.
+autocmd! bufwritepost .vimrc source %
 
 " Better leader
 let mapleader = ","
@@ -81,11 +98,11 @@ let mapleader = ","
 map j gj
 map k gk
 
-" Easy out.
-imap jj <esc>
-
 " Fast saving
 nmap <leader>w :w!<cr>
+
+" Easy out.
+imap <leader><leader> <esc>
 
 " Tabbing shortcuts
 nmap th :tabnext<CR>
@@ -95,7 +112,7 @@ nmap td :tabclose<CR>
 nmap <C-Right> :tabnext<cr>
 nmap <C-Left> :tabprev<cr>
 
-" Autocomplete tags
+" Autocomplete html tags on </
 iabbrev </ </<C-X><C-O>
 
 " Folding.
@@ -124,31 +141,9 @@ let g:sparkupNextMapping = '<c-t>'
 " ctrlp
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|bower_components\|svn'
 
-" Syntax colors & color scheme
-let g:solarized_termtrans = 1
-
-if $ITERM_ENV == 'dark'
-  set background=dark
-elseif $ITERM_ENV == 'light'
-  set background=light
-else
-  " echo "$ITERM_ENV not set. Defaulting to dark background"
-  set background=dark
-endif
-colorscheme solarized
-
 " Linter
 let g:syntastic_always_populate_loc_list=1
 let g:syntastic_check_on_open=1
 let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_php_checkers = ['php']
-
-" make is so html files are only checked if you explicitly run :SyntasticCheck
-let syntastic_mode_map = { 'passive_filetypes': ['html'] }
-
-" Highlight JSON as JavaScript.
-autocmd BufNewFile,BufRead *.json set ft=javascript
-
-" Source vimrc on save.
-autocmd! bufwritepost .vimrc source %
-
+let syntastic_mode_map = { 'passive_filetypes': ['html'] } " make is so html files are only checked if you explicitly run :SyntasticCheck
