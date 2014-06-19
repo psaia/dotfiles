@@ -4,3 +4,6 @@
 [submodule "dict/vim-php-dictionary"]
 	path = dict/vim-php-dictionary
 	url = https://github.com/nishigori/vim-php-dictionary.git
+[submodule "dict/vim-dict"]
+	path = dict/vim-dict
+	url = https://github.com/asins/vim-dict.git

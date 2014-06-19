@@ -12,6 +12,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'othree/html5.vim'
 Plugin 'scrooloose/nerdtree'
+Plugin 'Shougo/neocomplete.vim'
 Plugin 'mileszs/ack.vim'
 Plugin 'moll/vim-node'
 Plugin 'godlygeek/tabular'
@@ -40,7 +41,8 @@ set gcr=a:blinkon0
 set visualbell
 set autoread
 set hidden
-set wrap
+set nowrap
+set synmaxcol=200
 set textwidth=0
 set wrapmargin=0
 set hlsearch
@@ -51,7 +53,6 @@ set nobackup
 set nowb
 set noswapfile
 set showcmd
-set linespace=8
 set backspace=2
 set scrolloff=7
 set scrolljump=5
@@ -80,6 +81,8 @@ colorscheme solarized
 " Dictionaries.
 au FileType javascript set dictionary+=$HOME/.vim/dict/vim-node-dict/dict/node.dict
 au FileType php set dictionary+=$HOME/.vim/dict/vim-php-dictionary/dict/PHP.dict
+au FileType javascript set dictionary+=$HOME/.vim/dict/vim-dict/dict/javascript.dic
+au FileType css set dictionary+=$HOME/.vim/dict/vim-dict/dict/css.dic
 
 " Highlight JSON as JavaScript.
 autocmd BufNewFile,BufRead *.json set ft=javascript
@@ -98,7 +101,7 @@ map k gk
 nmap <leader>w :w!<cr>
 
 " Easy out.
-imap <leader><leader> <esc>
+imap jk <esc>
 
 " Tabbing shortcuts
 nmap th :tabnext<CR>
@@ -143,3 +146,8 @@ let g:syntastic_check_on_open=1
 let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_php_checkers = ['php']
 let syntastic_mode_map = { 'passive_filetypes': ['html'] } " make is so html files are only checked if you explicitly run :SyntasticCheck
+
+" NeoComplete
+let g:neocomplete#enable_at_startup = 1
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+
