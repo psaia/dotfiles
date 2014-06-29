@@ -9,14 +9,9 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'scrooloose/syntastic'
 Plugin 'kien/ctrlp.vim'
-Plugin 'pangloss/vim-javascript'
-Plugin 'othree/html5.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Shougo/neocomplete.vim'
-Plugin 'mileszs/ack.vim'
-Plugin 'moll/vim-node'
 Plugin 'godlygeek/tabular'
-Plugin 'spf13/PIV'
 Plugin 'msanders/snipmate.vim'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'kchmck/vim-coffee-script'
@@ -27,6 +22,10 @@ Plugin 'wavded/vim-stylus'
 Plugin 'tpope/vim-surround'
 Plugin 'sukima/xmledit'
 Plugin 'bling/vim-airline'
+Plugin 'moll/vim-node'
+Plugin 'othree/html5.vim'
+Plugin 'pangloss/vim-javascript'
+Plugin 'StanAngeloff/php.vim'
 call vundle#end()
 
 " Basic.
@@ -146,6 +145,10 @@ let g:syntastic_check_on_open=1
 let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_php_checkers = ['php']
 let syntastic_mode_map = { 'passive_filetypes': ['html'] } " make is so html files are only checked if you explicitly run :SyntasticCheck
+
+" php.vim
+au FileType php let php_html_in_strings = 1
+au FileType php let php_sql_query = 1
 
 " NeoComplete
 let g:neocomplete#enable_at_startup = 1
