@@ -59,6 +59,7 @@ set foldmethod=indent
 set foldlevelstart=1
 set pastetoggle=<F2>
 set list listchars=tab:\ \ ,trail:·
+set wildmenu
 
 " Indentation.
 set autoindent
@@ -78,10 +79,10 @@ endif
 colorscheme solarized
 
 " Dictionaries.
-au FileType javascript set dictionary+=$HOME/.vim/dict/vim-node-dict/dict/node.dict
-au FileType php set dictionary+=$HOME/.vim/dict/vim-php-dictionary/dict/PHP.dict
-au FileType javascript set dictionary+=$HOME/.vim/dict/vim-dict/dict/javascript.dic
-au FileType css set dictionary+=$HOME/.vim/dict/vim-dict/dict/css.dic
+au FileType javascript set dictionary+=$HOME.'/.vim/dict/vim-node-dict/dict/node.dict'
+au FileType javascript set dictionary+=$HOME.'/.vim/dict/vim-dict/dict/javascript.dic'
+au FileType php set dictionary+=$HOME.'/.vim/dict/vim-php-dictionary/dict/PHP.dict'
+au FileType css set dictionary+=$HOME.'/.vim/dict/vim-dict/dict/css.dic'
 
 " Highlight JSON as JavaScript.
 autocmd BufNewFile,BufRead *.json set ft=javascript
@@ -154,11 +155,17 @@ au FileType php let php_sql_query = 1
 let g:acp_enableAtStartup = 0
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
+let g:neocomplete#enable_auto_select = 0
 let g:neocomplete#sources#syntax#min_keyword_length = 3
+let g:neocomplete#sources#dictionary#dictionaries = {
+    \ 'default' : '',
+    \ 'javascript' : $HOME.'/.vim/dict/vim-node-dict/dict/node.dict,'.$HOME.'/.vim/dict/vim-dict/dict/javascript.dic',
+    \ 'css' : $HOME.'/.vim/dict/vim-dict/dict/css.dic',
+    \ 'php' : $HOME.'/.vim/dict/vim-php-dictionary/dict/PHP.dict'
+\ }
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
