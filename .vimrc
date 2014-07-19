@@ -125,6 +125,9 @@ vmap <C-c> :w !pbcopy<CR><CR>
 " open NERDTree with Ctrl+n
 map <C-n> :NERDTreeToggle<CR>
 
+" SnipMate Configuration
+let g:snips_author = 'PS'
+
 " Easy motion
 map <Leader>h <Plug>(easymotion-linebackward)
 map <Leader>j <Plug>(easymotion-j)
