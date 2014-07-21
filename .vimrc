@@ -59,7 +59,6 @@ set foldmethod=indent
 set foldlevelstart=1
 set pastetoggle=<F2>
 set list listchars=tab:\ \ ,trail:·
-set wildmenu
 
 " Indentation.
 set autoindent
