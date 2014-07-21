@@ -162,7 +162,7 @@ let g:neocomplete#enable_auto_select = 0
 let g:neocomplete#sources#syntax#min_keyword_length = 3
 let g:neocomplete#sources#dictionary#dictionaries = {
     \ 'default' : '',
-    \ 'javascript' : $HOME.'/.vim/dict/vim-node-dict/dict/node.dict,'.$HOME.'/.vim/dict/vim-dict/dict/javascript.dic',
+    \ 'javascript' : '~/.vim/dict/vim-dict/dict/javascript.dic,~/.vim/dict/vim-node-dict/dict/node.dict',
     \ 'css' : $HOME.'/.vim/dict/vim-dict/dict/css.dic',
     \ 'php' : $HOME.'/.vim/dict/vim-php-dictionary/dict/PHP.dict'
 \ }
