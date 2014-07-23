@@ -5,12 +5,12 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'L9'
 Plugin 'tpope/vim-fugitive'
+Plugin 'evidens/vim-twig'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'scrooloose/syntastic'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
-Plugin 'Shougo/neocomplete.vim'
 Plugin 'godlygeek/tabular'
 Plugin 'msanders/snipmate.vim'
 Plugin 'tomtom/tcomment_vim'
@@ -26,6 +26,7 @@ Plugin 'moll/vim-node'
 Plugin 'othree/html5.vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'StanAngeloff/php.vim'
+Plugin 'Shougo/neocomplete.vim'
 call vundle#end()
 
 " Basic.
@@ -77,11 +78,11 @@ else
 endif
 colorscheme solarized
 
-" Dictionaries.
-au FileType javascript set dictionary+=$HOME.'/.vim/dict/vim-node-dict/dict/node.dict'
-au FileType javascript set dictionary+=$HOME.'/.vim/dict/vim-dict/dict/javascript.dic'
-au FileType php set dictionary+=$HOME.'/.vim/dict/vim-php-dictionary/dict/PHP.dict'
-au FileType css set dictionary+=$HOME.'/.vim/dict/vim-dict/dict/css.dic'
+" Dictionaries. Listed in neocomplete plugin.
+" au FileType javascript set dictionary+=$HOME.'/.vim/dict/vim-node-dict/dict/node.dict'
+" au FileType javascript set dictionary+=$HOME.'/.vim/dict/vim-dict/dict/javascript.dic'
+" au FileType php set dictionary+=$HOME.'/.vim/dict/vim-php-dictionary/dict/PHP.dict'
+" au FileType css set dictionary+=$HOME.'/.vim/dict/vim-dict/dict/css.dic'
 
 " Highlight JSON as JavaScript.
 autocmd BufNewFile,BufRead *.json set ft=javascript
@@ -133,8 +134,10 @@ map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
 map <Leader>l <Plug>(easymotion-lineforward)
 nmap s <Plug>(easymotion-s2)
-nmap t <Plug>(easymotion-t2)
 let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
+
+" NerdTree
+let g:NERDTreeChDirMode=2
 
 " Sparkup
 let g:sparkupNextMapping = '<c-t>'
@@ -153,21 +156,27 @@ let syntastic_mode_map = { 'passive_filetypes': ['html'] } " make is so html fil
 au FileType php let php_html_in_strings = 1
 au FileType php let php_sql_query = 1
 
+" cd to current working directory.
+autocmd BufEnter * silent! lcd %:p:h
+
 " NeoComplete
-let g:acp_enableAtStartup = 0
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_smart_case = 1
-let g:neocomplete#enable_auto_select = 0
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-let g:neocomplete#sources#dictionary#dictionaries = {
-    \ 'default' : '',
-    \ 'javascript' : '~/.vim/dict/vim-dict/dict/javascript.dic,~/.vim/dict/vim-node-dict/dict/node.dict',
-    \ 'css' : $HOME.'/.vim/dict/vim-dict/dict/css.dic',
-    \ 'php' : $HOME.'/.vim/dict/vim-php-dictionary/dict/PHP.dict'
-\ }
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+if has('lua')
+  let g:neocomplete#enable_debug = 0
+  let g:acp_enableAtStartup = 0
+  let g:neocomplete#enable_at_startup = 1
+  let g:neocomplete#enable_smart_case = 1
+  let g:neocomplete#enable_auto_select = 0
+  let g:neocomplete#sources#syntax#min_keyword_length = 3
+  let g:neocomplete#sources#dictionary#dictionaries = {
+      \ 'default' : '',
+      \ 'css' : '~/.vim/dict/vim-dict/dict/css.dic',
+      \ 'javascript' : '~/.vim/dict/vim-node-dict/dict/node.dict,~/.vim/dict/vim-dict/dict/javascript.dic',
+      \ 'php' : '~/.vim/dict/vim-php-dictionary/dict/PHP.dict'
+  \ }
+  inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+  autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+  autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+  autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+end
