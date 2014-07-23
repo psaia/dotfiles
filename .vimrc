@@ -26,7 +26,9 @@ Plugin 'moll/vim-node'
 Plugin 'othree/html5.vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'StanAngeloff/php.vim'
-Plugin 'Shougo/neocomplete.vim'
+if has('lua')
+  Plugin 'Shougo/neocomplete.vim'
+end
 call vundle#end()
 
 " Basic.
