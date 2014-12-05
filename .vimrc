@@ -24,11 +24,11 @@ Plugin 'sukima/xmledit'
 Plugin 'bling/vim-airline'
 Plugin 'moll/vim-node'
 Plugin 'othree/html5.vim'
-Plugin 'pangloss/vim-javascript'
 Plugin 'StanAngeloff/php.vim'
-if has('lua')
-  Plugin 'Shougo/neocomplete.vim'
-end
+Plugin 'Shougo/neocomplete.vim'
+Plugin 'jelera/vim-javascript-syntax'
+Plugin 'pangloss/vim-javascript'
+Plugin 'chriskempson/base16-vim'
 call vundle#end()
 
 " Basic.
@@ -78,13 +78,13 @@ elseif $ITERM_ENV == 'light'
 else
   set background=dark
 endif
-colorscheme solarized
+colorscheme base16-tomorrow
 
 " Dictionaries. Listed in neocomplete plugin.
-" au FileType javascript set dictionary+=$HOME.'/.vim/dict/vim-node-dict/dict/node.dict'
-" au FileType javascript set dictionary+=$HOME.'/.vim/dict/vim-dict/dict/javascript.dic'
-" au FileType php set dictionary+=$HOME.'/.vim/dict/vim-php-dictionary/dict/PHP.dict'
-" au FileType css set dictionary+=$HOME.'/.vim/dict/vim-dict/dict/css.dic'
+au FileType javascript set dictionary+=$HOME.'/.vim/dict/vim-node-dict/dict/node.dict'
+au FileType javascript set dictionary+=$HOME.'/.vim/dict/vim-dict/dict/javascript.dic'
+au FileType php set dictionary+=$HOME.'/.vim/dict/vim-php-dictionary/dict/PHP.dict'
+au FileType css set dictionary+=$HOME.'/.vim/dict/vim-dict/dict/css.dic'
 
 " Highlight JSON as JavaScript.
 autocmd BufNewFile,BufRead *.json set ft=javascript
@@ -146,6 +146,7 @@ let g:sparkupNextMapping = '<c-t>'
 
 " ctrlp
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|bower_components\|svn'
+let g:ctrlp_regexp = 1
 
 " Linter
 let g:syntastic_always_populate_loc_list=1
@@ -162,23 +163,24 @@ au FileType php let php_sql_query = 1
 autocmd BufEnter * silent! lcd %:p:h
 
 " NeoComplete
-if has('lua')
-  let g:neocomplete#enable_debug = 0
-  let g:acp_enableAtStartup = 0
-  let g:neocomplete#enable_at_startup = 1
-  let g:neocomplete#enable_smart_case = 1
-  let g:neocomplete#enable_auto_select = 0
-  let g:neocomplete#sources#syntax#min_keyword_length = 3
-  let g:neocomplete#sources#dictionary#dictionaries = {
-      \ 'default' : '',
-      \ 'css' : '~/.vim/dict/vim-dict/dict/css.dic',
-      \ 'javascript' : '~/.vim/dict/vim-node-dict/dict/node.dict,~/.vim/dict/vim-dict/dict/javascript.dic',
-      \ 'php' : '~/.vim/dict/vim-php-dictionary/dict/PHP.dict'
-  \ }
-  inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-  autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-  autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-  autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-end
+let g:neocomplete#enable_debug = 0
+let g:acp_enableAtStartup = 0
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_smart_case = 1
+let g:neocomplete#enable_auto_select = 0
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+let g:neocomplete#sources#dictionary#dictionaries = {
+    \ 'default' : '',
+    \ 'css' : '~/.vim/dict/vim-dict/dict/css.dic',
+    \ 'javascript' : '~/.vim/dict/vim-node-dict/dict/node.dict,~/.vim/dict/vim-dict/dict/javascript.dic',
+    \ 'php' : '~/.vim/dict/vim-php-dictionary/dict/PHP.dict'
+\ }
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+" livecoding
+" source /usr/local/Cellar/extempore/0.53/extras/extempore.vim
