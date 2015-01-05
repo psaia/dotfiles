@@ -27,8 +27,8 @@ Plugin 'othree/html5.vim'
 Plugin 'StanAngeloff/php.vim'
 Plugin 'Shougo/neocomplete.vim'
 Plugin 'jelera/vim-javascript-syntax'
-Plugin 'pangloss/vim-javascript'
 Plugin 'chriskempson/base16-vim'
+Plugin 'pangloss/vim-javascript'
 call vundle#end()
 
 " Basic.
@@ -74,7 +74,10 @@ if has('unix')
   set t_Co=256
 endif
 
-" My colorscheme.
+" My colorscheme. When using iterm make sure you're using the
+" appropriate color profile.
+" https://github.com/chriskempson/base16-vim
+" https://github.com/chriskempson/base16-iterm2
 set background=dark
 colorscheme base16-tomorrow
 
