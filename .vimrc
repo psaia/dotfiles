@@ -1,4 +1,4 @@
-" I use vundle for plugins.
+" Vundle Plugins.
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
