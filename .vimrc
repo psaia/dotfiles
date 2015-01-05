@@ -1,3 +1,4 @@
+" I use vundle for plugins.
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -6,7 +7,6 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'L9'
 Plugin 'tpope/vim-fugitive'
 Plugin 'evidens/vim-twig'
-Plugin 'altercation/vim-colors-solarized'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'scrooloose/syntastic'
 Plugin 'kien/ctrlp.vim'
@@ -69,15 +69,13 @@ set cindent
 set shiftwidth=2 tabstop=2 softtabstop=2 expandtab
 au FileType make,go,snippets,sh setlocal noexpandtab
 
-" Syntax colors & color scheme
-let g:solarized_termtrans = 1
-if $ITERM_ENV == 'dark'
-  set background=dark
-elseif $ITERM_ENV == 'light'
-  set background=light
-else
-  set background=dark
+" 256 color terminal, helps with terminal colorschemes
+if has('unix')
+  set t_Co=256
 endif
+
+" My colorscheme.
+set background=dark
 colorscheme base16-tomorrow
 
 " Dictionaries. Listed in neocomplete plugin.
