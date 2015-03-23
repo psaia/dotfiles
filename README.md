@@ -5,4 +5,4 @@ This is the `.vim/` directory.
 3. `ln -s ~/.vim/.vimrc ~/.vimrc`
 4. `:PluginInstall`
 
-Use the newest vim with lua so neocomplete works (`brew install vim --with-lua`). I use iterm which is better for colors. That explains the `$ITERM_ENV` which determines if `background` is set to light or dark.
+Use the newest vim with lua so neocomplete works (`brew install vim --with-lua`). I use iterm2 which is better for colors.
