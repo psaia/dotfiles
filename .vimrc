@@ -12,6 +12,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'godlygeek/tabular'
+" Plugin 'facebook/vim-flow'
 Plugin 'msanders/snipmate.vim'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'kchmck/vim-coffee-script'
@@ -29,6 +30,7 @@ Plugin 'Shougo/neocomplete.vim'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'chriskempson/base16-vim'
 Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
 call vundle#end()
 
 " Basic.
@@ -152,7 +154,7 @@ let g:ctrlp_regexp = 1
 " Linter
 let g:syntastic_always_populate_loc_list=1
 let g:syntastic_check_on_open=1
-let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_javascript_checkers = ['jsxhint']
 let g:syntastic_php_checkers = ['php']
 let syntastic_mode_map = { 'passive_filetypes': ['html'] } " make is so html files are only checked if you explicitly run :SyntasticCheck
 
@@ -185,3 +187,6 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 " livecoding
 " source /usr/local/Cellar/extempore/0.53/extras/extempore.vim
+
+" react - allow jsx in .js files.
+let g:jsx_ext_required = 0
