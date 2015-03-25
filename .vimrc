@@ -71,11 +71,6 @@ set cindent
 set shiftwidth=2 tabstop=2 softtabstop=2 expandtab
 au FileType make,go,snippets,sh setlocal noexpandtab
 
-" 256 color terminal, helps with terminal colorschemes
-if has('unix')
-  set t_Co=256
-endif
-
 " My colorscheme. When using iterm make sure you're using the
 " appropriate color profile.
 " https://github.com/chriskempson/base16-vim
