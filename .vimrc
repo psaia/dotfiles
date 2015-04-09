@@ -25,11 +25,13 @@ Plugin 'sukima/xmledit'
 Plugin 'bling/vim-airline'
 Plugin 'moll/vim-node'
 Plugin 'othree/html5.vim'
+Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'StanAngeloff/php.vim'
 Plugin 'Shougo/neocomplete.vim'
-Plugin 'jelera/vim-javascript-syntax'
 Plugin 'chriskempson/base16-vim'
+Plugin 'jelera/vim-javascript-syntax'
 Plugin 'pangloss/vim-javascript'
+Plugin 'heavenshell/vim-jsdoc'
 Plugin 'mxw/vim-jsx'
 call vundle#end()
 
@@ -149,7 +151,8 @@ let g:ctrlp_regexp = 1
 " Linter
 let g:syntastic_always_populate_loc_list=1
 let g:syntastic_check_on_open=1
-let g:syntastic_javascript_checkers = ['jsxhint']
+let g:syntastic_javascript_checkers = ['jshint']
+autocmd BufRead,BufNewFile *.jsx let g:syntastic_javascript_checkers = ['jsxhint']
 let g:syntastic_php_checkers = ['php']
 let syntastic_mode_map = { 'passive_filetypes': ['html'] } " make is so html files are only checked if you explicitly run :SyntasticCheck
 
@@ -184,4 +187,7 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 " source /usr/local/Cellar/extempore/0.53/extras/extempore.vim
 
 " react - allow jsx in .js files.
-let g:jsx_ext_required = 0
+let g:jsx_ext_required = 1
+
+" jsdoc
+let g:jsdoc_allow_input_prompt = 1
