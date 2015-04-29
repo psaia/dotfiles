@@ -8,7 +8,6 @@ Plugin 'L9'
 Plugin 'tpope/vim-fugitive'
 Plugin 'evidens/vim-twig'
 Plugin 'Lokaltog/vim-easymotion'
-Plugin 'scrooloose/syntastic'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'godlygeek/tabular'
@@ -32,7 +31,8 @@ Plugin 'chriskempson/base16-vim'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'pangloss/vim-javascript'
 Plugin 'heavenshell/vim-jsdoc'
-Plugin 'mxw/vim-jsx'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'scrooloose/syntastic'
 call vundle#end()
 
 " Basic.
@@ -149,12 +149,22 @@ let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|bower_components\|svn'
 let g:ctrlp_regexp = 1
 
 " Linter
-let g:syntastic_always_populate_loc_list=1
-let g:syntastic_check_on_open=1
-let g:syntastic_javascript_checkers = ['jshint']
-autocmd BufRead,BufNewFile *.jsx let g:syntastic_javascript_checkers = ['jsxhint']
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_aggregate_errors = 1
+
 let g:syntastic_php_checkers = ['php']
+
+" Requires:
+" npm install -g syntastic-react jshint react-tools
+let g:syntastic_javascript_checkers = ['jshint', 'jscs']
+autocmd BufRead,BufNewFile *.jsx let g:syntastic_javascript_checkers = ['jsxhint', 'jscs']
+autocmd BufRead,BufNewFile *.jsx let g:syntastic_javascript_jsxhint_exec = 'jsx-jshint-wrapper'
+
 let syntastic_mode_map = { 'passive_filetypes': ['html'] } " make is so html files are only checked if you explicitly run :SyntasticCheck
+
 
 " php.vim
 au FileType php let php_html_in_strings = 1
@@ -187,7 +197,7 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 " source /usr/local/Cellar/extempore/0.53/extras/extempore.vim
 
 " react - allow jsx in .js files.
-let g:jsx_ext_required = 1
+" let g:jsx_ext_required = 1
 
 " jsdoc
 let g:jsdoc_allow_input_prompt = 1
