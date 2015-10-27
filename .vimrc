@@ -3,15 +3,16 @@ set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
+" Plugin 'facebook/vim-flow'
 Plugin 'gmarik/Vundle.vim'
 Plugin 'L9'
+Plugin 'editorconfig/editorconfig-vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'evidens/vim-twig'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'godlygeek/tabular'
-" Plugin 'facebook/vim-flow'
 Plugin 'msanders/snipmate.vim'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'kchmck/vim-coffee-script'
@@ -21,18 +22,19 @@ Plugin 'tristen/vim-sparkup'
 Plugin 'wavded/vim-stylus'
 Plugin 'tpope/vim-surround'
 Plugin 'sukima/xmledit'
-Plugin 'bling/vim-airline'
+Plugin 'itchyny/lightline.vim'
 Plugin 'moll/vim-node'
 Plugin 'othree/html5.vim'
 Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'StanAngeloff/php.vim'
 Plugin 'Shougo/neocomplete.vim'
-Plugin 'chriskempson/base16-vim'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'pangloss/vim-javascript'
 Plugin 'heavenshell/vim-jsdoc'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'scrooloose/syntastic'
+Plugin 'chriskempson/base16-vim'
+Plugin 'vim-scripts/fountain.vim'
 call vundle#end()
 
 " Basic.
@@ -48,7 +50,7 @@ set visualbell
 set autoread
 set hidden
 set nowrap
-set synmaxcol=200
+set synmaxcol=400
 set textwidth=0
 set wrapmargin=0
 set hlsearch
@@ -77,8 +79,9 @@ au FileType make,go,snippets,sh setlocal noexpandtab
 " appropriate color profile.
 " https://github.com/chriskempson/base16-vim
 " https://github.com/chriskempson/base16-iterm2
+
 set background=dark
-colorscheme base16-tomorrow
+colorscheme base16-default
 
 " Dictionaries. Listed in neocomplete plugin.
 au FileType javascript set dictionary+=$HOME.'/.vim/dict/vim-node-dict/dict/node.dict'
@@ -154,14 +157,10 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_aggregate_errors = 1
+let g:syntastic_loc_list_height = 1
 
 let g:syntastic_php_checkers = ['php']
-
-" Requires:
-" npm install -g syntastic-react jshint react-tools
-let g:syntastic_javascript_checkers = ['jshint', 'jscs']
-autocmd BufRead,BufNewFile *.jsx let g:syntastic_javascript_checkers = ['jsxhint', 'jscs']
-autocmd BufRead,BufNewFile *.jsx let g:syntastic_javascript_jsxhint_exec = 'jsx-jshint-wrapper'
+let g:syntastic_javascript_checkers = ['jscs', 'eslint']
 
 let syntastic_mode_map = { 'passive_filetypes': ['html'] } " make is so html files are only checked if you explicitly run :SyntasticCheck
 
@@ -201,3 +200,24 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 " jsdoc
 let g:jsdoc_allow_input_prompt = 1
+
+" Lightline settings
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component': {
+      \   'readonly': '%{&filetype=="help"?"":&readonly?"":""}',
+      \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
+      \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
+      \ },
+      \ 'component_visible_condition': {
+      \   'readonly': '(&filetype!="help"&& &readonly)',
+      \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
+      \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
+      \ },
+      \ 'separator': { 'left': '', 'right': '' },
+      \ 'subseparator': { 'left': '|', 'right': '|' }
+      \ }
