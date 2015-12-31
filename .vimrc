@@ -29,10 +29,12 @@ Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'StanAngeloff/php.vim'
 Plugin 'Shougo/neocomplete.vim'
 Plugin 'jelera/vim-javascript-syntax'
+Plugin 'captbaritone/better-indent-support-for-php-with-html'
 Plugin 'pangloss/vim-javascript'
 Plugin 'heavenshell/vim-jsdoc'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'scrooloose/syntastic'
+Plugin 'sheerun/dracula-theme'
 Plugin 'chriskempson/base16-vim'
 Plugin 'vim-scripts/fountain.vim'
 call vundle#end()
@@ -80,8 +82,9 @@ au FileType make,go,snippets,sh setlocal noexpandtab
 " https://github.com/chriskempson/base16-vim
 " https://github.com/chriskempson/base16-iterm2
 
-set background=dark
-colorscheme base16-default
+" set background=dark
+" colorscheme base16-default
+color dracula
 
 " Dictionaries. Listed in neocomplete plugin.
 au FileType javascript set dictionary+=$HOME.'/.vim/dict/vim-node-dict/dict/node.dict'
