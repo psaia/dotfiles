@@ -1,43 +1,42 @@
-" Vundle Plugins.
-set nocompatible
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" Plugin 'facebook/vim-flow'
-Plugin 'gmarik/Vundle.vim'
-Plugin 'L9'
-Plugin 'editorconfig/editorconfig-vim'
-Plugin 'tpope/vim-fugitive'
-Plugin 'evidens/vim-twig'
-Plugin 'Lokaltog/vim-easymotion'
-Plugin 'kien/ctrlp.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'godlygeek/tabular'
-Plugin 'msanders/snipmate.vim'
-Plugin 'tomtom/tcomment_vim'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'digitaltoad/vim-jade'
-Plugin 'groenewege/vim-less'
-Plugin 'tristen/vim-sparkup'
-Plugin 'wavded/vim-stylus'
-Plugin 'tpope/vim-surround'
-Plugin 'sukima/xmledit'
-Plugin 'itchyny/lightline.vim'
-Plugin 'moll/vim-node'
-Plugin 'othree/html5.vim'
-Plugin 'ekalinin/Dockerfile.vim'
-Plugin 'StanAngeloff/php.vim'
-Plugin 'Shougo/neocomplete.vim'
-Plugin 'jelera/vim-javascript-syntax'
-Plugin 'captbaritone/better-indent-support-for-php-with-html'
-Plugin 'pangloss/vim-javascript'
-Plugin 'heavenshell/vim-jsdoc'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'scrooloose/syntastic'
-Plugin 'sheerun/dracula-theme'
-Plugin 'chriskempson/base16-vim'
-Plugin 'vim-scripts/fountain.vim'
-call vundle#end()
+call plug#begin('~/.vim/plugged')
+" Plug 'facebook/vim-flow'
+Plug 'gmarik/Vundle.vim'
+Plug 'L9'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'tpope/vim-fugitive'
+Plug 'evidens/vim-twig'
+Plug 'Lokaltog/vim-easymotion'
+Plug 'kien/ctrlp.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'godlygeek/tabular'
+Plug 'msanders/snipmate.vim'
+Plug 'tomtom/tcomment_vim'
+Plug 'kchmck/vim-coffee-script'
+Plug 'digitaltoad/vim-jade'
+Plug 'groenewege/vim-less'
+Plug 'tristen/vim-sparkup'
+Plug 'wavded/vim-stylus'
+Plug 'tpope/vim-surround'
+Plug 'sukima/xmledit'
+Plug 'itchyny/lightline.vim'
+Plug 'moll/vim-node'
+Plug 'othree/html5.vim'
+Plug 'ekalinin/Dockerfile.vim'
+Plug 'StanAngeloff/php.vim'
+" Plug 'Shougo/neocomplete.vim'
+Plug 'Shougo/deoplete.nvim'
+Plug 'jelera/vim-javascript-syntax'
+Plug 'captbaritone/better-indent-support-for-php-with-html'
+Plug 'pangloss/vim-javascript'
+Plug 'heavenshell/vim-jsdoc'
+Plug 'plasticboy/vim-markdown'
+Plug 'scrooloose/syntastic'
+Plug 'sheerun/dracula-theme'
+Plug 'chriskempson/base16-vim'
+Plug 'vim-scripts/fountain.vim'
+Plug 'joonty/vdebug.git'
+Plug 'shumphrey/fugitive-gitlab.vim'
+call plug#end()
 
 " Basic.
 filetype indent plugin on
@@ -82,7 +81,7 @@ au FileType make,go,snippets,sh setlocal noexpandtab
 " https://github.com/chriskempson/base16-vim
 " https://github.com/chriskempson/base16-iterm2
 
-" set background=dark
+" set background=light
 " colorscheme base16-default
 color dracula
 
@@ -155,18 +154,26 @@ let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|bower_components\|svn'
 let g:ctrlp_regexp = 1
 
 " Linter
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
+" let g:syntastic_aggregate_errors = 1
+" let g:syntastic_loc_list_height = 1
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-let g:syntastic_aggregate_errors = 1
-let g:syntastic_loc_list_height = 1
 
+let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_php_checkers = ['php']
-let g:syntastic_javascript_checkers = ['jscs', 'eslint']
 
 let syntastic_mode_map = { 'passive_filetypes': ['html'] } " make is so html files are only checked if you explicitly run :SyntasticCheck
-
 
 " php.vim
 au FileType php let php_html_in_strings = 1
@@ -224,3 +231,5 @@ let g:lightline = {
       \ 'separator': { 'left': '', 'right': '' },
       \ 'subseparator': { 'left': '|', 'right': '|' }
       \ }
+
+let g:fugitive_gitlab_domains = ['http://dev.lev-interactive.com']
