@@ -1,6 +1,4 @@
 call plug#begin('~/.vim/plugged')
-" Plug 'facebook/vim-flow'
-Plug 'gmarik/Vundle.vim'
 Plug 'L9'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-fugitive'
@@ -23,8 +21,6 @@ Plug 'moll/vim-node'
 Plug 'othree/html5.vim'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'StanAngeloff/php.vim'
-" Plug 'Shougo/neocomplete.vim'
-Plug 'Shougo/deoplete.nvim'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'captbaritone/better-indent-support-for-php-with-html'
 Plug 'pangloss/vim-javascript'
@@ -181,32 +177,6 @@ au FileType php let php_sql_query = 1
 
 " cd to current working directory.
 autocmd BufEnter * silent! lcd %:p:h
-
-" NeoComplete
-let g:neocomplete#enable_debug = 0
-let g:acp_enableAtStartup = 0
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_smart_case = 1
-let g:neocomplete#enable_auto_select = 0
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-let g:neocomplete#sources#dictionary#dictionaries = {
-    \ 'default' : '',
-    \ 'css' : '~/.vim/dict/vim-dict/dict/css.dic',
-    \ 'javascript' : '~/.vim/dict/vim-node-dict/dict/node.dict,~/.vim/dict/vim-dict/dict/javascript.dic',
-    \ 'php' : '~/.vim/dict/vim-php-dictionary/dict/PHP.dict'
-\ }
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
-" livecoding
-" source /usr/local/Cellar/extempore/0.53/extras/extempore.vim
-
-" react - allow jsx in .js files.
-" let g:jsx_ext_required = 1
 
 " jsdoc
 let g:jsdoc_allow_input_prompt = 1
