@@ -1,5 +1,6 @@
 call plug#begin('~/.vim/plugged')
 Plug 'L9'
+Plug 'maralla/validator.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-fugitive'
 Plug 'evidens/vim-twig'
@@ -26,7 +27,6 @@ Plug 'captbaritone/better-indent-support-for-php-with-html'
 Plug 'pangloss/vim-javascript'
 Plug 'heavenshell/vim-jsdoc'
 Plug 'plasticboy/vim-markdown'
-Plug 'scrooloose/syntastic'
 Plug 'sheerun/dracula-theme'
 Plug 'chriskempson/base16-vim'
 Plug 'vim-scripts/fountain.vim'
@@ -149,6 +149,11 @@ let g:sparkupNextMapping = '<c-t>'
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|bower_components\|svn'
 let g:ctrlp_regexp = 1
 
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
 " Linter
 " let g:syntastic_always_populate_loc_list = 1
 " let g:syntastic_auto_loc_list = 1
@@ -156,20 +161,13 @@ let g:ctrlp_regexp = 1
 " let g:syntastic_check_on_wq = 0
 " let g:syntastic_aggregate_errors = 1
 " let g:syntastic_loc_list_height = 1
-
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_php_checkers = ['php']
-
-let syntastic_mode_map = { 'passive_filetypes': ['html'] } " make is so html files are only checked if you explicitly run :SyntasticCheck
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
+" let g:syntastic_javascript_checkers = ['eslint']
+" let g:syntastic_php_checkers = ['php']
+" let syntastic_mode_map = { 'passive_filetypes': ['html'] } " make is so html files are only checked if you explicitly run :SyntasticCheck
 
 " php.vim
 au FileType php let php_html_in_strings = 1
