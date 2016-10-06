@@ -1,10 +1,10 @@
 call plug#begin('~/.vim/plugged')
-Plug 'L9'
-Plug 'scrooloose/syntastic'
-Plug 'sheerun/vim-polyglot'
-Plug 'shumphrey/fugitive-gitlab.vim'
+Plug 'w0rp/ale'
+"Plug 'scrooloose/syntastic'
 Plug 'sheerun/dracula-theme'
 Plug 'chriskempson/base16-vim'
+Plug 'sheerun/vim-polyglot'
+Plug 'shumphrey/fugitive-gitlab.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-fugitive'
 Plug 'evidens/vim-twig'
@@ -60,13 +60,7 @@ set cindent
 set shiftwidth=2 tabstop=2 softtabstop=2 expandtab
 au FileType make,go,snippets,sh setlocal noexpandtab
 
-" My colorscheme. When using iterm make sure you're using the
-" appropriate color profile.
-" https://github.com/chriskempson/base16-vim
-" https://github.com/chriskempson/base16-iterm2
-
-" set background=light
-" colorscheme base16-default
+set background=dark
 color dracula
 
 " Dictionaries. Listed in neocomplete plugin.
@@ -137,25 +131,13 @@ let g:sparkupNextMapping = '<c-t>'
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|bower_components\|svn'
 let g:ctrlp_regexp = 1
 
-
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
 " Linter
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_aggregate_errors = 1
-let g:syntastic_loc_list_height = 1
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_php_checkers = ['php']
-let syntastic_mode_map = { 'passive_filetypes': ['html'] } " make is so html files are only checked if you explicitly run :SyntasticCheck
+let g:ale_lint_on_save = 1
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\}
+
+" Nerd Tree.
 let g:NERDTreeDirArrowExpandable = '―'
 let g:NERDTreeDirArrowCollapsible = '+'
 
