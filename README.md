@@ -5,4 +5,4 @@ This is the `.vim/` directory.
 3. `ln -s ~/.vim/.vimrc ~/.vimrc`
 4. `:PlugInstall`
 
-Use the newest vim with lua so neocomplete works (`brew install vim --with-lua`). I use iterm2 which is better for colors.
+This requires vim 8 for async syntax checking.
