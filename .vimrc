@@ -1,9 +1,23 @@
 call plug#begin('~/.vim/plugged')
 Plug 'w0rp/ale'
-"Plug 'scrooloose/syntastic'
+Plug 'sukima/xmledit'
 Plug 'sheerun/dracula-theme'
 Plug 'chriskempson/base16-vim'
-Plug 'sheerun/vim-polyglot'
+
+" Syntax
+Plug 'othree/html5.vim'
+Plug 'digitaltoad/vim-pug'
+Plug 'wavded/vim-stylus'
+Plug 'gko/vim-coloresque'
+Plug 'StanAngeloff/php.vim'
+Plug 'plasticboy/vim-markdown'
+Plug 'captbaritone/better-indent-support-for-php-with-html'
+Plug 'othree/es.next.syntax.vim'
+Plug 'heavenshell/vim-jsdoc'
+Plug 'jparise/vim-graphql'
+Plug 'leafgarland/typescript-vim'
+Plug 'vim-scripts/fountain.vim'
+
 Plug 'shumphrey/fugitive-gitlab.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-fugitive'
@@ -16,10 +30,7 @@ Plug 'msanders/snipmate.vim'
 Plug 'tomtom/tcomment_vim'
 Plug 'tristen/vim-sparkup'
 Plug 'tpope/vim-surround'
-Plug 'sukima/xmledit'
 Plug 'itchyny/lightline.vim'
-Plug 'captbaritone/better-indent-support-for-php-with-html'
-Plug 'heavenshell/vim-jsdoc'
 call plug#end()
 
 " Basic.
@@ -60,6 +71,7 @@ set cindent
 set shiftwidth=2 tabstop=2 softtabstop=2 expandtab
 au FileType make,go,snippets,sh setlocal noexpandtab
 
+" Make sexy.
 set background=dark
 color dracula
 
