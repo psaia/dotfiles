@@ -3,6 +3,7 @@ Plug 'w0rp/ale'
 Plug 'sukima/xmledit'
 Plug 'sheerun/dracula-theme'
 Plug 'chriskempson/base16-vim'
+Plug 'altercation/vim-colors-solarized'
 
 " Syntax
 Plug 'othree/html5.vim'
@@ -72,8 +73,15 @@ set shiftwidth=2 tabstop=2 softtabstop=2 expandtab
 au FileType make,go,snippets,sh setlocal noexpandtab
 
 " Make sexy.
-set background=dark
-color dracula
+let iterm_profile = $ITERM_PROFILE
+
+if iterm_profile == "light"
+  set background=light
+  colorscheme solarized
+else
+  set background=dark
+  colorscheme dracula
+endif
 
 " Dictionaries. Listed in neocomplete plugin.
 au FileType javascript set dictionary+=$HOME.'/.vim/dict/vim-node-dict/dict/node.dict'
