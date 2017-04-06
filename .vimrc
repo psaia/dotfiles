@@ -1,9 +1,9 @@
 call plug#begin('~/.vim/plugged')
-Plug 'w0rp/ale'
-Plug 'sukima/xmledit'
 Plug 'sheerun/dracula-theme'
 Plug 'chriskempson/base16-vim'
 Plug 'altercation/vim-colors-solarized'
+Plug 'sukima/xmledit'
+Plug 'w0rp/ale'
 
 " Syntax
 Plug 'othree/html5.vim'
@@ -13,11 +13,12 @@ Plug 'gko/vim-coloresque'
 Plug 'StanAngeloff/php.vim'
 Plug 'plasticboy/vim-markdown'
 Plug 'captbaritone/better-indent-support-for-php-with-html'
-Plug 'othree/es.next.syntax.vim'
-Plug 'heavenshell/vim-jsdoc'
 Plug 'jparise/vim-graphql'
 Plug 'leafgarland/typescript-vim'
 Plug 'vim-scripts/fountain.vim'
+Plug 'heavenshell/vim-jsdoc'
+Plug 'othree/yajs.vim'
+Plug 'othree/es.next.syntax.vim'
 
 Plug 'shumphrey/fugitive-gitlab.vim'
 Plug 'editorconfig/editorconfig-vim'
