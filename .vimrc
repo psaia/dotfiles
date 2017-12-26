@@ -18,7 +18,11 @@ Plug 'leafgarland/typescript-vim'
 Plug 'vim-scripts/fountain.vim'
 Plug 'heavenshell/vim-jsdoc'
 Plug 'isRuslan/vim-es6'
-" Plug 'othree/yajs.vim'
+Plug 'flowtype/vim-flow'
+Plug 'lifepillar/pgsql.vim'
+Plug 'ekalinin/Dockerfile.vim'
+Plug 'fatih/vim-go'
+Plug 'moll/vim-node'
 
 Plug 'shumphrey/fugitive-gitlab.vim'
 Plug 'editorconfig/editorconfig-vim'
@@ -84,12 +88,6 @@ else
   colorscheme dracula
 endif
 
-" Dictionaries. Listed in neocomplete plugin.
-au FileType javascript set dictionary+=$HOME.'/.vim/dict/vim-node-dict/dict/node.dict'
-au FileType javascript set dictionary+=$HOME.'/.vim/dict/vim-dict/dict/javascript.dic'
-au FileType php set dictionary+=$HOME.'/.vim/dict/vim-php-dictionary/dict/PHP.dict'
-au FileType css set dictionary+=$HOME.'/.vim/dict/vim-dict/dict/css.dic'
-
 " Highlight JSON as JavaScript.
 autocmd BufNewFile,BufRead *.json set ft=javascript
 
@@ -153,6 +151,7 @@ let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|bower_components\|svn'
 let g:ctrlp_regexp = 1
 
 " Linter
+let g:ale_javascript_eslint_use_global = 1
 let g:ale_lint_on_save = 1
 let g:ale_linters = {
 \   'javascript': ['eslint'],
@@ -194,3 +193,9 @@ let g:lightline = {
       \ }
 
 let g:fugitive_gitlab_domains = ['http://dev.lev-interactive.com']
+
+" Disable flow be default
+let g:flow#enable = 0
+
+" Go
+let g:go_fmt_command = "goimports"
