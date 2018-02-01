@@ -19,10 +19,11 @@ Plug 'vim-scripts/fountain.vim'
 Plug 'heavenshell/vim-jsdoc'
 Plug 'isRuslan/vim-es6'
 Plug 'flowtype/vim-flow'
-Plug 'lifepillar/pgsql.vim'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'fatih/vim-go'
 Plug 'moll/vim-node'
+Plug 'elzr/vim-json'
+Plug 'hashivim/vim-terraform'
 
 Plug 'shumphrey/fugitive-gitlab.vim'
 Plug 'editorconfig/editorconfig-vim'
@@ -154,6 +155,7 @@ let g:ctrlp_regexp = 1
 let g:ale_javascript_eslint_use_global = 1
 let g:ale_lint_on_save = 1
 let g:ale_linters = {
+\   'typescript': ['tslint'],
 \   'javascript': ['eslint'],
 \}
 
