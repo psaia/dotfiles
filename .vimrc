@@ -12,8 +12,6 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'sukima/xmledit'
 
 " Syntax
-Plug 'w0rp/ale', { 'do': 'npm i -g eslint tslint' }
-Plug 'prettier/vim-prettier', { 'do': 'npm i && npm i -g prettier prettier-eslint' }
 Plug 'othree/html5.vim'
 Plug 'digitaltoad/vim-pug'
 Plug 'wavded/vim-stylus'
@@ -32,6 +30,7 @@ Plug 'fatih/vim-go'
 Plug 'moll/vim-node'
 Plug 'elzr/vim-json'
 Plug 'hashivim/vim-terraform'
+Plug 'w0rp/ale', { 'do': 'npm i -g eslint tslint prettier prettier-eslint' }
 
 Plug 'shumphrey/fugitive-gitlab.vim'
 Plug 'editorconfig/editorconfig-vim'
@@ -167,9 +166,12 @@ let g:ale_linters = {
 \   'javascript': ['eslint'],
 \}
 let g:ale_fixers = {}
-let g:ale_fixers['javascript'] = ['prettier_eslint']
+" let g:ale_fixers['javascript'] = ['prettier_eslint']
+let g:ale_fixers['javascript'] = ['prettier', 'eslint']
 let g:ale_fix_on_save = 1
 let g:ale_javascript_prettier_use_local_config = 1
+let g:ale_javascript_prettier_eslint_use_global = 1
+let g:ale_javascript_eslint_use_global = 1
 
 " Nerd Tree.
 let g:NERDTreeDirArrowExpandable = '―'
