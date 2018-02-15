@@ -1,11 +1,19 @@
+" Auto-install plug if it isn't already.
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 call plug#begin('~/.vim/plugged')
 Plug 'sheerun/dracula-theme'
 Plug 'chriskempson/base16-vim'
 Plug 'altercation/vim-colors-solarized'
 Plug 'sukima/xmledit'
-Plug 'w0rp/ale'
 
 " Syntax
+Plug 'w0rp/ale', { 'do': 'npm i -g eslint tslint' }
+Plug 'prettier/vim-prettier', { 'do': 'npm i && npm i -g prettier prettier-eslint' }
 Plug 'othree/html5.vim'
 Plug 'digitaltoad/vim-pug'
 Plug 'wavded/vim-stylus'
@@ -24,7 +32,6 @@ Plug 'fatih/vim-go'
 Plug 'moll/vim-node'
 Plug 'elzr/vim-json'
 Plug 'hashivim/vim-terraform'
-Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 
 Plug 'shumphrey/fugitive-gitlab.vim'
 Plug 'editorconfig/editorconfig-vim'
@@ -159,7 +166,6 @@ let g:ale_linters = {
 \   'typescript': ['tslint'],
 \   'javascript': ['eslint'],
 \}
-
 let g:ale_fixers = {}
 let g:ale_fixers['javascript'] = ['prettier_eslint']
 let g:ale_fix_on_save = 1
