@@ -6,11 +6,6 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
-Plug 'sheerun/dracula-theme'
-Plug 'chriskempson/base16-vim'
-Plug 'altercation/vim-colors-solarized'
-Plug 'sukima/xmledit'
-
 " Syntax
 Plug 'othree/html5.vim'
 Plug 'digitaltoad/vim-pug'
@@ -45,6 +40,9 @@ Plug 'tomtom/tcomment_vim'
 Plug 'tristen/vim-sparkup'
 Plug 'tpope/vim-surround'
 Plug 'itchyny/lightline.vim'
+
+Plug 'sukima/xmledit'
+Plug 'chriskempson/base16-vim'
 call plug#end()
 
 " Basic.
@@ -53,10 +51,12 @@ syntax on
 set encoding=utf8
 set number
 set backspace=indent,eol,start
+set termguicolors
 set history=1000
 set showcmd
 set gcr=a:blinkon0
 set visualbell
+set t_vb=
 set autoread
 set hidden
 set nowrap
@@ -88,13 +88,13 @@ au FileType make,go,snippets,sh setlocal noexpandtab
 " Make sexy.
 let iterm_profile = $ITERM_PROFILE
 
-if iterm_profile == "light"
-  set background=light
-  colorscheme solarized
-else
-  set background=dark
-  colorscheme dracula
-endif
+"if has("gui_running")
+  if iterm_profile == "light"
+    colorscheme base16-solarized-light
+  else
+    colorscheme base16-dracula
+  endif
+"endif
 
 " Highlight JSON as JavaScript.
 autocmd BufNewFile,BufRead *.json set ft=javascript
