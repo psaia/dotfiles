@@ -25,6 +25,7 @@ Plug 'fatih/vim-go'
 Plug 'moll/vim-node'
 Plug 'elzr/vim-json'
 Plug 'hashivim/vim-terraform'
+Plug 'pangloss/vim-javascript'
 Plug 'w0rp/ale', { 'do': 'npm i -g eslint tslint prettier prettier-eslint' }
 
 Plug 'shumphrey/fugitive-gitlab.vim'
@@ -78,8 +79,6 @@ set foldmethod=indent
 set foldlevelstart=1
 set pastetoggle=<F2>
 set list listchars=tab:\ \ ,trail:·
-
-" Indentation.
 set autoindent
 set cindent
 set shiftwidth=2 tabstop=2 softtabstop=2 expandtab
@@ -88,13 +87,18 @@ au FileType make,go,snippets,sh setlocal noexpandtab
 " Make sexy.
 let iterm_profile = $ITERM_PROFILE
 
-"if has("gui_running")
-  if iterm_profile == "light"
-    colorscheme base16-solarized-light
-  else
-    colorscheme base16-dracula
-  endif
-"endif
+if iterm_profile == "light"
+  colorscheme base16-solarized-light
+elseif iterm_profile == "medium"
+  colorscheme base16-gruvbox-light-soft
+  highlight Cursor guifg=white guibg=black
+  highlight iCursor guifg=white guibg=steelblue
+  set guicursor=n-v-c:block-Cursor
+  set guicursor+=i:ver100-iCursor
+  set guicursor+=n-v-c:blinkon0
+else
+  colorscheme base16-dracula
+endif
 
 " Highlight JSON as JavaScript.
 autocmd BufNewFile,BufRead *.json set ft=javascript
@@ -109,8 +113,12 @@ let mapleader = ","
 map j gj
 map k gk
 
-" Fast saving
-nmap <leader>w :w!<cr>
+" ,w saving
+nmap <leader>w :w!<CR>
+
+" Keep the isKeyword correct. Plugins mess with it which cause
+" annoying period skipping issues after a while.
+" autocmd BufWritePost,BufEnter * set isKeyword=65-90,95,97-122,48-57<CR>
 
 " Easy out.
 imap jk <esc>
