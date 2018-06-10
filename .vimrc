@@ -43,7 +43,7 @@ Plug 'tpope/vim-surround'
 Plug 'itchyny/lightline.vim'
 
 Plug 'sukima/xmledit'
-Plug 'chriskempson/base16-vim'
+Plug 'dracula/vim', { 'as': 'dracula' }
 call plug#end()
 
 " Basic.
@@ -87,18 +87,8 @@ au FileType make,go,snippets,sh setlocal noexpandtab
 " Make sexy.
 let iterm_profile = $ITERM_PROFILE
 
-if iterm_profile == "light"
-  colorscheme base16-solarized-light
-elseif iterm_profile == "medium"
-  colorscheme base16-gruvbox-light-soft
-  highlight Cursor guifg=white guibg=black
-  highlight iCursor guifg=white guibg=steelblue
-  set guicursor=n-v-c:block-Cursor
-  set guicursor+=i:ver100-iCursor
-  set guicursor+=n-v-c:blinkon0
-else
-  colorscheme base16-dracula
-endif
+" Colors.
+colorscheme dracula
 
 " Highlight JSON as JavaScript.
 autocmd BufNewFile,BufRead *.json set ft=javascript
