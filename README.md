@@ -9,8 +9,8 @@ This is the `.vim/` directory.
 
 * Use the [dracula](https://draculatheme.com/iterm/) color kit for [iterm2](https://www.iterm2.com/).
 * Install the lovely [Inconsolata-g](/extra/Inconsolata-g.ttf) font for iterm2.
-* Use [karabiner](https://pqrs.org/osx/karabiner/) to map wasd keyboard.
 * Lean on `brew cask` to install other GUI stuff and docker.
+* `brew cask install karabiner-elements` for wasd keyboard mapping.
 
 *.bash_profile customizations*
 
