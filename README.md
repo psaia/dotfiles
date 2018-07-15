@@ -9,6 +9,7 @@
 ```bash
 brew install go
 brew install node
+brew install tree
 brew cask install iterm2
 brew cask install google-chrome
 brew cask install sketch
