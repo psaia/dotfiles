@@ -19,6 +19,7 @@ brew cask install docker
 brew cask install monodraw
 brew cask install google-cloud-sdk
 brew cask install spotify
+brew cask install slack
 ```
 
 * Use the [dracula](https://draculatheme.com/iterm/) color kit for [iterm2](https://www.iterm2.com/).
