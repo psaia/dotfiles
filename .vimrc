@@ -27,7 +27,6 @@ Plug 'elzr/vim-json'
 Plug 'hashivim/vim-terraform'
 Plug 'pangloss/vim-javascript'
 Plug 'w0rp/ale', { 'do': 'npm i -g eslint tslint prettier prettier-eslint' }
-
 Plug 'shumphrey/fugitive-gitlab.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-fugitive'
@@ -164,8 +163,8 @@ let g:ale_linters = {
 \   'javascript': ['eslint'],
 \}
 let g:ale_fixers = {}
-" let g:ale_fixers['javascript'] = ['prettier_eslint']
 let g:ale_fixers['javascript'] = ['prettier', 'eslint']
+let g:ale_fixers['typescript'] = ['prettier', 'eslint']
 let g:ale_fix_on_save = 1
 let g:ale_javascript_prettier_use_local_config = 1
 let g:ale_javascript_prettier_eslint_use_global = 1
