@@ -19,9 +19,8 @@ Plug 'leafgarland/typescript-vim'
 Plug 'vim-scripts/fountain.vim'
 Plug 'heavenshell/vim-jsdoc'
 Plug 'isRuslan/vim-es6'
-Plug 'flowtype/vim-flow'
 Plug 'ekalinin/Dockerfile.vim'
-Plug 'fatih/vim-go'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'moll/vim-node'
 Plug 'elzr/vim-json'
 Plug 'hashivim/vim-terraform'
@@ -206,9 +205,6 @@ let g:lightline = {
       \ }
 
 let g:fugitive_gitlab_domains = ['http://dev.lev-interactive.com']
-
-" Disable flow be default
-let g:flow#enable = 0
 
 " Go
 let g:go_fmt_command = "goimports"
