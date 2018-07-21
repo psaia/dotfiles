@@ -9,6 +9,7 @@
 ```bash
 brew install go
 brew install node
+brew install tree
 brew cask install iterm2
 brew cask install google-chrome
 brew cask install sketch
@@ -18,6 +19,7 @@ brew cask install docker
 brew cask install monodraw
 brew cask install google-cloud-sdk
 brew cask install spotify
+brew cask install slack
 ```
 
 * Use the [dracula](https://draculatheme.com/iterm/) color kit for [iterm2](https://www.iterm2.com/).
