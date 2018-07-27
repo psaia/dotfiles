@@ -6,25 +6,23 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
-" Syntax
-Plug 'othree/html5.vim'
-Plug 'digitaltoad/vim-pug'
-Plug 'wavded/vim-stylus'
 Plug 'gko/vim-coloresque'
 Plug 'StanAngeloff/php.vim'
 Plug 'plasticboy/vim-markdown'
 Plug 'captbaritone/better-indent-support-for-php-with-html'
-Plug 'jparise/vim-graphql'
 Plug 'vim-scripts/fountain.vim'
-Plug 'heavenshell/vim-jsdoc'
-Plug 'isRuslan/vim-es6'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'mdempsky/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
-Plug 'moll/vim-node'
 Plug 'elzr/vim-json'
 Plug 'hashivim/vim-terraform'
+Plug 'moll/vim-node'
+Plug 'digitaltoad/vim-pug'
+Plug 'wavded/vim-stylus'
+Plug 'heavenshell/vim-jsdoc'
+Plug 'jparise/vim-graphql'
 Plug 'pangloss/vim-javascript'
+Plug 'othree/html5.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'Quramy/tsuquyomi'
 Plug 'w0rp/ale', { 'do': 'npm i -g eslint tslint prettier prettier-eslint' }
@@ -102,15 +100,11 @@ let mapleader = ","
 map j gj
 map k gk
 
-" ,w saving
-nmap <leader>w :w!<CR>
-
-" Keep the isKeyword correct. Plugins mess with it which cause
-" annoying period skipping issues after a while.
-" autocmd BufWritePost,BufEnter * set isKeyword=65-90,95,97-122,48-57<CR>
-
 " Easy out.
 imap jk <esc>
+
+" ,w saving
+nmap <leader>w :w!<CR>
 
 " Tabbing shortcuts
 nmap th :tabnext<CR>
