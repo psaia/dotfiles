@@ -6,6 +6,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
+Plug 'w0rp/ale', { 'do': 'npm i -g eslint tslint prettier prettier-eslint' }
 Plug 'gko/vim-coloresque'
 Plug 'StanAngeloff/php.vim'
 Plug 'plasticboy/vim-markdown'
@@ -25,7 +26,6 @@ Plug 'pangloss/vim-javascript'
 Plug 'othree/html5.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'Quramy/tsuquyomi'
-Plug 'w0rp/ale', { 'do': 'npm i -g eslint tslint prettier prettier-eslint' }
 Plug 'shumphrey/fugitive-gitlab.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-fugitive'
@@ -84,7 +84,10 @@ au FileType make,go,snippets,sh setlocal noexpandtab
 " Make sexy.
 let iterm_profile = $ITERM_PROFILE
 
-" Colors.
+" Setup dracula. Had to add the top two settings because:
+" https://github.com/dracula/vim/issues/65
+let g:dracula_italic=0
+let g:dracula_colorterm=0
 colorscheme dracula
 
 " Highlight JSON as JavaScript.
