@@ -15,16 +15,18 @@ Plug 'StanAngeloff/php.vim'
 Plug 'plasticboy/vim-markdown'
 Plug 'captbaritone/better-indent-support-for-php-with-html'
 Plug 'jparise/vim-graphql'
-Plug 'leafgarland/typescript-vim'
 Plug 'vim-scripts/fountain.vim'
 Plug 'heavenshell/vim-jsdoc'
 Plug 'isRuslan/vim-es6'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'mdempsky/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
 Plug 'moll/vim-node'
 Plug 'elzr/vim-json'
 Plug 'hashivim/vim-terraform'
 Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
+Plug 'Quramy/tsuquyomi'
 Plug 'w0rp/ale', { 'do': 'npm i -g eslint tslint prettier prettier-eslint' }
 Plug 'shumphrey/fugitive-gitlab.vim'
 Plug 'editorconfig/editorconfig-vim'
@@ -39,7 +41,6 @@ Plug 'tomtom/tcomment_vim'
 Plug 'tristen/vim-sparkup'
 Plug 'tpope/vim-surround'
 Plug 'itchyny/lightline.vim'
-
 Plug 'sukima/xmledit'
 Plug 'dracula/vim', { 'as': 'dracula' }
 call plug#end()
@@ -158,12 +159,10 @@ let g:ctrlp_regexp = 1
 let g:ale_javascript_eslint_use_global = 1
 let g:ale_lint_on_save = 1
 let g:ale_linters = {
-\   'typescript': ['tslint'],
 \   'javascript': ['eslint'],
 \}
 let g:ale_fixers = {}
 let g:ale_fixers['javascript'] = ['prettier', 'eslint']
-let g:ale_fixers['typescript'] = ['prettier', 'eslint']
 let g:ale_fix_on_save = 1
 let g:ale_javascript_prettier_use_local_config = 1
 let g:ale_javascript_prettier_eslint_use_global = 1
