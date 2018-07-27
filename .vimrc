@@ -159,10 +159,11 @@ let g:ctrlp_regexp = 1
 let g:ale_javascript_eslint_use_global = 1
 let g:ale_lint_on_save = 1
 let g:ale_linters = {
-\   'javascript': ['eslint'],
+\   'javascript': ['eslint']
 \}
 let g:ale_fixers = {}
 let g:ale_fixers['javascript'] = ['prettier', 'eslint']
+let g:ale_fixers['typescript'] = ['prettier', 'eslint']
 let g:ale_fix_on_save = 1
 let g:ale_javascript_prettier_use_local_config = 1
 let g:ale_javascript_prettier_eslint_use_global = 1
