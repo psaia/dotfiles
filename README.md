@@ -20,6 +20,8 @@ brew cask install monodraw
 brew cask install google-cloud-sdk
 brew cask install spotify
 brew cask install slack
+
+brew tap homebrew/cask-drivers
 brew cask install garmin-express
 ```
 
