@@ -84,10 +84,6 @@ set cindent
 set shiftwidth=2 tabstop=2 softtabstop=2 expandtab
 au FileType make,go,snippets,sh setlocal noexpandtab
 
-" Always break on periods.
-" au FileType go,ts,tsx,js,jsx set iskeyword-=.
-set iskeyword-=.
-
 " Highlight JSON as JavaScript.
 autocmd BufNewFile,BufRead *.json set ft=javascript
 
