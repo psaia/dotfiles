@@ -7,12 +7,12 @@ endif
 
 call plug#begin('~/.vim/plugged')
 Plug 'w0rp/ale', { 'do': 'npm i -g eslint tslint prettier prettier-eslint' }
-Plug 'gko/vim-coloresque'
 Plug 'StanAngeloff/php.vim'
 Plug 'plasticboy/vim-markdown'
 Plug 'captbaritone/better-indent-support-for-php-with-html'
 Plug 'vim-scripts/fountain.vim'
 Plug 'ekalinin/Dockerfile.vim'
+Plug 'rust-lang/rust.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'mdempsky/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
 Plug 'elzr/vim-json'
@@ -26,6 +26,7 @@ Plug 'uarun/vim-protobuf'
 Plug 'pangloss/vim-javascript'
 Plug 'othree/html5.vim'
 Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
 Plug 'Quramy/tsuquyomi'
 Plug 'mxw/vim-jsx'
 Plug 'shumphrey/fugitive-gitlab.vim'
@@ -83,6 +84,13 @@ set cindent
 set shiftwidth=2 tabstop=2 softtabstop=2 expandtab
 au FileType make,go,snippets,sh setlocal noexpandtab
 
+" Always break on periods.
+" au FileType go,ts,tsx,js,jsx set iskeyword-=.
+set iskeyword-=.
+
+" Highlight JSON as JavaScript.
+autocmd BufNewFile,BufRead *.json set ft=javascript
+
 " Make sexy.
 let iterm_profile = $ITERM_PROFILE
 
@@ -91,9 +99,6 @@ let iterm_profile = $ITERM_PROFILE
 let g:dracula_italic=0
 let g:dracula_colorterm=0
 colorscheme dracula
-
-" Highlight JSON as JavaScript.
-autocmd BufNewFile,BufRead *.json set ft=javascript
 
 " Source vimrc on save.
 autocmd! bufwritepost .vimrc source %
@@ -146,6 +151,10 @@ let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
 
 " NerdTree
 let g:NERDTreeChDirMode=2
+
+" Fix weird character in nerdtree.
+" https://www.reddit.com/r/vim/comments/a4yzyt/g_characters_prefixing_directory_and_file_names/
+let g:NERDTreeNodeDelimiter = "\u00a0"
 
 " Sparkup
 let g:sparkupNextMapping = '<c-t>'
@@ -203,7 +212,10 @@ let g:lightline = {
       \ 'subseparator': { 'left': '|', 'right': '|' }
       \ }
 
-let g:fugitive_gitlab_domains = ['http://dev.lev-interactive.com']
+let g:fugitive_gitlab_domains = ['http://dev.lev-interactive.com', 'https://github.com']
 
 " Go
 let g:go_fmt_command = "goimports"
+
+" Rust
+let g:rustfmt_autosave = 1
