@@ -6,8 +6,8 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
-Plug 'w0rp/ale', { 'do': 'npm i -g eslint tslint prettier prettier-eslint' }
-Plug 'StanAngeloff/php.vim'
+Plug 'w0rp/ale', { 'do': 'npm i -g eslint tslint typescript prettier prettier-eslint' }
+Plug 'StanAngeloff/php.vimtsserver'
 Plug 'plasticboy/vim-markdown'
 Plug 'captbaritone/better-indent-support-for-php-with-html'
 Plug 'vim-scripts/fountain.vim'
@@ -27,7 +27,6 @@ Plug 'pangloss/vim-javascript'
 Plug 'othree/html5.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
-Plug 'Quramy/tsuquyomi'
 Plug 'mxw/vim-jsx'
 Plug 'shumphrey/fugitive-gitlab.vim'
 Plug 'editorconfig/editorconfig-vim'
@@ -160,18 +159,21 @@ let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|bower_components\|svn'
 let g:ctrlp_regexp = 1
 
 " Linter
-let g:ale_javascript_eslint_use_global = 1
+let g:ale_linters_explicit = 1
 let g:ale_lint_on_save = 1
-let g:ale_linters = {
-\   'javascript': ['eslint']
-\}
-let g:ale_fixers = {}
-let g:ale_fixers['javascript'] = ['prettier', 'eslint']
-let g:ale_fixers['typescript'] = ['prettier', 'eslint']
 let g:ale_fix_on_save = 1
-let g:ale_javascript_prettier_use_local_config = 1
-let g:ale_javascript_prettier_eslint_use_global = 1
-let g:ale_javascript_eslint_use_global = 1
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\   'typescript': ['tsserver'],
+\   'typescript.tsx': ['tsserver'],
+\}
+let g:ale_fixers = {
+\  'css': ['prettier'],
+\  'javascript': ['prettier', 'eslint'],
+\  'typescript': ['prettier'],
+\  'typescript.tsx': ['prettier'],
+\}
+let g:ale_echo_msg_format = '%linter% says %s'
 
 " Nerd Tree.
 let g:NERDTreeDirArrowExpandable = '―'
