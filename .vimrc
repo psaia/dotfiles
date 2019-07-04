@@ -7,7 +7,7 @@ endif
 
 call plug#begin('~/.vim/plugged')
 Plug 'w0rp/ale', { 'do': 'npm i -g eslint tslint typescript prettier prettier-eslint' }
-Plug 'StanAngeloff/php.vimtsserver'
+Plug 'StanAngeloff/php.vim'
 Plug 'plasticboy/vim-markdown'
 Plug 'captbaritone/better-indent-support-for-php-with-html'
 Plug 'vim-scripts/fountain.vim'
@@ -33,7 +33,6 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-fugitive'
 Plug 'evidens/vim-twig'
 Plug 'Lokaltog/vim-easymotion'
-Plug 'kien/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'godlygeek/tabular'
 Plug 'msanders/snipmate.vim'
@@ -154,10 +153,7 @@ let g:NERDTreeNodeDelimiter = "\u00a0"
 " Sparkup
 let g:sparkupNextMapping = '<c-t>'
 
-" ctrlp
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|bower_components\|svn'
-let g:ctrlp_regexp = 1
-
+" ALE Configuration.
 " Linter
 let g:ale_linters_explicit = 1
 let g:ale_lint_on_save = 1
@@ -174,6 +170,20 @@ let g:ale_fixers = {
 \  'typescript.tsx': ['prettier'],
 \}
 let g:ale_echo_msg_format = '%linter% says %s'
+
+" Map ALE Reference functions to c-] and c-^.
+function! ALELSPMappings()
+	let l:lsp_found=0
+	for l:linter in ale#linter#Get(&filetype) | if !empty(l:linter.lsp) | let l:lsp_found=1 | endif | endfor
+	if (l:lsp_found)
+		nnoremap <buffer> <C-]> :ALEGoToDefinition<CR>
+		nnoremap <buffer> <C-^> :ALEFindReferences<CR>
+	else
+		silent! unmap <buffer> <C-]>
+		silent! unmap <buffer> <C-^>
+	endif
+endfunction
+autocmd BufRead,FileType * call ALELSPMappings()
 
 " Nerd Tree.
 let g:NERDTreeDirArrowExpandable = '―'
