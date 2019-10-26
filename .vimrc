@@ -13,8 +13,6 @@ Plug 'captbaritone/better-indent-support-for-php-with-html'
 Plug 'vim-scripts/fountain.vim'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'rust-lang/rust.vim'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'mdempsky/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
 Plug 'elzr/vim-json'
 Plug 'hashivim/vim-terraform'
 Plug 'moll/vim-node'
@@ -27,6 +25,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'othree/html5.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
+Plug 'Quramy/tsuquyomi'
 Plug 'mxw/vim-jsx'
 Plug 'shumphrey/fugitive-gitlab.vim'
 Plug 'editorconfig/editorconfig-vim'
@@ -41,6 +40,7 @@ Plug 'tristen/vim-sparkup'
 Plug 'tpope/vim-surround'
 Plug 'itchyny/lightline.vim'
 Plug 'sukima/xmledit'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'dracula/vim', { 'as': 'dracula' }
 call plug#end()
 
@@ -84,6 +84,7 @@ au FileType make,go,snippets,sh setlocal noexpandtab
 
 " Highlight JSON as JavaScript.
 autocmd BufNewFile,BufRead *.json set ft=javascript
+autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
 
 " Make sexy.
 let iterm_profile = $ITERM_PROFILE
@@ -159,6 +160,7 @@ let g:ale_linters_explicit = 1
 let g:ale_lint_on_save = 1
 let g:ale_fix_on_save = 1
 let g:ale_linters = {
+\   'go': ['gometalinter', 'gofmt'],
 \   'javascript': ['eslint'],
 \   'typescript': ['tsserver'],
 \   'typescript.tsx': ['tsserver'],
@@ -224,6 +226,8 @@ let g:fugitive_gitlab_domains = ['http://dev.lev-interactive.com', 'https://gith
 
 " Go
 let g:go_fmt_command = "goimports"
+au FileType go nmap <C-]> gd
+au FileType go nmap <C-[> :GoDefPop 1<CR>
 
 " Rust
 let g:rustfmt_autosave = 1
