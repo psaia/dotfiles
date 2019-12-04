@@ -21,10 +21,10 @@ Plug 'wavded/vim-stylus'
 Plug 'heavenshell/vim-jsdoc'
 Plug 'jparise/vim-graphql'
 Plug 'uarun/vim-protobuf'
-Plug 'pangloss/vim-javascript'
 Plug 'othree/html5.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
+Plug 'pangloss/vim-javascript'
 Plug 'Quramy/tsuquyomi'
 Plug 'mxw/vim-jsx'
 Plug 'shumphrey/fugitive-gitlab.vim'
@@ -81,10 +81,6 @@ set autoindent
 set cindent
 set shiftwidth=2 tabstop=2 softtabstop=2 expandtab
 au FileType make,go,snippets,sh setlocal noexpandtab
-
-" Highlight JSON as JavaScript.
-autocmd BufNewFile,BufRead *.json set ft=javascript
-autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
 
 " Make sexy.
 let iterm_profile = $ITERM_PROFILE
@@ -191,10 +187,6 @@ autocmd BufRead,FileType * call ALELSPMappings()
 let g:NERDTreeDirArrowExpandable = '―'
 let g:NERDTreeDirArrowCollapsible = '+'
 
-" php.vim
-au FileType php let php_html_in_strings = 1
-au FileType php let php_sql_query = 1
-
 " cd to current working directory.
 autocmd BufEnter * silent! lcd %:p:h
 
@@ -222,7 +214,11 @@ let g:lightline = {
       \ 'subseparator': { 'left': '|', 'right': '|' }
       \ }
 
-let g:fugitive_gitlab_domains = ['http://dev.lev-interactive.com', 'https://github.com']
+let g:fugitive_gitlab_domains = ['https://github.com']
+
+" php.vim
+au FileType php let php_html_in_strings = 1
+au FileType php let php_sql_query = 1
 
 " Go
 let g:go_fmt_command = "goimports"
@@ -231,3 +227,13 @@ au FileType go nmap <C-[> :GoDefPop 1<CR>
 
 " Rust
 let g:rustfmt_autosave = 1
+
+" Highlight JSON as JavaScript.
+autocmd BufNewFile,BufRead *.json set ft=javascript
+autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
+
+" TypeScript Mappings: https://github.com/Quramy/tsuquyomi
+autocmd FileType typescript nmap <C-]> :TsuquyomiDefinition
+autocmd FileType typescript nmap <C-[> :TsuquyomiGoBack
+autocmd FileType typescript imap <C-o> <C-x><C-o>
+" let g:tsuquyomi_completion_detail = 1
