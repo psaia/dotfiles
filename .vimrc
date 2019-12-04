@@ -148,7 +148,7 @@ let g:NERDTreeChDirMode=2
 let g:NERDTreeNodeDelimiter = "\u00a0"
 
 " Sparkup
-let g:sparkupNextMapping = '<c-t>'
+autocmd FileType html let g:sparkupNextMapping = '<c-t>'
 
 " ALE Configuration.
 " Linter
@@ -233,7 +233,7 @@ autocmd BufNewFile,BufRead *.json set ft=javascript
 autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
 
 " TypeScript Mappings: https://github.com/Quramy/tsuquyomi
-autocmd FileType typescript nmap <C-]> :TsuquyomiDefinition
-autocmd FileType typescript nmap <C-[> :TsuquyomiGoBack
+autocmd FileType typescript nmap <C-]> :TsuquyomiDefinition<CR>
+autocmd FileType typescript nmap <C-[> :TsuquyomiGoBack<CR>
 autocmd FileType typescript imap <C-o> <C-x><C-o>
 " let g:tsuquyomi_completion_detail = 1
