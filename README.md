@@ -10,6 +10,7 @@
 brew install go
 brew install node
 brew install tree
+brew install wget
 brew cask install iterm2
 brew cask install google-chrome
 brew cask install sketch
@@ -21,6 +22,7 @@ brew cask install google-cloud-sdk
 brew cask install spotify
 brew cask install slack
 brew cask install keybase
+brew cask install brave-browser
 
 brew tap homebrew/cask-drivers
 brew cask install garmin-express
