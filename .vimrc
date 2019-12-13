@@ -22,6 +22,7 @@ Plug 'heavenshell/vim-jsdoc'
 Plug 'jparise/vim-graphql'
 Plug 'uarun/vim-protobuf'
 Plug 'othree/html5.vim'
+Plug 'heavenshell/vim-jsdoc'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'pangloss/vim-javascript'
@@ -36,7 +37,6 @@ Plug 'scrooloose/nerdtree'
 Plug 'godlygeek/tabular'
 Plug 'msanders/snipmate.vim'
 Plug 'tomtom/tcomment_vim'
-Plug 'tristen/vim-sparkup'
 Plug 'tpope/vim-surround'
 Plug 'itchyny/lightline.vim'
 Plug 'sukima/xmledit'
@@ -236,4 +236,4 @@ autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
 autocmd FileType typescript nmap <C-]> :TsuquyomiDefinition<CR>
 autocmd FileType typescript nmap <C-[> :TsuquyomiGoBack<CR>
 autocmd FileType typescript imap <C-o> <C-x><C-o>
-" let g:tsuquyomi_completion_detail = 1
+let g:tsuquyomi_disable_quickfix = 1
