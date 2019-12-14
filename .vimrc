@@ -230,7 +230,6 @@ let g:rustfmt_autosave = 1
 
 " Highlight JSON as JavaScript.
 autocmd BufNewFile,BufRead *.json set ft=javascript
-autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
 
 " TypeScript Mappings: https://github.com/Quramy/tsuquyomi
 autocmd FileType typescript nmap <C-]> :TsuquyomiDefinition<CR>
