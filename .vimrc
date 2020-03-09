@@ -15,6 +15,7 @@ Plug 'ekalinin/Dockerfile.vim'
 Plug 'rust-lang/rust.vim'
 Plug 'elzr/vim-json'
 Plug 'hashivim/vim-terraform'
+Plug 'vim-python/python-syntax'
 Plug 'moll/vim-node'
 Plug 'digitaltoad/vim-pug'
 Plug 'wavded/vim-stylus'
@@ -42,6 +43,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'sukima/xmledit'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'arcticicestudio/nord-vim'
 call plug#end()
 
 " Basic.
@@ -87,9 +89,9 @@ let iterm_profile = $ITERM_PROFILE
 
 " Setup dracula. Had to add the top two settings because:
 " https://github.com/dracula/vim/issues/65
-let g:dracula_italic=0
-let g:dracula_colorterm=0
-colorscheme dracula
+" let g:dracula_italic=0
+" let g:dracula_colorterm=0
+colorscheme nord
 
 " Source vimrc on save.
 autocmd! bufwritepost .vimrc source %
