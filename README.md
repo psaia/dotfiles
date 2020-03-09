@@ -29,8 +29,8 @@ brew tap homebrew/cask-drivers
 brew cask install garmin-express
 ```
 
-* Use the [dracula](https://draculatheme.com/iterm/) color kit for [iterm2](https://www.iterm2.com/).
-* Install the lovely [Inconsolata-g](/extra/Inconsolata-g.ttf) font for iterm2.
+* Use the [nord](https://github.com/arcticicestudio/nord-vim/) color kit for [iterm2](https://www.iterm2.com/).
+* Install [Inconsolata-g](/extra/Inconsolata-g.ttf) font for iterm2.
 
 #### .bash_profile customizations
 
