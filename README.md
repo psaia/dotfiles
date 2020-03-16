@@ -1,14 +1,17 @@
 #### ~/.vim/
 
+.vim contains both vim related files and various dot files that get symlinked.
+
 1. `git clone https://github.com/petesaia/.vim.git ~/.vim`
 2. `ln -s ~/.vim/.vimrc ~/.vimrc`
+2. `ln -s ~/.vim/.zshenv ~/.zshenv`
 3. `:PlugInstall` - though it should install automatically if you have npm installed.
 
 #### Extra osx provisioning to help when my computer gets stolen/replaced.
 
 ```bash
 brew install go
-brew install node
+brew install n
 brew install tree
 brew install wget
 brew install ffmpeg
