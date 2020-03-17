@@ -4,7 +4,7 @@
 
 1. `git clone https://github.com/petesaia/.vim.git ~/.vim`
 2. `ln -s ~/.vim/.vimrc ~/.vimrc`
-2. `ln -s ~/.vim/.zshenv ~/.zshenv`
+2. `ln -s ~/.vim/.zprofile ~/.zprofile`
 3. `:PlugInstall` - though it should install automatically if you have npm installed.
 
 #### Extra osx provisioning to help when my computer gets stolen/replaced.
