@@ -158,7 +158,6 @@ let g:ale_linters_explicit = 1
 let g:ale_lint_on_save = 1
 let g:ale_fix_on_save = 1
 let g:ale_linters = {
-\   'go': ['gometalinter', 'gofmt'],
 \   'javascript': ['eslint'],
 \   'typescript': ['tsserver'],
 \   'typescript.tsx': ['tsserver'],
@@ -223,9 +222,11 @@ au FileType php let php_html_in_strings = 1
 au FileType php let php_sql_query = 1
 
 " Go
-let g:go_fmt_command = "goimports"
+au FileType go let g:go_fmt_command = "goimports"
 au FileType go nmap <C-]> gd
 au FileType go nmap <C-[> :GoDefPop 1<CR>
+au FileType go let g:go_metalinter_autosave=1
+au FileType go let g:go_metalinter_autosave_enabled=['golint', 'govet', 'typecheck']
 
 " Rust
 let g:rustfmt_autosave = 1
