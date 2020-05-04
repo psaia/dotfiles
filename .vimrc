@@ -28,7 +28,7 @@ Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'pangloss/vim-javascript'
 Plug 'Quramy/tsuquyomi'
-Plug 'mxw/vim-jsx'
+" Plug 'mxw/vim-jsx'
 Plug 'shumphrey/fugitive-gitlab.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-fugitive'
@@ -200,7 +200,7 @@ let g:lightline = {
       \ 'colorscheme': 'wombat',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
+      \             [ 'fugitive', 'readonly', 'absolutepath', 'modified' ] ]
       \ },
       \ 'component': {
       \   'readonly': '%{&filetype=="help"?"":&readonly?"":""}',
@@ -238,3 +238,16 @@ autocmd FileType typescript nmap <C-]> :TsuquyomiDefinition<CR>
 autocmd FileType typescript nmap <C-[> :TsuquyomiGoBack<CR>
 autocmd FileType typescript imap <C-o> <C-x><C-o>
 let g:tsuquyomi_disable_quickfix = 1
+
+" highlight the word under cursor (CursorMoved is inperformant)
+setl updatetime=300
+highlight WordUnderCursor cterm=underline gui=underline
+autocmd CursorHold * call HighlightCursorWord()
+function! HighlightCursorWord()
+    " if hlsearch is active, don't overwrite it!
+    let search = getreg('/')
+    let cword = expand('<cword>')
+    if match(cword, search) == -1
+        exe printf('match WordUnderCursor /\V\<%s\>/', escape(cword, '/\'))
+    endif
+endfunction
