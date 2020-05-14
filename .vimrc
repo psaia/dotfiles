@@ -28,10 +28,10 @@ Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'pangloss/vim-javascript'
 Plug 'Quramy/tsuquyomi'
-" Plug 'mxw/vim-jsx'
 Plug 'shumphrey/fugitive-gitlab.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'tpope/vim-fugitive'
+" Plug 'tpope/vim-fugitive' " Currently causing go linting to fail.
 Plug 'evidens/vim-twig'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'scrooloose/nerdtree'
@@ -158,6 +158,7 @@ let g:ale_linters_explicit = 1
 let g:ale_lint_on_save = 1
 let g:ale_fix_on_save = 1
 let g:ale_linters = {
+\   'go': ['gopls'],
 \   'javascript': ['eslint'],
 \   'typescript': ['tsserver'],
 \   'typescript.tsx': ['tsserver'],
@@ -168,7 +169,7 @@ let g:ale_fixers = {
 \  'typescript': ['prettier'],
 \  'typescript.tsx': ['prettier'],
 \}
-let g:ale_echo_msg_format = '%linter% says %s'
+let g:ale_echo_msg_format = '%linter% (ale) says %s'
 
 " Map ALE Reference functions to c-] and c-^.
 function! ALELSPMappings()
@@ -225,22 +226,29 @@ au FileType php let php_sql_query = 1
 au FileType go let g:go_fmt_command = "goimports"
 au FileType go nmap <C-]> gd
 au FileType go nmap <C-[> :GoDefPop 1<CR>
-au FileType go let g:go_metalinter_autosave=1
-au FileType go let g:go_metalinter_autosave_enabled=['golint', 'govet', 'typecheck']
+au FileType go let g:go_rename_command = 'gopls'
+au FileType go let g:go_auto_type_info = 1
+au FileType go let g:go_fmt_fail_silently = 1
+au FileType go let g:go_highlight_types = 1
+au FileType go let g:go_highlight_fields = 1
+au FileType go let g:go_highlight_functions = 1
+au FileType go let g:go_highlight_function_calls = 1
+au FileType go let g:go_highlight_operators = 1
+au FileType go let g:go_highlight_extra_types = 1
 
 " Rust
 let g:rustfmt_autosave = 1
-
-" Highlight JSON as JavaScript.
-autocmd BufNewFile,BufRead *.json set ft=javascript
 
 " TypeScript Mappings: https://github.com/Quramy/tsuquyomi
 autocmd FileType typescript nmap <C-]> :TsuquyomiDefinition<CR>
 autocmd FileType typescript nmap <C-[> :TsuquyomiGoBack<CR>
 autocmd FileType typescript imap <C-o> <C-x><C-o>
-let g:tsuquyomi_disable_quickfix = 1
+autocmd FileType typescript let g:tsuquyomi_disable_quickfix = 1
 
-" highlight the word under cursor (CursorMoved is inperformant)
+" Highlight JSON as JavaScript.
+autocmd BufNewFile,BufRead *.json set ft=javascript
+
+" highlight the word under cursor in all places.
 setl updatetime=300
 highlight WordUnderCursor cterm=underline gui=underline
 autocmd CursorHold * call HighlightCursorWord()
