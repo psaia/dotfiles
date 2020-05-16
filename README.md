@@ -7,7 +7,13 @@
 2. `ln -s ~/.vim/.zprofile ~/.zprofile`
 3. `:PlugInstall` - though it should install automatically if you have npm installed.
 
-#### Extra osx provisioning to help when my computer gets stolen/replaced.
+#### General
+
+* Install [Oh My Zsh](https://ohmyz.sh/)
+* Use the [nord](https://github.com/arcticicestudio/nord-vim/) color kit for [iterm2](https://www.iterm2.com/).
+* Install [Inconsolata-g](/extra/Inconsolata-g.ttf) font for iterm2.
+
+#### Brew Installs
 
 ```bash
 brew install go
@@ -30,13 +36,4 @@ brew cask install brave-browser
 
 brew tap homebrew/cask-drivers
 brew cask install garmin-express
-```
-
-* Use the [nord](https://github.com/arcticicestudio/nord-vim/) color kit for [iterm2](https://www.iterm2.com/).
-* Install [Inconsolata-g](/extra/Inconsolata-g.ttf) font for iterm2.
-
-#### .bash_profile customizations
-
-```bash
-export PS1="\e[2m[\u] \W\e[0m \e[33m$ \e[0m"
 ```
