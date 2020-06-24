@@ -165,7 +165,6 @@ let g:ale_linters = {
 \}
 let g:ale_fixers = {
 \  'css': ['prettier'],
-\  'javascript': ['prettier', 'eslint'],
 \  'typescript': ['prettier'],
 \  'typescript.tsx': ['prettier'],
 \}
