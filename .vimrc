@@ -158,12 +158,13 @@ let g:ale_linters_explicit = 1
 let g:ale_lint_on_save = 1
 let g:ale_fix_on_save = 1
 let g:ale_linters = {
-\   'go': ['gopls', 'gofmt'],
-\   'javascript': ['eslint'],
-\   'typescript': ['tsserver'],
-\   'typescript.tsx': ['tsserver'],
+\  'go': ['gopls'],
+\  'javascript': ['eslint'],
+\  'typescript': ['tsserver'],
+\  'typescript.tsx': ['tsserver'],
 \}
 let g:ale_fixers = {
+\  'go': ['gofmt', 'goimports'],
 \  'css': ['prettier'],
 \  'typescript': ['prettier'],
 \  'typescript.tsx': ['prettier'],
@@ -221,19 +222,23 @@ let g:fugitive_gitlab_domains = ['https://github.com']
 au FileType php let php_html_in_strings = 1
 au FileType php let php_sql_query = 1
 
-" Go
-au FileType go let g:go_fmt_command = "goimports"
-au FileType go nmap <C-]> gd
-au FileType go nmap <C-[> :GoDefPop 1<CR>
-au FileType go let g:go_rename_command = 'gopls'
-au FileType go let g:go_auto_type_info = 1
-au FileType go let g:go_fmt_fail_silently = 1
-au FileType go let g:go_highlight_types = 1
-au FileType go let g:go_highlight_fields = 1
-au FileType go let g:go_highlight_functions = 1
-au FileType go let g:go_highlight_function_calls = 1
-au FileType go let g:go_highlight_operators = 1
-au FileType go let g:go_highlight_extra_types = 1
+" Go (basically all fixing is disabled so Ale handles it)
+let g:go_rename_command = 'gopls'
+let g:go_imports_command = "goimports"
+let g:go_fmt_command = "gopls"
+let g:go_imports_autosave = 0
+let g:go_fmt_autosave = 0
+let g:go_fmt_fail_silently = 0
+let g:go_metalinter_autosave = 0
+nmap <C-]> gd
+nmap <C-[> :GoDefPop 1<CR>
+let g:go_auto_type_info = 1
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_extra_types = 1
 
 " Rust
 let g:rustfmt_autosave = 1
@@ -246,16 +251,3 @@ autocmd FileType typescript let g:tsuquyomi_disable_quickfix = 1
 
 " Highlight JSON as JavaScript.
 autocmd BufNewFile,BufRead *.json set ft=javascript
-
-" highlight the word under cursor in all places.
-setl updatetime=300
-highlight WordUnderCursor cterm=underline gui=underline
-autocmd CursorHold * call HighlightCursorWord()
-function! HighlightCursorWord()
-    " if hlsearch is active, don't overwrite it!
-    let search = getreg('/')
-    let cword = expand('<cword>')
-    if match(cword, search) == -1
-        exe printf('match WordUnderCursor /\V\<%s\>/', escape(cword, '/\'))
-    endif
-endfunction
