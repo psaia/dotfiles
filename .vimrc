@@ -228,10 +228,8 @@ let g:go_imports_command = "goimports"
 let g:go_fmt_command = "gopls"
 let g:go_imports_autosave = 0
 let g:go_fmt_autosave = 0
-let g:go_fmt_fail_silently = 0
+let g:go_fmt_fail_silently = 1
 let g:go_metalinter_autosave = 0
-nmap <C-]> gd
-nmap <C-[> :GoDefPop 1<CR>
 let g:go_auto_type_info = 1
 let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
