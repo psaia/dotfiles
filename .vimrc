@@ -165,10 +165,12 @@ let g:ale_linters = {
 \}
 let g:ale_fixers = {
 \  'css': ['prettier'],
+\  'javascript': ['prettier'],
 \  'typescript': ['prettier'],
 \  'typescript.tsx': ['prettier'],
 \}
 let g:ale_echo_msg_format = '%linter% (ale) says %s'
+let g:ale_javascript_prettier_use_local_config = 1
 
 " Map ALE Reference functions to c-] and c-^.
 function! ALELSPMappings()
@@ -258,3 +260,7 @@ autocmd FileType typescript let g:tsuquyomi_disable_quickfix = 1
 
 " Highlight JSON as JavaScript.
 autocmd BufNewFile,BufRead *.json set ft=javascript
+
+" Markdown
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_conceal = 0
