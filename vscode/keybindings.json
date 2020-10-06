@@ -1,18 +1,32 @@
 [
     {
         "key": "t h",
-        "command": "workbench.action.nextEditor"
+        "command": "workbench.action.nextEditor",
+        "when": "editorFocus"
     },
     {
         "key": "alt+cmd+right",
-        "command": "-workbench.action.nextEditor"
+        "command": "-workbench.action.nextEditor",
+        "when": "editorFocus"
     },
     {
         "key": "t l",
-        "command": "workbench.action.previousEditorInGroup"
+        "command": "workbench.action.previousEditorInGroup",
+        "when": "editorFocus"
     },
     {
         "key": "cmd+k alt+cmd+left",
-        "command": "-workbench.action.previousEditorInGroup"
+        "command": "-workbench.action.previousEditorInGroup",
+        "when": "editorFocus"
+    },
+    {
+        "key": "t d",
+        "command": "workbench.action.closeActiveEditor",
+        "when": "editorFocus"
+    },
+    {
+        "key": "cmd+w",
+        "command": "-workbench.action.closeActiveEditor",
+        "when": "editorFocus"
     }
 ]
