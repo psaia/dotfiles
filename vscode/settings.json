@@ -1,0 +1,29 @@
+{
+    "vim.leader": ",",
+    "vim.insertModeKeyBindings": [
+        {
+            "before": ["j", "k"],
+            "after": ["<Esc>"]
+        }
+    ],
+    "vim.normalModeKeyBindings": [
+        {
+            "before": ["<leader>", "w"],
+            "commands": [
+                ":w"
+            ]
+        },
+        {
+            "before": ["t", "d"],
+            "commands": [
+                ":wq"
+            ]
+        }
+    ],
+    "vim.commandLineModeKeyBindings": [
+    
+    ],
+    "vim.visualModeKeyBindings": [
+    
+    ]
+}

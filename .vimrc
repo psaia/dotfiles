@@ -6,7 +6,8 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
-Plug 'w0rp/ale', { 'do': 'npm i -g eslint tslint typescript prettier prettier-eslint' }
+Plug 'w0rp/ale', { 'do': 'npm i -g eslint tslint typescript prettier prettier-eslint eslint-plugin-prettier' }
+Plug 'artur-shaik/vim-javacomplete2'
 Plug 'StanAngeloff/php.vim'
 Plug 'plasticboy/vim-markdown'
 Plug 'captbaritone/better-indent-support-for-php-with-html'
@@ -165,7 +166,7 @@ let g:ale_linters = {
 \}
 let g:ale_fixers = {
 \  'css': ['prettier'],
-\  'javascript': ['prettier'],
+\  'javascript': ['eslint'],
 \  'typescript': ['prettier'],
 \  'typescript.tsx': ['prettier'],
 \}
@@ -264,3 +265,7 @@ autocmd BufNewFile,BufRead *.json set ft=javascript
 " Markdown
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_conceal = 0
+
+" Java
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
+
