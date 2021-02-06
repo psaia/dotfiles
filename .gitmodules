@@ -52,3 +52,6 @@
 [submodule ".vim/pack/psaia/start/vim-markdown"]
 	path = .vim/pack/psaia/start/vim-markdown
 	url = git@github.com:plasticboy/vim-markdown.git
+[submodule ".vim/pack/psaia/start/nord-vim"]
+	path = .vim/pack/psaia/start/nord-vim
+	url = git@github.com:arcticicestudio/nord-vim.git
