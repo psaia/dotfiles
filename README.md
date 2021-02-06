@@ -11,7 +11,8 @@
 1. `git clone --bare git@github.com:psaia/dotfiles.git $HOME/.cfg`
 2. `git --git-dir=$HOME/.cfg/ --work-tree=$HOME checkout`
 3. `git --git-dir=$HOME/.cfg/ --work-tree=$HOME config --local status.showUntrackedFiles no`
-4. Continue to manage dotfiles by using `config` instead of `git`.
+4. `git --git-dir=$HOME/.cfg/ --work-tree=$HOME submodule update --init --recursive`
+5. Continue to manage dotfiles by using `config` instead of `git`.
 
 ### Vim Module Mgmt
 

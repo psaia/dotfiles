@@ -50,27 +50,3 @@ genv() {
   brew link go@$1 --overwrite --force
   go version
 }
-
-# Switch versions of Java. Looking forward to removing this.
-jenv() {
-  typeset command
-  command="$1"
-  if [ "$#" -gt 0 ]; then
-    shift
-  fi
-
-  case "$command" in
-  enable-plugin|rehash|shell|shell-options)
-    eval `jenv "sh-$command" "$@"`;;
-  *)
-    command jenv "$command" "$@";;
-  esac
-}
-eval export PATH="/Users/pete/.jenv/shims:${PATH}"
-export JENV_SHELL=zsh
-export JENV_LOADED=1
-unset JAVA_HOME
-source '/usr/local/Cellar/jenv/0.5.4/libexec/libexec/../completions/jenv.zsh'
-jenv rehash 2>/dev/null
-jenv refresh-plugins
-source "/Users/pete/.jenv/plugins/export/etc/jenv.d/init/export_jenv_hook.zsh"
