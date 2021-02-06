@@ -29,7 +29,7 @@ if [[ -f "$HOME/.zshrcs" ]]; then
     source $HOME/.zshrcs
 fi
 
-# vim: install plugin
+# vim: install module
 # vimadd REPO FILE_NAME
 vimadd() {
   cd ~/
@@ -38,7 +38,17 @@ vimadd() {
   config status
 }
 
-# vim: upgrade plugins
+# vim: remove module
+# vimrm FILE_NAME
+vimrm() {
+  cd ~/
+  config submodule deinit -f .vim/pack/psaia/start/$1
+  config rm -f .vim/pack/psaia/start/$1
+  config -Rf .git/modules/.vim/pack/psaia/start/$1
+  config status
+}
+
+# vim: upgrade module
 vimupgrade() {
   cd ~/
   config submodule update --remote --merge

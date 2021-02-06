@@ -40,8 +40,9 @@ Remove a module:
 config submodule deinit .vim/pack/psaia/start/GIT_REPO_NAME
 config rm .vim/pack/psaia/start/GIT_REPO_NAME
 config -Rf .git/modules/.vim/pack/psaia/start/GIT_REPO_NAME
-config commit
 ```
+
+Shortcut: `vimrm GIT_REPO_NAME`
 
 ### Brew Installs
 
