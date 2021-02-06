@@ -1,19 +1,45 @@
-#### ~/.vim/
+# dotfiles
 
-.vim contains both vim related files and various dot files that get symlinked.
-
-1. `git clone https://github.com/petesaia/.vim.git ~/.vim`
-2. `ln -s ~/.vim/.vimrc ~/.vimrc`
-2. `ln -s ~/.vim/.zprofile ~/.zprofile`
-3. `:PlugInstall` - though it should install automatically if you have npm installed.
-
-#### General
+### General
 
 * Install [Oh My Zsh](https://ohmyz.sh/)
 * Use the [nord](https://github.com/arcticicestudio/nord-vim/) color kit for [iterm2](https://www.iterm2.com/).
 * Install [Inconsolata-g](/extra/Inconsolata-g.ttf) font for iterm2.
 
-#### Brew Installs
+### Setup
+
+1. `git clone --bare git@github.com:psaia/dotfiles.git $HOME/.cfg`
+2. `git --git-dir=$HOME/.cfg/ --work-tree=$HOME checkout`
+3. `git --git-dir=$HOME/.cfg/ --work-tree=$HOME config --local status.showUntrackedFiles no`
+4. Continue to manage dotfiles by using `config` instead of `git`.
+
+### Vim Module Mgmt
+
+Add a new module:
+
+```bash
+cd ~/
+config submodule add GIT_REPO .vim/pack/psaia/start/GIT_REPO_NAME
+config add .gitmodules .vim/pack/psaia/start/GIT_REPO_NAME
+```
+
+Upgrade modules:
+
+```bash
+config submodule update --remote --merge
+config commit
+```
+
+Remove a module:
+
+```bash
+config submodule deinit .vim/pack/psaia/start/GIT_REPO_NAME
+config rm .vim/pack/psaia/start/GIT_REPO_NAME
+config -Rf .git/modules/.vim/pack/psaia/start/GIT_REPO_NAME
+config commit
+```
+
+### Brew Installs
 
 ```bash
 brew install go
@@ -21,6 +47,7 @@ brew install n
 brew install tree
 brew install wget
 brew install ffmpeg
+brew install direnv
 brew cask install iterm2
 brew cask install google-chrome
 brew cask install sketch

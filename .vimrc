@@ -1,51 +1,50 @@
-" Auto-install plug if it isn't already.
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
+" " Auto-install plug if it isn't already.
+" if empty(glob('~/.vim/autoload/plug.vim'))
+"   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+"     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+"   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+" endif
 
-call plug#begin('~/.vim/plugged')
-Plug 'w0rp/ale', { 'do': 'npm i -g eslint tslint typescript prettier prettier-eslint eslint-plugin-prettier' }
-Plug 'artur-shaik/vim-javacomplete2'
-Plug 'StanAngeloff/php.vim'
-Plug 'plasticboy/vim-markdown'
-Plug 'captbaritone/better-indent-support-for-php-with-html'
-Plug 'vim-scripts/fountain.vim'
-Plug 'ekalinin/Dockerfile.vim'
-Plug 'rust-lang/rust.vim'
-Plug 'elzr/vim-json'
-Plug 'hashivim/vim-terraform'
-Plug 'vim-python/python-syntax'
-Plug 'moll/vim-node'
-Plug 'digitaltoad/vim-pug'
-Plug 'wavded/vim-stylus'
-Plug 'heavenshell/vim-jsdoc'
-Plug 'jparise/vim-graphql'
-Plug 'uarun/vim-protobuf'
-Plug 'othree/html5.vim'
-Plug 'heavenshell/vim-jsdoc'
-Plug 'leafgarland/typescript-vim'
-Plug 'peitalin/vim-jsx-typescript'
-Plug 'pangloss/vim-javascript'
-Plug 'Quramy/tsuquyomi'
-Plug 'shumphrey/fugitive-gitlab.vim'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'editorconfig/editorconfig-vim'
-" Plug 'tpope/vim-fugitive' " Currently causing go linting to fail.
-Plug 'evidens/vim-twig'
-Plug 'Lokaltog/vim-easymotion'
-Plug 'scrooloose/nerdtree'
-Plug 'godlygeek/tabular'
-Plug 'msanders/snipmate.vim'
-Plug 'tomtom/tcomment_vim'
-Plug 'tpope/vim-surround'
-Plug 'itchyny/lightline.vim'
-Plug 'sukima/xmledit'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'arcticicestudio/nord-vim'
-call plug#end()
+" call plug#begin('~/.vim/plugged')
+" Plug 'w0rp/ale', { 'do': 'npm i -g eslint tslint typescript prettier prettier-eslint eslint-plugin-prettier' }
+" Plug 'StanAngeloff/php.vim'
+" Plug 'plasticboy/vim-markdown'
+" Plug 'captbaritone/better-indent-support-for-php-with-html'
+" Plug 'vim-scripts/fountain.vim'
+" Plug 'ekalinin/Dockerfile.vim'
+" Plug 'rust-lang/rust.vim'
+" Plug 'elzr/vim-json'
+" Plug 'hashivim/vim-terraform'
+" Plug 'vim-python/python-syntax'
+" Plug 'moll/vim-node'
+" Plug 'digitaltoad/vim-pug'
+" Plug 'wavded/vim-stylus'
+" Plug 'heavenshell/vim-jsdoc'
+" Plug 'jparise/vim-graphql'
+" Plug 'uarun/vim-protobuf'
+" Plug 'othree/html5.vim'
+" Plug 'heavenshell/vim-jsdoc'
+" Plug 'leafgarland/typescript-vim'
+" Plug 'peitalin/vim-jsx-typescript'
+" Plug 'pangloss/vim-javascript'
+" Plug 'Quramy/tsuquyomi'
+" Plug 'shumphrey/fugitive-gitlab.vim'
+" Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'editorconfig/editorconfig-vim'
+" " Plug 'tpope/vim-fugitive' " Currently causing go linting to fail.
+" Plug 'evidens/vim-twig'
+" Plug 'Lokaltog/vim-easymotion'
+" Plug 'scrooloose/nerdtree'
+" Plug 'godlygeek/tabular'
+" Plug 'msanders/snipmate.vim'
+" Plug 'tomtom/tcomment_vim'
+" Plug 'tpope/vim-surround'
+" Plug 'itchyny/lightline.vim'
+" Plug 'sukima/xmledit'
+" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+" Plug 'dracula/vim', { 'as': 'dracula' }
+" Plug 'arcticicestudio/nord-vim'
+" call plug#end()
 
 " Basic.
 filetype indent plugin on
@@ -265,7 +264,3 @@ autocmd BufNewFile,BufRead *.json set ft=javascript
 " Markdown
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_conceal = 0
-
-" Java
-autocmd FileType java setlocal omnifunc=javacomplete#Complete
-
