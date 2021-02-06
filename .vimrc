@@ -1,52 +1,3 @@
-" " Auto-install plug if it isn't already.
-" if empty(glob('~/.vim/autoload/plug.vim'))
-"   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-"     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-"   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-" endif
-
-" call plug#begin('~/.vim/plugged')
-" Plug 'w0rp/ale', { 'do': 'npm i -g eslint tslint typescript prettier prettier-eslint eslint-plugin-prettier' }
-" Plug 'StanAngeloff/php.vim'
-" Plug 'plasticboy/vim-markdown'
-" Plug 'captbaritone/better-indent-support-for-php-with-html'
-" Plug 'vim-scripts/fountain.vim'
-" Plug 'ekalinin/Dockerfile.vim'
-" Plug 'rust-lang/rust.vim'
-" Plug 'elzr/vim-json'
-" Plug 'hashivim/vim-terraform'
-" Plug 'vim-python/python-syntax'
-" Plug 'moll/vim-node'
-" Plug 'digitaltoad/vim-pug'
-" Plug 'wavded/vim-stylus'
-" Plug 'heavenshell/vim-jsdoc'
-" Plug 'jparise/vim-graphql'
-" Plug 'uarun/vim-protobuf'
-" Plug 'othree/html5.vim'
-" Plug 'heavenshell/vim-jsdoc'
-" Plug 'leafgarland/typescript-vim'
-" Plug 'peitalin/vim-jsx-typescript'
-" Plug 'pangloss/vim-javascript'
-" Plug 'Quramy/tsuquyomi'
-" Plug 'shumphrey/fugitive-gitlab.vim'
-" Plug 'ctrlpvim/ctrlp.vim'
-" Plug 'editorconfig/editorconfig-vim'
-" " Plug 'tpope/vim-fugitive' " Currently causing go linting to fail.
-" Plug 'evidens/vim-twig'
-" Plug 'Lokaltog/vim-easymotion'
-" Plug 'scrooloose/nerdtree'
-" Plug 'godlygeek/tabular'
-" Plug 'msanders/snipmate.vim'
-" Plug 'tomtom/tcomment_vim'
-" Plug 'tpope/vim-surround'
-" Plug 'itchyny/lightline.vim'
-" Plug 'sukima/xmledit'
-" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-" Plug 'dracula/vim', { 'as': 'dracula' }
-" Plug 'arcticicestudio/nord-vim'
-" call plug#end()
-
-" Basic.
 filetype indent plugin on
 syntax on
 set encoding=utf8
@@ -84,13 +35,6 @@ set cindent
 set shiftwidth=2 tabstop=2 softtabstop=2 expandtab
 au FileType make,go,snippets,sh setlocal noexpandtab
 
-" Make sexy.
-let iterm_profile = $ITERM_PROFILE
-
-" Setup dracula. Had to add the top two settings because:
-" https://github.com/dracula/vim/issues/65
-" let g:dracula_italic=0
-" let g:dracula_colorterm=0
 colorscheme nord
 
 " Source vimrc on save.
@@ -131,9 +75,6 @@ vmap <C-c> :w !pbcopy<CR><CR>
 " open NERDTree with Ctrl+n
 map <C-n> :NERDTreeToggle<CR>
 
-" SnipMate Configuration
-let g:snips_author = 'PS'
-
 " Easy motion
 map <Leader>h <Plug>(easymotion-linebackward)
 map <Leader>j <Plug>(easymotion-j)
@@ -148,9 +89,6 @@ let g:NERDTreeChDirMode=2
 " Fix weird character in nerdtree.
 " https://www.reddit.com/r/vim/comments/a4yzyt/g_characters_prefixing_directory_and_file_names/
 let g:NERDTreeNodeDelimiter = "\u00a0"
-
-" Sparkup
-autocmd FileType html let g:sparkupNextMapping = '<c-t>'
 
 " ALE Configuration.
 " Linter
@@ -216,12 +154,6 @@ let g:lightline = {
       \ 'separator': { 'left': '', 'right': '' },
       \ 'subseparator': { 'left': '|', 'right': '|' }
       \ }
-
-let g:fugitive_gitlab_domains = ['https://github.com']
-
-" php.vim
-au FileType php let php_html_in_strings = 1
-au FileType php let php_sql_query = 1
 
 " Go (basically all fixing is disabled so Ale handles it)
 let g:go_rename_command = 'gopls'

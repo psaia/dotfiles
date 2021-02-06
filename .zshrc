@@ -28,6 +28,21 @@ if [[ -f "$HOME/.zshrcs" ]]; then
     source $HOME/.zshrcs
 fi
 
+# Add a new vim plugin.
+vimadd() {
+  cd ~/
+  config submodule add $1 .vim/pack/psaia/start/$2
+  config add .gitmodules .vim/pack/psaia/start/$2
+  config status
+}
+
+# Upgrade all vim plugins.
+vimupgrade() {
+  cd ~/
+  config submodule update --remote --merge
+  config status
+}
+
 # Easily switch versions of Go using Brew.
 genv() {
   brew install go@$1

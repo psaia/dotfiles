@@ -23,12 +23,15 @@ config submodule add GIT_REPO .vim/pack/psaia/start/GIT_REPO_NAME
 config add .gitmodules .vim/pack/psaia/start/GIT_REPO_NAME
 ```
 
+Shortcut: `vimadd REPO_URL FOLDER_NAME`
+
 Upgrade modules:
 
 ```bash
 config submodule update --remote --merge
-config commit
 ```
+
+Shortcut: `vimupgrade`
 
 Remove a module:
 
