@@ -12,7 +12,7 @@ ZSH_THEME="nanotech"
 plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
-source $0/.zshrc
+source $HOME/.zshrcs
 
 eval "$(direnv hook zsh)"
 
