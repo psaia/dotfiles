@@ -13,9 +13,10 @@ export CLOUDSDK_PYTHON=python2
 alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 # zsh: initialize
-ZSH_THEME="nanotech"
 plugins=(git)
 source $ZSH/oh-my-zsh.sh
+setopt prompt_subst
+PROMPT='%F{blue}%~%f %F{green}$(branch_name)%f %F{white}$%f '
 
 # direnv: install
 eval "$(direnv hook zsh)"
@@ -29,8 +30,7 @@ if [[ -f "$HOME/.zshrcs" ]]; then
     source $HOME/.zshrcs
 fi
 
-# vim: install module
-# vimadd REPO FILE_NAME
+# vim: install module (`vimadd git@github.com:preservim/nerdtree.git nerdtree`)
 vimadd() {
   cd ~/
   config submodule add $1 .vim/pack/psaia/start/$2
@@ -38,8 +38,7 @@ vimadd() {
   config status
 }
 
-# vim: remove module
-# vimrm FILE_NAME
+# vim: remove module (`vimrm nerdtree`)
 vimrm() {
   cd ~/
   config submodule deinit -f .vim/pack/psaia/start/$1
@@ -49,9 +48,9 @@ vimrm() {
 }
 
 # vim: upgrade module
-vimupgrade() {
+vimup() {
   cd ~/
-  config submodule update --remote --merge
+  config submodule update --recursive
   config status
 }
 
@@ -62,3 +61,15 @@ genv() {
   brew link go@$1 --overwrite --force
   go version
 }
+
+# zsh: branch for prompt
+branch_name() {
+  branch=$(git symbolic-ref HEAD 2> /dev/null | awk 'BEGIN{FS="/"} {print $NF}')
+  if [[ $branch == "" ]];
+  then
+    :
+  else
+    echo '['$branch']'
+  fi
+}
+
