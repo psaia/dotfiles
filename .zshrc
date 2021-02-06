@@ -1,3 +1,4 @@
+# globals
 export PATH="$HOME/bin:/usr/local/bin:/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin:$PATH"
 export PATH="$HOME/work/node_versions/bin:$PATH:$GOBIN"
 export PATH="/usr/local/sbin:$PATH"
@@ -8,27 +9,28 @@ export GOBIN=$GOPATH/bin
 export GO111MODULE=auto
 export CLOUDSDK_PYTHON=python2
 
-# Dotfile repo.
+# git: dotfile management
 alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
-# Enable direnv.
-eval "$(direnv hook zsh)"
-
-# zsh: Configure.
+# zsh: initialize
 ZSH_THEME="nanotech"
 plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
-# zsh: Prevent the sharing of history between tabs.
+# direnv: install
+eval "$(direnv hook zsh)"
+
+# zsh: prevent the sharing of history between tabs
 unsetopt inc_append_history
 unsetopt share_history
 
-# zsh: Source things I'd like to keep out of git.
+# zsh: source things I'd like to keep out of git
 if [[ -f "$HOME/.zshrcs" ]]; then
     source $HOME/.zshrcs
 fi
 
-# Add a new vim plugin.
+# vim: install plugin
+# vimadd REPO FILE_NAME
 vimadd() {
   cd ~/
   config submodule add $1 .vim/pack/psaia/start/$2
@@ -36,14 +38,14 @@ vimadd() {
   config status
 }
 
-# Upgrade all vim plugins.
+# vim: upgrade plugins
 vimupgrade() {
   cd ~/
   config submodule update --remote --merge
   config status
 }
 
-# Easily switch versions of Go using Brew.
+# go: switch go versions using brew
 genv() {
   brew install go@$1
   brew unlink go
