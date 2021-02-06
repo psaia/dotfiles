@@ -8,20 +8,25 @@ export GOBIN=$GOPATH/bin
 export GO111MODULE=auto
 export CLOUDSDK_PYTHON=python2
 
-ZSH_THEME="nanotech"
-plugins=(git)
-
-source $ZSH/oh-my-zsh.sh
-source $HOME/.zshrcs
-
-eval "$(direnv hook zsh)"
-
 # Dotfile repo.
 alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
-# Prevent the sharing of history between tabs.
+# Enable direnv.
+eval "$(direnv hook zsh)"
+
+# zsh: Configure.
+ZSH_THEME="nanotech"
+plugins=(git)
+source $ZSH/oh-my-zsh.sh
+
+# zsh: Prevent the sharing of history between tabs.
 unsetopt inc_append_history
 unsetopt share_history
+
+# zsh: Source things I'd like to keep out of git.
+if [[ -f "$HOME/.zshrcs" ]]; then
+    source $HOME/.zshrcs
+fi
 
 # Easily switch versions of Go using Brew.
 genv() {
@@ -31,7 +36,7 @@ genv() {
   go version
 }
 
-# Switch versions of Java.
+# Switch versions of Java. Looking forward to removing this.
 jenv() {
   typeset command
   command="$1"
@@ -46,7 +51,6 @@ jenv() {
     command jenv "$command" "$@";;
   esac
 }
-
 eval export PATH="/Users/pete/.jenv/shims:${PATH}"
 export JENV_SHELL=zsh
 export JENV_LOADED=1
