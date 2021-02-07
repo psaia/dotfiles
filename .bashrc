@@ -1,22 +1,3 @@
-# env
-export PATH="$HOME/bin:/usr/local/bin:/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin:$PATH"
-export PATH="$HOME/work/node_versions/bin:$PATH:$GOBIN"
-export PATH="/usr/local/sbin:$PATH"
-export GOPATH="$HOME/work/go"
-export N_PREFIX="$HOME/work/node_versions"
-export CLOUDSDK_PYTHON=python2
-
-# git: dotfile management
-alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-
-# direnv: install
-eval "$(direnv hook bash)"
-
-# zsh: source things I'd like to keep out of git
-if [[ -f "$HOME/.bashrcs" ]]; then
-	source $HOME/.bashrcs
-fi
-
 # vim: install module (`vimadd git@github.com:preservim/nerdtree.git nerdtree`)
 vimadd() {
 	cd ~/
@@ -67,4 +48,22 @@ prompt_line() {
 	echo "${_BLUE}\W${_RESET}${_GREEN}\$(branch_name)${_RESET} \$ \e[0m"
 }
 
+# env
 export PS1=$(prompt_line)
+export PATH="$HOME/bin:/usr/local/bin:/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin:$PATH"
+export PATH="$HOME/work/node_versions/bin:$PATH:$GOBIN"
+export PATH="/usr/local/sbin:$PATH"
+export GOPATH="$HOME/work/go"
+export N_PREFIX="$HOME/work/node_versions"
+export CLOUDSDK_PYTHON=python2
+
+# git: dotfile management
+alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+
+# direnv: install
+eval "$(direnv hook bash)"
+
+# zsh: source things I'd like to keep out of git
+if [[ -f "$HOME/.bashrcs" ]]; then
+	source $HOME/.bashrcs
+fi

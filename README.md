@@ -35,7 +35,7 @@ vimrm FOLDER_NAME
 ### Brew Installs
 
 ```bash
-brew install go
+brew install golang
 brew install vim
 brew install n
 brew install tree
@@ -43,6 +43,11 @@ brew install wget
 brew install ffmpeg
 brew install direnv
 brew install bash
+brew install yq
+brew install jq
+brew install gh
+brew install grpcurl
+brew install golangci-lint
 brew cask install iterm2
 brew cask install google-chrome
 brew cask install sketch
@@ -55,7 +60,9 @@ brew cask install spotify
 brew cask install slack
 brew cask install keybase
 brew cask install brave-browser
-
 brew tap homebrew/cask-drivers
 brew cask install garmin-express
+brew tap hashicorp/tap
+brew install hashicorp/tap/terraform
+brew install hashicorp/tap/vault
 ```
