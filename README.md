@@ -49,9 +49,9 @@ brew install jq
 brew install gh
 brew install grpcurl
 brew install golangci-lint
-brew install --cask garmin-express
 brew install hashicorp/tap/terraform
 brew install hashicorp/tap/vault
+brew install --cask garmin-express
 brew install --cask iterm2
 brew install --cask google-chrome
 brew install --cask sketch
