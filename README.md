@@ -2,9 +2,9 @@
 
 ### General
 
-* Install [Oh My Zsh](https://ohmyz.sh/)
 * Use the [nord](https://github.com/arcticicestudio/nord-vim/) color kit for [iterm2](https://www.iterm2.com/).
-* Install [Inconsolata-g](/extra/Inconsolata-g.ttf) font for iterm2.
+* Install [Inconsolata-g](/extra/Inconsolata-g.ttf).
+* Install the [iterm2 profile](.iterm2/Profiles.json).
 
 ### Setup
 
@@ -16,33 +16,23 @@
 
 ### Vim Module Mgmt
 
-Add a new module:
+**Add a new module:**
 
 ```bash
-cd ~/
-config submodule add GIT_REPO .vim/pack/psaia/start/GIT_REPO_NAME
-config add .gitmodules .vim/pack/psaia/start/GIT_REPO_NAME
+vimadd REPO_URL FOLDER_NAME
 ```
 
-Shortcut: `vimadd REPO_URL FOLDER_NAME`
-
-Upgrade modules:
+**Upgrade modules:**
 
 ```bash
-config submodule update --remote --merge
+vimup
 ```
 
-Shortcut: `vimupgrade`
-
-Remove a module:
+**Remove a module:**
 
 ```bash
-config submodule deinit .vim/pack/psaia/start/GIT_REPO_NAME
-config rm .vim/pack/psaia/start/GIT_REPO_NAME
-config -Rf .git/modules/.vim/pack/psaia/start/GIT_REPO_NAME
+vimrm FOLDER_NAME
 ```
-
-Shortcut: `vimrm GIT_REPO_NAME`
 
 ### Brew Installs
 

@@ -1,33 +1,20 @@
-# globals
+# env
 export PATH="$HOME/bin:/usr/local/bin:/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin:$PATH"
 export PATH="$HOME/work/node_versions/bin:$PATH:$GOBIN"
 export PATH="/usr/local/sbin:$PATH"
-export ZSH="/Users/${USER}/.oh-my-zsh"
-export GOPATH=$HOME/work/go
-export N_PREFIX=$HOME/work/node_versions
-export GOBIN=$GOPATH/bin
-export GO111MODULE=auto
+export GOPATH="$HOME/work/go"
+export N_PREFIX="$HOME/work/node_versions"
 export CLOUDSDK_PYTHON=python2
 
 # git: dotfile management
 alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
-# zsh: initialize
-plugins=(git)
-source $ZSH/oh-my-zsh.sh
-setopt prompt_subst
-PROMPT='%F{blue}%~%f %F{green}$(branch_name)%f %F{white}$%f '
-
 # direnv: install
-eval "$(direnv hook zsh)"
-
-# zsh: prevent the sharing of history between tabs
-unsetopt inc_append_history
-unsetopt share_history
+eval "$(direnv hook bash)"
 
 # zsh: source things I'd like to keep out of git
-if [[ -f "$HOME/.zshrcs" ]]; then
-    source $HOME/.zshrcs
+if [[ -f "$HOME/.bashrcs" ]]; then
+    source $HOME/.bashrcs
 fi
 
 # vim: install module (`vimadd git@github.com:preservim/nerdtree.git nerdtree`)
@@ -62,14 +49,22 @@ genv() {
   go version
 }
 
-# zsh: branch for prompt
+# prompt: branch for prompt
 branch_name() {
   branch=$(git symbolic-ref HEAD 2> /dev/null | awk 'BEGIN{FS="/"} {print $NF}')
-  if [[ $branch == "" ]];
+  if [[ $branch != "" ]]
   then
-    :
-  else
-    echo '['$branch']'
+    echo ' ['$branch']'
   fi
 }
 
+# prompt: format the line
+prompt_line() {
+	local _GREEN=$(tput setaf 2)
+	local _BLUE=$(tput setaf 4)
+	local _RED=$(tput setaf 1)
+	local _RESET=$(tput sgr0)
+  echo "${_BLUE}\W${_RESET}${_GREEN}\$(branch_name)${_RESET} \$ \e[0m"
+}
+
+export PS1=$(prompt_line)
