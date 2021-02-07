@@ -1,7 +1,5 @@
 # dotfiles
 
-### Setup
-
 1. Exec brews below
 2. Install [Inconsolata-g](/extra/Inconsolata-g.ttf)
 3. Install the [iterm2 profile](.iterm2/Profiles.json)
