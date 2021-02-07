@@ -1,17 +1,17 @@
 # vim: install module (`vimadd git@github.com:preservim/nerdtree.git nerdtree`)
 vimadd() {
 	cd ~/
-	config submodule add $1 .vim/pack/psaia/start/$2
-	config add .gitmodules .vim/pack/psaia/start/$2
+	config submodule add $1 .vim/pack/$USER/start/$2
+	config add .gitmodules .vim/pack/$USER/start/$2
 	config status
 }
 
 # vim: remove module (`vimrm nerdtree`)
 vimrm() {
 	cd ~/
-	config submodule deinit -f .vim/pack/psaia/start/$1
-	config rm -f .vim/pack/psaia/start/$1
-	config -Rf .git/modules/.vim/pack/psaia/start/$1
+	config submodule deinit -f .vim/pack/$USER/start/$1
+	config rm -f .vim/pack/$USER/start/$1
+	config -Rf .git/modules/.vim/pack/$USER/start/$1
 	config status
 }
 
@@ -43,18 +43,17 @@ branch_name() {
 prompt_line() {
 	local _GREEN=$(tput setaf 2)
 	local _BLUE=$(tput setaf 4)
-	local _RED=$(tput setaf 1)
 	local _RESET=$(tput sgr0)
 	echo "${_BLUE}\W${_RESET}${_GREEN}\$(branch_name)${_RESET} \$ \e[0m"
 }
 
 # env
 export PS1=$(prompt_line)
-export PATH="$HOME/bin:/usr/local/bin:/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin:$PATH"
-export PATH="$HOME/work/node_versions/bin:$PATH:$GOBIN"
-export PATH="/usr/local/sbin:$PATH"
-export GOPATH="$HOME/work/go"
-export N_PREFIX="$HOME/work/node_versions"
+export PATH="${HOME}/bin:/usr/local/bin:/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin:${PATH}"
+export PATH="${HOME}/work/node_versions/bin:${PATH}:${GOBIN}"
+export PATH="/usr/local/sbin:${PATH}"
+export GOPATH="${HOME}/code/go"
+export N_PREFIX="${HOME}/code/node_versions"
 export CLOUDSDK_PYTHON=python2
 
 # git: dotfile management
