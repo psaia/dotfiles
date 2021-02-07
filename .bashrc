@@ -64,7 +64,7 @@ prompt_line() {
 	local _BLUE=$(tput setaf 4)
 	local _RED=$(tput setaf 1)
 	local _RESET=$(tput sgr0)
-  echo "${_BLUE}\W${_RESET}${_GREEN}\$(branch_name)${_RESET} \$ \e[0m"
+	echo "${_BLUE}\W${_RESET}${_GREEN}\$(branch_name)${_RESET} \$ \e[0m"
 }
 
 export PS1=$(prompt_line)

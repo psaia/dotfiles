@@ -1,20 +1,18 @@
 # dotfiles
 
-### General
-
-* Use the [nord](https://github.com/arcticicestudio/nord-vim/) color kit for [iterm2](https://www.iterm2.com/).
-* Install [Inconsolata-g](/extra/Inconsolata-g.ttf).
-* Install the [iterm2 profile](.iterm2/Profiles.json).
-
 ### Setup
 
-1. `git clone --bare git@github.com:psaia/dotfiles.git $HOME/.cfg`
-2. `git --git-dir=$HOME/.cfg/ --work-tree=$HOME checkout`
-3. `git --git-dir=$HOME/.cfg/ --work-tree=$HOME config --local status.showUntrackedFiles no`
-4. `git --git-dir=$HOME/.cfg/ --work-tree=$HOME submodule update --init --recursive`
-5. Continue to manage dotfiles by using `config` instead of `git`.
+1. Exec brews below
+2. Use the [nord](https://github.com/arcticicestudio/nord-vim/) color kit for [iterm2](https://www.iterm2.com/)
+3. Install [Inconsolata-g](/extra/Inconsolata-g.ttf)
+4. Install the [iterm2 profile](.iterm2/Profiles.json)
+5. `git clone --bare git@github.com:psaia/dotfiles.git $HOME/.cfg`
+6. `git --git-dir=$HOME/.cfg/ --work-tree=$HOME checkout`
+7. `git --git-dir=$HOME/.cfg/ --work-tree=$HOME config --local status.showUntrackedFiles no`
+8. `git --git-dir=$HOME/.cfg/ --work-tree=$HOME submodule update --init --recursive`
+9. Continue to manage dotfiles by using `config` instead of `git`
 
-### Vim Module Mgmt
+### Vim Flow
 
 **Add a new module:**
 
@@ -38,11 +36,13 @@ vimrm FOLDER_NAME
 
 ```bash
 brew install go
+brew install vim
 brew install n
 brew install tree
 brew install wget
 brew install ffmpeg
 brew install direnv
+brew install bash
 brew cask install iterm2
 brew cask install google-chrome
 brew cask install sketch
