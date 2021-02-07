@@ -32,8 +32,12 @@ set pastetoggle=<F2>
 set list listchars=tab:\ \ ,trail:·
 set autoindent
 set cindent
+
+" Spaces most of the time.
 set shiftwidth=2 tabstop=2 softtabstop=2 expandtab
-au FileType make,go,snippets,sh setlocal noexpandtab
+
+" Tabs some of the time.
+au FileType make,go,sh setlocal noexpandtab
 
 colorscheme nord
 
@@ -91,7 +95,6 @@ let g:NERDTreeChDirMode=2
 let g:NERDTreeNodeDelimiter = "\u00a0"
 
 " ALE Configuration.
-" Linter
 let g:ale_linters_explicit = 1
 let g:ale_lint_on_save = 1
 let g:ale_fix_on_save = 1

@@ -14,48 +14,48 @@ eval "$(direnv hook bash)"
 
 # zsh: source things I'd like to keep out of git
 if [[ -f "$HOME/.bashrcs" ]]; then
-    source $HOME/.bashrcs
+	source $HOME/.bashrcs
 fi
 
 # vim: install module (`vimadd git@github.com:preservim/nerdtree.git nerdtree`)
 vimadd() {
-  cd ~/
-  config submodule add $1 .vim/pack/psaia/start/$2
-  config add .gitmodules .vim/pack/psaia/start/$2
-  config status
+	cd ~/
+	config submodule add $1 .vim/pack/psaia/start/$2
+	config add .gitmodules .vim/pack/psaia/start/$2
+	config status
 }
 
 # vim: remove module (`vimrm nerdtree`)
 vimrm() {
-  cd ~/
-  config submodule deinit -f .vim/pack/psaia/start/$1
-  config rm -f .vim/pack/psaia/start/$1
-  config -Rf .git/modules/.vim/pack/psaia/start/$1
-  config status
+	cd ~/
+	config submodule deinit -f .vim/pack/psaia/start/$1
+	config rm -f .vim/pack/psaia/start/$1
+	config -Rf .git/modules/.vim/pack/psaia/start/$1
+	config status
 }
 
 # vim: upgrade module
 vimup() {
-  cd ~/
-  config submodule update --recursive
-  config status
+	cd ~/
+	config submodule update --recursive
+	config status
 }
 
 # go: switch go versions using brew
 genv() {
-  brew install go@$1
-  brew unlink go
-  brew link go@$1 --overwrite --force
-  go version
+	brew install go@$1
+	brew unlink go
+	brew link go@$1 --overwrite --force
+	go version
 }
 
 # prompt: branch for prompt
 branch_name() {
-  branch=$(git symbolic-ref HEAD 2> /dev/null | awk 'BEGIN{FS="/"} {print $NF}')
-  if [[ $branch != "" ]]
-  then
-    echo ' ['$branch']'
-  fi
+	branch=$(git symbolic-ref HEAD 2> /dev/null | awk 'BEGIN{FS="/"} {print $NF}')
+	if [[ $branch != "" ]]
+	then
+		echo ' ['$branch']'
+	fi
 }
 
 # prompt: format the line
