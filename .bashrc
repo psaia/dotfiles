@@ -47,7 +47,7 @@ prompt_line() {
 	local _GREEN=$(tput setaf 2)
 	local _BLUE=$(tput setaf 4)
 	local _RESET=$(tput sgr0)
-	echo "${_BLUE}\W${_RESET}${_GREEN}\$(branch_name)${_RESET} \$ \e[0m"
+	echo "\[${_BLUE}\]\W\[${_RESET}${_GREEN}\]\$(branch_name)\[${_RESET}\] \$ \[\e[0m\]"
 }
 
 # env
