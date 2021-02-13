@@ -63,6 +63,15 @@ export CLOUDSDK_PYTHON=python2
 # direnv: install
 eval "$(direnv hook bash)"
 
+# history: always append, a lot of lines, and important stuff
+shopt -s histappend
+shopt -s cmdhist
+HISTFILESIZE=1000000
+HISTSIZE=1000000
+HISTIGNORE='ls:bg:fg:history:cd'
+HISTTIMEFORMAT='%F %T '
+PROMPT_COMMAND='history -a'
+
 # zsh: source things I'd like to keep out of git
 if [[ -f "$HOME/.bashrcs" ]]; then
 	source $HOME/.bashrcs
