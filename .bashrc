@@ -21,7 +21,7 @@ vimrm() {
 # vim: upgrade module
 vimup() {
 	cd ~/
-	config submodule update --recursive
+	git submodule update --recursive --remote
 	config status
 }
 
