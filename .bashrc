@@ -21,7 +21,7 @@ vimrm() {
 # vim: upgrade module
 vimup() {
 	cd ~/
-	config submodule update --recursive
+	config submodule update --recursive --remote
 	config status
 }
 
@@ -48,6 +48,11 @@ prompt_line() {
 	local _BLUE=$(tput setaf 4)
 	local _RESET=$(tput sgr0)
 	echo "\[${_BLUE}\]\W\[${_RESET}${_GREEN}\]\$(branch_name)\[${_RESET}\] \$ \[\e[0m\]"
+}
+
+# history: quickly grep
+hs() {
+	history | grep "${1}"
 }
 
 # env
