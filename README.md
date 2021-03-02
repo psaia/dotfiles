@@ -39,6 +39,7 @@ brew install vim
 brew install n
 brew install tree
 brew install wget
+brew install gnupg
 brew install ffmpeg
 brew install direnv
 brew install bash
