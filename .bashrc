@@ -64,6 +64,7 @@ export PATH="/usr/local/sbin:${PATH}"
 export PATH="${HOME}/config/node_versions/bin:${PATH}:${GOPATH}/bin"
 export N_PREFIX="${CODE_PATH}/node_versions"
 export CLOUDSDK_PYTHON=python2
+export PATH=$HOME/.wasme/bin:$PATH
 
 # direnv: install
 eval "$(direnv hook bash)"
@@ -81,3 +82,4 @@ PROMPT_COMMAND='history -a'
 if [[ -f "$HOME/.bashrcs" ]]; then
 	source $HOME/.bashrcs
 fi
+. "$HOME/.cargo/env"
