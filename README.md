@@ -34,6 +34,9 @@ vimrm FOLDER_NAME
 ```bash
 brew tap homebrew/cask-drivers
 brew tap hashicorp/tap
+brew tap universal-ctags/universal-ctags
+brew install --HEAD universal-ctags
+brew install rust-analyzer
 brew install golang
 brew install vim
 brew install n

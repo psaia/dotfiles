@@ -55,3 +55,9 @@
 [submodule ".vim/pack/psaia/start/nord-vim"]
 	path = .vim/pack/psaia/start/nord-vim
 	url = git@github.com:arcticicestudio/nord-vim.git
+[submodule ".vim/pack/pete/start/tagbar"]
+	path = .vim/pack/pete/start/tagbar
+	url = git@github.com:preservim/tagbar.git
+[submodule ".vim/pack/pete/start/vim-commentary"]
+	path = .vim/pack/pete/start/vim-commentary
+	url = git@github.com:tpope/vim-commentary.git

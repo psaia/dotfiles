@@ -103,8 +103,9 @@ let g:ale_linters = {
 \  'javascript': ['eslint'],
 \  'typescript': ['tsserver'],
 \  'typescript.tsx': ['tsserver'],
-\  'rust': ['cargo', 'rls'],
+\  'rust': ['analyzer'],
 \}
+" \  'rust': ['analyzer','cargo', 'rls'],
 let g:ale_fixers = {
 \  'css': ['prettier'],
 \  'javascript': ['eslint'],
@@ -128,6 +129,7 @@ function! ALELSPMappings()
 	endif
 endfunction
 autocmd BufRead,FileType typescript call ALELSPMappings()
+autocmd BufRead,FileType rust call ALELSPMappings()
 
 " Nerd Tree.
 let g:NERDTreeDirArrowExpandable = '―'
@@ -201,3 +203,6 @@ autocmd BufNewFile,BufRead *.json set ft=javascript
 " Markdown
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_conceal = 0
+
+" tagbar: Make f8 toggle it
+nmap <F8> :TagbarToggle<CR>
