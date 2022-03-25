@@ -65,6 +65,7 @@ export PATH="${HOME}/config/node_versions/bin:${PATH}:${GOPATH}/bin"
 export N_PREFIX="${CODE_PATH}/node_versions"
 export CLOUDSDK_PYTHON=python2
 export PATH=$HOME/.wasme/bin:$PATH
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 # direnv: install
 eval "$(direnv hook bash)"
