@@ -87,7 +87,11 @@ PROMPT_COMMAND='history -a'
 if [[ -f "$HOME/.bashrcs" ]]; then
 	source $HOME/.bashrcs
 fi
+
+# rust: things
 . "$HOME/.cargo/env"
+
+# pyenv: easy python version switching
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
