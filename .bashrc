@@ -59,6 +59,7 @@ hs() {
 export PS1=$(prompt_line)
 export CODE_PATH="${HOME}/code"
 export GOPATH="${CODE_PATH}/go"
+export GOROOT="/usr/local/Cellar/go/1.18.5/libexec"
 export PATH="${HOME}/bin:/usr/local/bin:/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin:${PATH}"
 export PATH="/usr/local/sbin:${PATH}"
 export PATH="${HOME}/config/node_versions/bin:${PATH}:${GOPATH}/bin"
@@ -66,6 +67,9 @@ export N_PREFIX="${CODE_PATH}/node_versions"
 export CLOUDSDK_PYTHON=python2
 export PATH=$HOME/.wasme/bin:$PATH
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
+# misc aliases
+export k=kubectl
 
 # direnv: install
 eval "$(direnv hook bash)"
@@ -84,3 +88,6 @@ if [[ -f "$HOME/.bashrcs" ]]; then
 	source $HOME/.bashrcs
 fi
 . "$HOME/.cargo/env"
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
