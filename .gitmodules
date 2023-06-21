@@ -61,3 +61,6 @@
 [submodule ".vim/pack/pete/start/vim-commentary"]
 	path = .vim/pack/pete/start/vim-commentary
 	url = git@github.com:tpope/vim-commentary.git
+[submodule ".vim/pack/petesaia/start/fountain.vim"]
+	path = .vim/pack/petesaia/start/fountain.vim
+	url = https://github.com/kblin/vim-fountain
