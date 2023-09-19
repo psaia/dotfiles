@@ -14,3 +14,8 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("plugins")
+
+vim.opt.number = true
+vim.opt.mouse = "a"
+vim.opt.clipboard = "unnamed"
+vim.opt.colorcolumn = "+0"

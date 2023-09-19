@@ -65,6 +65,7 @@ if [ -f '/Users/petesaia/code/google-cloud-sdk/completion.bash.inc' ]; then . '/
 export PS1=$(prompt_line)
 export CODE_PATH="${HOME}/code"
 export GOPATH="${HOME}/go"
+export GOBIN="${GOPATH}/bin"
 export N_PREFIX="${CODE_PATH}/node_versions"
 export PATH="$PATH:/Users/petesaia/code/istio-1.16.1/bin"
 
