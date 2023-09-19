@@ -1,5 +1,5 @@
-# git: dotfile management
-alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+# brew
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # vim: install module (`vimadd git@github.com:preservim/nerdtree.git nerdtree`)
 vimadd() {
@@ -55,10 +55,31 @@ hs() {
 	history | grep "${1}"
 }
 
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/petesaia/code/google-cloud-sdk/path.bash.inc' ]; then . '/Users/petesaia/code/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/petesaia/code/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/petesaia/code/google-cloud-sdk/completion.bash.inc'; fi
+
 # env
 export PS1=$(prompt_line)
 export CODE_PATH="${HOME}/code"
+export GOPATH="${HOME}/go"
 export N_PREFIX="${CODE_PATH}/node_versions"
+export PATH="$PATH:/Users/petesaia/code/istio-1.16.1/bin"
+
+# git: dotfile management
+alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+
+# rust: things
+if [[ -d "$HOME/.cargo" ]]; then
+	. "$HOME/.cargo/env"
+fi
+
+# pyenv: easy python version switching
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 
 # misc aliases
 alias k=kubectl
@@ -75,15 +96,7 @@ HISTIGNORE='ls:bg:fg:history:cd'
 HISTTIMEFORMAT='%F %T '
 PROMPT_COMMAND='history -a'
 
-# zsh: source things I'd like to keep out of git
+# source things I'd like to keep out of git
 if [[ -f "$HOME/.bashrcs" ]]; then
 	source $HOME/.bashrcs
 fi
-
-# rust: things
-. "$HOME/.cargo/env"
-
-# pyenv: easy python version switching
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"

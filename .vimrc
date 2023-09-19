@@ -206,3 +206,6 @@ let g:vim_markdown_conceal = 0
 
 " tagbar: Make f8 toggle it
 nmap <F8> :TagbarToggle<CR>
+
+" Wrap text for fountain files
+au BufRead,BufNewFile *.fountain setlocal textwidth=80
