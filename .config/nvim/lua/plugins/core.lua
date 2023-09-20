@@ -10,14 +10,8 @@ return {
   },
   "tpope/vim-sleuth",
   {
-    "junegunn/fzf",
-    "junegunn/fzf.vim",
-    config = function()
-      require("fzf").install()
-    end,
-  },
-  {
     "nvim-lualine/lualine.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
       require("lualine").setup({
         options = { theme = "onedark" },
@@ -31,7 +25,9 @@ return {
     "nvim-telescope/telescope-file-browser.nvim",
     dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim", "nvim-tree/nvim-web-devicons" },
     config = function()
-      require("telescope").setup({
+      local ts = require("telescope")
+
+      ts.setup({
         extensions = {
           file_browser = {
             hijack_netrw = true,
@@ -47,7 +43,12 @@ return {
         { noremap = true }
       )
 
-      require("telescope").load_extension("file_browser")
+      vim.api.nvim_set_keymap('n', '<space>ff', ':Telescope find_files<CR>', {})
+      vim.api.nvim_set_keymap('n', '<space>fg', ':Telescope live_grep<CR>', {})
+      vim.api.nvim_set_keymap('n', '<space>fh', ':Telescope help_tags<CR>', {})
+
+
+      ts.load_extension("file_browser")
     end,
   },
 }
