@@ -20,5 +20,6 @@
   "telescope-file-browser.nvim": { "branch": "master", "commit": "c3670c088bfb83e892ae69989875a1dfdd5cff99" },
   "telescope.nvim": { "branch": "master", "commit": "40c8d2fc2b729dd442eda093cf8c9496d6e23732" },
   "vim-sleuth": { "branch": "master", "commit": "1cc4557420f215d02c4d2645a748a816c220e99b" },
+  "vim-terraform": { "branch": "master", "commit": "2bbc5f65a80c79a5110494a2ba1b869075fcf7a0" },
   "yaml.nvim": { "branch": "main", "commit": "400b2edb001b81f41be69bdcbe09a5ed23886074" }
 }
