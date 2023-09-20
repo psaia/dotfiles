@@ -1,30 +1,6 @@
 # brew
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# vim: install module (`vimadd git@github.com:preservim/nerdtree.git nerdtree`)
-vimadd() {
-	cd ~/
-	config submodule add $1 .vim/pack/$USER/start/$2
-	config add .gitmodules .vim/pack/$USER/start/$2
-	config status
-}
-
-# vim: remove module (`vimrm nerdtree`)
-vimrm() {
-	cd ~/
-	config submodule deinit -f .vim/pack/$USER/start/$1
-	config rm -f .vim/pack/$USER/start/$1
-	config -Rf .git/modules/.vim/pack/$USER/start/$1
-	config status
-}
-
-# vim: upgrade module
-vimup() {
-	cd ~/
-	config submodule update --recursive --remote
-	config status
-}
-
 # go: switch go versions using brew
 genv() {
 	brew install go@$1
