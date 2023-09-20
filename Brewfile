@@ -1,6 +1,8 @@
 tap "boz/repo"
+tap "homebrew/cask-fonts"
 
 cask "iterm2"
+cask "font-Inconsolata-nerd-font"
 
 brew "helm"
 brew "boz/repo/kail"
