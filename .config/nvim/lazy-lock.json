@@ -3,6 +3,7 @@
   "cmp-nvim-lsp": { "branch": "main", "commit": "44b16d11215dce86f253ce0c30949813c0a90765" },
   "direnv.vim": { "branch": "master", "commit": "165031fa2c8dbb1e78dfd7054fe064ea926384cb" },
   "editorconfig-vim": { "branch": "master", "commit": "aefcf3d735122f349b172302d164d5eb61cd7e5f" },
+  "efmls-configs-nvim": { "branch": "main", "commit": "265037d589bde340227c60d2ceaaf552a2d83d85" },
   "fzf": { "branch": "master", "commit": "d2b852f7cbd2da53804de00cf22ca0b7e6c9f472" },
   "fzf.vim": { "branch": "master", "commit": "678ee1a549bd873dde35f6146f288a3f2e29d983" },
   "go.nvim": { "branch": "master", "commit": "5e9e083f4927402eab6ab233e970b397daa2e826" },

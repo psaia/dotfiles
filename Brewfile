@@ -9,9 +9,11 @@ brew "ffmpeg"
 brew "lsd"
 brew "ripgrep"
 brew "fzf"
+brew "fd"
 
 # Language Servers
 
+brew "lua-language-server"
 brew "python-lsp-server"
 brew "yaml-language-server"
 brew "hashicorp/tap/terraform-ls"
