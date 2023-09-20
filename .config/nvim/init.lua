@@ -19,3 +19,5 @@ vim.opt.number = true
 vim.opt.mouse = "a"
 vim.opt.clipboard = "unnamed"
 vim.opt.colorcolumn = "+0"
+
+vim.keymap.set('', '<t-n>', '<cmd>tabnew<cr>')

@@ -8,8 +8,11 @@ brew "go"
 brew "ffmpeg"
 brew "lsd"
 brew "ripgrep"
+brew "fzf"
 
 # Language Servers
+
+brew "python-lsp-server"
 brew "yaml-language-server"
 brew "hashicorp/tap/terraform-ls"
 brew "gopls"

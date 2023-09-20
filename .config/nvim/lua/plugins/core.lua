@@ -8,6 +8,14 @@ return {
       require("onedark").load()
     end,
   },
+  "tpope/vim-sleuth",
+  {
+    "junegunn/fzf",
+    "junegunn/fzf.vim",
+    config = function()
+      require("fzf").install()
+    end,
+  },
   {
     "nvim-lualine/lualine.nvim",
     config = function()
