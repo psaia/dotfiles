@@ -94,11 +94,9 @@ return {
       require('lspconfig').yamlls.setup({})
       require('lspconfig').bashls.setup({})
       require('lspconfig').pylsp.setup({})
-      require('lspconfig').luals.setup({})
       require('lspconfig').rust_analyzer.setup({})
 
       lsp.setup()
-
     end,
   },
   "hashivim/vim-terraform",

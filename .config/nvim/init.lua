@@ -24,3 +24,11 @@ vim.api.nvim_set_keymap('n', 'tn', ':tabnew<CR>', { noremap = true, silent = tru
 vim.api.nvim_set_keymap('n', 'tl', ':tabprev<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', 'th', ':tabnext<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', 'td', ':tabclose<CR>', { noremap = true, silent = true })
+
+-- disable netrw at the very start of your init.lua
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+-- set termguicolors to enable highlight groups
+vim.opt.termguicolors = true
+

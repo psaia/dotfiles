@@ -18,11 +18,26 @@ return {
       })
     end,
   },
+  {
+    "nvim-tree/nvim-tree.lua",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+      require("nvim-tree").setup({
+        view = {
+          width = 40,
+        },
+        filters = {
+          dotfiles = true,
+        },
+      })
+      vim.api.nvim_set_keymap('n', '<C-n>', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
+    end
+  },
   "nvim-lua/plenary.nvim",
   "direnv/direnv.vim",
   "editorconfig/editorconfig-vim",
   {
-    "nvim-telescope/telescope-file-browser.nvim",
+    "nvim-telescope/telescope.nvim",
     dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim", "nvim-tree/nvim-web-devicons" },
     config = function()
       local ts = require("telescope")
@@ -46,9 +61,6 @@ return {
       vim.api.nvim_set_keymap('n', '<space>ff', ':Telescope find_files<CR>', {})
       vim.api.nvim_set_keymap('n', '<space>fg', ':Telescope live_grep<CR>', {})
       vim.api.nvim_set_keymap('n', '<space>fh', ':Telescope help_tags<CR>', {})
-
-
-      ts.load_extension("file_browser")
     end,
   },
 }
