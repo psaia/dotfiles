@@ -20,12 +20,8 @@ return {
   "direnv/direnv.vim",
   "editorconfig/editorconfig-vim",
   {
-    "kyazdani42/nvim-web-devicons",
-    disable = false,
-  },
-  {
     "nvim-telescope/telescope-file-browser.nvim",
-    dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
+    dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim", "nvim-tree/nvim-web-devicons" },
     config = function()
       require("telescope").setup({
         extensions = {

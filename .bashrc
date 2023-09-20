@@ -67,15 +67,13 @@ export CODE_PATH="${HOME}/code"
 export GOPATH="${HOME}/go"
 export GOBIN="${GOPATH}/bin"
 export N_PREFIX="${CODE_PATH}/node_versions"
-export PATH="$PATH:/Users/petesaia/code/istio-1.16.1/bin"
+export PATH="$PATH:${CODE_PATH}/istio-1.16.1/bin"
 
 # git: dotfile management
 alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 # rust: things
-if [[ -d "$HOME/.cargo" ]]; then
-	. "$HOME/.cargo/env"
-fi
+if [[ -d "$HOME/.cargo" ]]; then . "$HOME/.cargo/env"; fi
 
 # pyenv: easy python version switching
 export PYENV_ROOT="$HOME/.pyenv"
@@ -84,6 +82,9 @@ eval "$(pyenv init -)"
 
 # misc aliases
 alias k=kubectl
+alias vim="nvim"
+alias vi="nvim"
+export EDITOR=nvim
 
 # direnv: install
 eval "$(direnv hook bash)"
