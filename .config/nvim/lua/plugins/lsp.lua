@@ -99,6 +99,7 @@ return {
       lsp.setup()
     end,
   },
+  "kblin/vim-fountain",
   "hashivim/vim-terraform",
   "simrat39/rust-tools.nvim",
   "mfussenegger/nvim-dap",
