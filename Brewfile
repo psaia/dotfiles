@@ -1,8 +1,19 @@
+# Taps
+
 tap "boz/repo"
 tap "homebrew/cask-fonts"
 
+# Casks
+
 cask "iterm2"
 cask "font-meslo-lg-nerd-font"
+cask "blender"
+cask "unity-hub"
+cask "unity"
+cask "spotify"
+cask "docker"
+
+# Misc
 
 brew "helm"
 brew "boz/repo/kail"
@@ -12,6 +23,14 @@ brew "lsd"
 brew "ripgrep"
 brew "fzf"
 brew "fd"
+brew "node"
+brew "jq"
+brew "yq"
+brew "git"
+brew "telnet"
+brew "certbot"
+brew "pyenv"
+brew "kustomize"
 
 # Language Servers
 
