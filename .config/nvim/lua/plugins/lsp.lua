@@ -117,7 +117,8 @@ return {
     "nvim-treesitter/nvim-treesitter",
     config = function()
       require("nvim-treesitter.configs").setup({
-        ensure_installed = { "go", "gosum", "graphql", "html", "json", "lua", "python", "rust", "sql", "typescript" },
+        ensure_installed = { "go", "gomod", "gosum", "graphql", "html", "json", "lua", "python", "rust", "sql", "typescript",
+                              "dockerfile", "javascript", "perl", "ocaml", "make", "markdown", "scala", "yaml" },
         highlight = {
           enable = true
         }
