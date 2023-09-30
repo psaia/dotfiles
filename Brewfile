@@ -5,6 +5,7 @@ tap "homebrew/cask-fonts"
 
 # Casks
 
+cask "kitty"
 cask "iterm2"
 cask "font-meslo-lg-nerd-font"
 cask "blender"

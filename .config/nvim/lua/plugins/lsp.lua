@@ -89,7 +89,17 @@ return {
       })
 
       -- Configure all servers here.
-      require('lspconfig').gopls.setup({})
+      require('lspconfig').gopls.setup({
+        settings = {
+          gopls = {
+            completeUnimported = true,
+            usePlaceholders = true,
+            analyses = {
+              unusedparams = true,
+            },
+          },
+        },
+      })
       require('lspconfig').terraformls.setup({})
       require('lspconfig').yamlls.setup({})
       require('lspconfig').bashls.setup({})
@@ -103,6 +113,17 @@ return {
   "hashivim/vim-terraform",
   "simrat39/rust-tools.nvim",
   "mfussenegger/nvim-dap",
+  {
+    "nvim-treesitter/nvim-treesitter",
+    config = function()
+      require("nvim-treesitter.configs").setup({
+        ensure_installed = { "go", "gosum", "graphql", "html", "json", "lua", "python", "rust", "sql", "typescript" },
+        highlight = {
+          enable = true
+        }
+      })
+    end,
+  },
   {
     "ray-x/go.nvim",
     dependencies = { -- optional packages
