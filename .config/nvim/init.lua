@@ -15,6 +15,9 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("plugins")
 
+-- some fundamental mappings to make life better for me
+vim.g.mapleader = ','
+
 vim.opt.number = true
 vim.opt.mouse = "a"
 vim.opt.clipboard = "unnamed"

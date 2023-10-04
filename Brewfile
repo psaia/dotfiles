@@ -32,6 +32,7 @@ brew "telnet"
 brew "certbot"
 brew "pyenv"
 brew "kustomize"
+brew "gnu-sed"
 
 # Language Servers
 

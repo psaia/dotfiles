@@ -104,7 +104,37 @@ return {
       require('lspconfig').yamlls.setup({})
       require('lspconfig').bashls.setup({})
       require('lspconfig').pylsp.setup({})
-      require('lspconfig').rust_analyzer.setup({})
+      require('lspconfig').rust_analyzer.setup({
+        settings = {
+          ["rust-analyzer"] = {
+            ["cargo"] = {
+                ["loadOutDirsFromCheck"] = true
+            },
+            ["procMacro"] = {
+                enable = true
+            },
+            ["checkOnSave"] = {
+                enable = true
+            },
+            ["completion"] = {
+                enableAutoimport = true
+            },
+            ["inlayHints"] = {
+                typeHints = true
+            },
+            ["cargo-watch"] = {
+                enable = true
+            },
+            workspace = {
+              symbol = {
+                search = {
+                  kind = "all_symbols"
+                }
+              }
+            }
+          },
+        }
+      })
 
       lsp.setup()
     end,

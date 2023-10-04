@@ -3,7 +3,8 @@ return {
     "navarasu/onedark.nvim",
     config = function()
       require('onedark').setup {
-        style = 'warm'
+        style = 'warm',
+        toggle_style_key = "<leader>ts",
       }
       require("onedark").load()
     end,
@@ -87,5 +88,9 @@ return {
       vim.api.nvim_set_keymap('n', '<space>fg', ':Telescope live_grep<CR>', {})
       vim.api.nvim_set_keymap('n', '<space>fh', ':Telescope help_tags<CR>', {})
     end,
+  },
+  {
+    "nvim-pack/nvim-spectre",
+    dependencies = { "nvim-lua/plenary.nvim" },
   },
 }
