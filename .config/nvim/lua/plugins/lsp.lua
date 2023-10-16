@@ -104,6 +104,7 @@ return {
       require('lspconfig').yamlls.setup({})
       require('lspconfig').bashls.setup({})
       require('lspconfig').pylsp.setup({})
+      require('lspconfig').vtsls.setup({}) -- npm install -g @vtsls/language-server
       require('lspconfig').rust_analyzer.setup({
         settings = {
           ["rust-analyzer"] = {

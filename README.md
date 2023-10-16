@@ -11,6 +11,10 @@ brew bundle
 Open up iterm2 and install the [profile](.iterm2/Profiles.json) so fonts look
 nice.
 
+## Non-brew installs
+
+* npm is required for the TS language server: `npm install -g @vtsls/language-server`
+
 ## Configure git/config
 
 ```bash
