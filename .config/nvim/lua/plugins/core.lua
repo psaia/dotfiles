@@ -10,6 +10,7 @@ return {
     end,
   },
   "tpope/vim-sleuth",
+  "tpope/vim-fugitive",
   {
     "nvim-lualine/lualine.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -53,7 +54,7 @@ return {
           width = 40,
         },
         filters = {
-          dotfiles = true,
+          dotfiles = false,
         },
       })
       vim.api.nvim_set_keymap('n', '<C-n>', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
@@ -69,6 +70,13 @@ return {
       local ts = require("telescope")
 
       ts.setup({
+        pickers = {
+          live_grep = {
+            additional_args = function(opts)
+              return {"--hidden", "--glob", "!{**/.git/*,**/node_modules/*,**/package-lock.json,**/yarn.lock}"}
+            end
+          },
+        },
         extensions = {
           file_browser = {
             hijack_netrw = true,

@@ -139,6 +139,7 @@ return {
       lsp.setup()
     end,
   },
+  "ChiliConSql/neovim-stylus",
   "kblin/vim-fountain",
   "hashivim/vim-terraform",
   "simrat39/rust-tools.nvim",
