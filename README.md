@@ -13,7 +13,7 @@ nice.
 
 ## Non-brew installs
 
-* npm is required for the TS language server: `npm install -g @vtsls/language-server`
+* npm is required for the TS language server: `npm install -g typescript typescript-language-server`
 
 ## Configure git/config
 
