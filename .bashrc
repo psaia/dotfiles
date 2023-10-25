@@ -44,7 +44,7 @@ export GOPATH="${HOME}/go"
 export GOROOT="$(brew --prefix golang)/libexec"
 export GOBIN="$(brew --prefix golang)/bin"
 export N_PREFIX="${CODE_PATH}/node_versions"
-export PATH="$PATH:${CODE_PATH}/istio-1.16.1/bin"
+export PATH="$PATH:${CODE_PATH}/istio-1.16.1/bin:${GOBIN}"
 
 # git: dotfile management
 alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'

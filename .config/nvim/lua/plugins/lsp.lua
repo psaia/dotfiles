@@ -68,7 +68,7 @@ return {
     cmd = "LspInfo",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
-      { "hrsh7th/cmp-nvim-lsp" },
+      { "hrsh7th/cmp-nvim-lsp", "lukas-reineke/lsp-format.nvim" },
     },
     config = function()
       local lsp = require("lsp-zero")
@@ -89,23 +89,27 @@ return {
       })
 
       -- Configure all servers here.
-      require('lspconfig').gopls.setup({
+      local lspconfig = require('lspconfig')
+      lspconfig.gopls.setup({
         settings = {
           gopls = {
             completeUnimported = true,
             usePlaceholders = true,
+            ["local"] = "repo",
+            gofumpt = true,
             analyses = {
               unusedparams = true,
             },
           },
         },
       })
-      require('lspconfig').terraformls.setup({})
-      require('lspconfig').yamlls.setup({})
-      require('lspconfig').bashls.setup({})
-      require('lspconfig').pylsp.setup({})
-      require('lspconfig').tsserver.setup({}) -- npm install -g typescript typescript-language-server
-      require('lspconfig').rust_analyzer.setup({
+      lspconfig.terraformls.setup({})
+      lspconfig.yamlls.setup({})
+      lspconfig.bashls.setup({})
+      lspconfig.pylsp.setup({})
+      lspconfig.tsserver.setup({}) -- npm install -g typescript typescript-language-server
+      lspconfig.bufls.setup({})
+      lspconfig.rust_analyzer.setup({
         settings = {
           ["rust-analyzer"] = {
             ["cargo"] = {
@@ -136,6 +140,28 @@ return {
           },
         }
       })
+
+      local languages = require('efmls-configs.defaults').languages()
+
+      local efmls_config = {
+        filetypes = vim.tbl_keys(languages),
+        on_attach = require("lsp-format").on_attach,
+        settings = {
+          rootMarkers = { '.git/' },
+          languages = languages,
+        },
+        init_options = {
+          documentFormatting = true,
+          documentRangeFormatting = true,
+        },
+      }
+
+      lspconfig.efm.setup(vim.tbl_extend('force', efmls_config, {
+        -- Pass your custom lsp config below like on_attach and capabilities
+        --
+        -- on_attach = on_attach,
+        -- capabilities = capabilities,
+      }))
 
       lsp.setup()
     end,

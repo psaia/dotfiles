@@ -14,6 +14,7 @@ nice.
 ## Non-brew installs
 
 * npm is required for the TS language server: `npm install -g typescript typescript-language-server`
+* protobuf language server: `go install github.com/bufbuild/buf-language-server/cmd/bufls@latest`
 
 ## Configure git/config
 

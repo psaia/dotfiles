@@ -33,6 +33,9 @@ brew "certbot"
 brew "pyenv"
 brew "kustomize"
 brew "gnu-sed"
+brew "efm-langserver"
+brew "shellcheck"
+brew "shfmt"
 
 # Language Servers
 

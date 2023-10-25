@@ -13,10 +13,10 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup("plugins")
-
 -- some fundamental mappings to make life better for me
 vim.g.mapleader = ','
+
+require("lazy").setup("plugins")
 
 vim.opt.number = true
 vim.opt.mouse = "a"
