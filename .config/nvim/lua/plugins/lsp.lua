@@ -78,16 +78,6 @@ return {
         lsp.buffer_autoformat()
       end)
 
-      lsp.format_on_save({
-        format_opts = {
-          async = false,
-          timeout_ms = 10000,
-        },
-        servers = {
-          ['gopls'] = {'go'},
-        }
-      })
-
       -- Configure all servers here.
       local lspconfig = require('lspconfig')
       lspconfig.gopls.setup({
@@ -143,7 +133,7 @@ return {
 
       local languages = require('efmls-configs.defaults').languages()
 
-      local efmls_config = {
+      lspconfig.efm.setup({
         filetypes = vim.tbl_keys(languages),
         on_attach = require("lsp-format").on_attach,
         settings = {
@@ -154,14 +144,7 @@ return {
           documentFormatting = true,
           documentRangeFormatting = true,
         },
-      }
-
-      lspconfig.efm.setup(vim.tbl_extend('force', efmls_config, {
-        -- Pass your custom lsp config below like on_attach and capabilities
-        --
-        -- on_attach = on_attach,
-        -- capabilities = capabilities,
-      }))
+      })
 
       lsp.setup()
     end,
