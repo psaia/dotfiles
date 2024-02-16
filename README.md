@@ -26,3 +26,12 @@ git --git-dir=$HOME/.cfg/ --work-tree=$HOME submodule update --init --recursive
 ```
 
 Continue to manage dotfiles by using `config` instead of `git`.
+
+## Go Management
+
+I find it easier and more straight forward to manage Go versions without a fancy
+too specific for doing so.
+
+1. Download a tarball from https://go.dev/dl/
+2. Decompress and rename it to `~/go/goX.X.X`.
+3. Update the `GOROOT` in the .bashrc.

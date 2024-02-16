@@ -40,11 +40,11 @@ if [ -f '/Users/petesaia/code/google-cloud-sdk/completion.bash.inc' ]; then . '/
 # env
 export PS1=$(prompt_line)
 export CODE_PATH="${HOME}/code"
-export GOPATH="${HOME}/go"
-export GOROOT="$(brew --prefix golang)/libexec"
-export GOBIN="$(brew --prefix golang)/bin"
+export GO111MODULE=on
+export GOROOT="${HOME}/go/go1.22.0"
+export GOBIN="${GOROOT}/bin"
 export N_PREFIX="${CODE_PATH}/node_versions"
-export PATH="$PATH:${CODE_PATH}/istio-1.16.1/bin:${GOBIN}"
+export PATH="${GOBIN}:$PATH:${CODE_PATH}/istio-1.16.1/bin"
 
 # git: dotfile management
 alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'

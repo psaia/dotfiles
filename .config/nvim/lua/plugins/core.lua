@@ -12,6 +12,7 @@ return {
   "tpope/vim-sleuth",
   "tpope/vim-fugitive",
   "tpope/vim-commentary",
+  "towolf/vim-helm",
   {
     "nvim-lualine/lualine.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
