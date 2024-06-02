@@ -23,10 +23,17 @@ vim.opt.mouse = "a"
 vim.opt.clipboard = "unnamed"
 vim.opt.colorcolumn = "+0"
 
+vim.opt.fillchars = { fold = " " }
+vim.opt.foldmethod = "indent"
+vim.opt.foldenable = false
+vim.opt.foldlevel = 99
+
 vim.api.nvim_set_keymap('n', 'tn', ':tabnew<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', 'tl', ':tabprev<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', 'th', ':tabnext<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', 'td', ':tabclose<CR>', { noremap = true, silent = true })
+
+vim.api.nvim_set_keymap('n', '<Space>', 'za', { noremap = true, silent = true })
 
 -- disable netrw at the very start of your init.lua
 vim.g.loaded_netrw = 1

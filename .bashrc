@@ -41,7 +41,7 @@ if [ -f '/Users/petesaia/code/google-cloud-sdk/completion.bash.inc' ]; then . '/
 export PS1=$(prompt_line)
 export CODE_PATH="${HOME}/code"
 export GO111MODULE=on
-export GOROOT="${HOME}/go/go1.22.0"
+export GOROOT="${HOME}/go/go1.21.9"
 export GOBIN="${GOROOT}/bin"
 export GOPATH="${GOROOT}/versioned_packages"
 export N_PREFIX="${CODE_PATH}/node_versions"

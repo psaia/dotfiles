@@ -94,7 +94,7 @@ return {
         },
       })
       lspconfig.terraformls.setup({})
-      lspconfig.yamlls.setup({})
+      -- lspconfig.yamlls.setup({})
       lspconfig.bashls.setup({})
       lspconfig.pylsp.setup({})
       lspconfig.tsserver.setup({}) -- npm install -g typescript typescript-language-server
@@ -176,14 +176,16 @@ return {
     event = { "CmdlineEnter" },
     ft = { "go", "gomod" },
     opts = {},
+    build = ':lua require("go.install").update_all_sync()',
     config = function ()
       require("go").setup()
 
-      local format_sync_grp = vim.api.nvim_create_augroup("GoFormat", {})
+      -- Run gofmt + goimports on save
+      local format_sync_grp = vim.api.nvim_create_augroup("goimports", {})
       vim.api.nvim_create_autocmd("BufWritePre", {
         pattern = "*.go",
         callback = function()
-         require('go.format').goimport()
+         require('go.format').goimports()
         end,
         group = format_sync_grp,
       })
