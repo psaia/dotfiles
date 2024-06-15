@@ -35,6 +35,10 @@ brew "gnu-sed"
 brew "efm-langserver"
 brew "shellcheck"
 brew "shfmt"
+brew "nvm"
+brew "neovim"
+brew "rustup-init"
+brew "python"
 
 # Language Servers
 
