@@ -75,7 +75,7 @@ return {
 
       lsp.on_attach(function(client, bufnr)
         lsp.default_keymaps({buffer = bufnr})
-        lsp.buffer_autoformat()
+        --lsp.buffer_autoformat()
       end)
 
       -- Configure all servers here.
@@ -97,8 +97,8 @@ return {
       -- lspconfig.yamlls.setup({})
       lspconfig.bashls.setup({})
       lspconfig.pylsp.setup({})
-      lspconfig.tsserver.setup({}) -- npm install -g typescript typescript-language-server
-      lspconfig.bufls.setup({})
+      lspconfig.ts_ls.setup({})
+      lspconfig.buf_ls.setup({})
       lspconfig.rust_analyzer.setup({
         settings = {
           ["rust-analyzer"] = {
