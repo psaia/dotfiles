@@ -57,6 +57,7 @@ return {
         },
         filters = {
           dotfiles = false,
+          git_ignored = false,
         },
       })
       vim.api.nvim_set_keymap('n', '<C-n>', ':NvimTreeToggle<CR>', { noremap = true, silent = true })

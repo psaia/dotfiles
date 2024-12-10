@@ -49,6 +49,9 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"                                       # This loads nvm
 [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
 
+# Required by gpg2 in order to sign commits
+export GPG_TTY=$(tty)
+
 # git: dotfile management
 alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 

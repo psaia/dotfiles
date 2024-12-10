@@ -94,6 +94,12 @@ return {
         },
       })
       lspconfig.terraformls.setup({})
+      vim.api.nvim_create_autocmd({"BufWritePre"}, {
+        pattern = {"*.tf", "*.tfvars"},
+        callback = function()
+          vim.lsp.buf.format()
+        end,
+      })
       -- lspconfig.yamlls.setup({})
       lspconfig.bashls.setup({})
       lspconfig.pylsp.setup({})
@@ -204,4 +210,7 @@ return {
     version = 'v1.x.x', -- version is optional, but recommended
     dependencies = { 'neovim/nvim-lspconfig' },
   },
+  {
+    'varnishcache-friends/vim-varnish'
+  }
 }
