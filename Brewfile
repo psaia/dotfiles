@@ -39,6 +39,13 @@ brew "nvm"
 brew "neovim"
 brew "rustup-init"
 brew "python"
+brew "gnupg"
+brew "yubikey-personalization"
+brew "ykman"
+brew "pinentry-mac"
+brew "wget"
+brew "dotenv"
+brew "bufbuild/buf/buf"
 
 # Language Servers
 
