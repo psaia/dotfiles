@@ -1,14 +1,6 @@
 # brew
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# go: switch go versions using brew
-genv() {
-	brew install go@$1
-	brew unlink go
-	brew link go@$1 --overwrite --force
-	go version
-}
-
 # prompt: branch for prompt
 branch_name() {
 	local branch=$(git branch 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
@@ -75,6 +67,9 @@ HISTSIZE=1000000
 HISTIGNORE='ls:bg:fg:history:cd'
 HISTTIMEFORMAT='%F %T '
 PROMPT_COMMAND='history -a'
+
+# direnv
+eval "$(direnv hook bash)"
 
 # source things I'd like to keep out of git
 if [[ -f "$HOME/.bashrcs" ]]; then
