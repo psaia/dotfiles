@@ -37,12 +37,6 @@ reveal () {
     echo "${1} -> ${output}"
 }
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/petesaia/code/google-cloud-sdk/path.bash.inc' ]; then . '/Users/petesaia/code/google-cloud-sdk/path.bash.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/petesaia/code/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/petesaia/code/google-cloud-sdk/completion.bash.inc'; fi
-
 # env
 export PS1=$(prompt_line)
 export CODE_PATH="${HOME}/code"
@@ -53,8 +47,6 @@ export GOPATH="${GOROOT}/versioned_packages"
 export N_PREFIX="${CODE_PATH}/node_versions"
 export PATH="${GOBIN}:$PATH:${CODE_PATH}/istio-1.16.1/bin"
 export NVM_DIR="$HOME/.nvm"
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"                                       # This loads nvm
-[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
 
 # Required by gpg2 in order to sign commits
 export GPG_TTY=$(tty)
@@ -70,9 +62,6 @@ alias k=kubectl
 alias vim="nvim"
 alias vi="nvim"
 export EDITOR=nvim
-
-# direnv: install
-eval "$(direnv hook bash)"
 
 # history: always append, a lot of lines, and important stuff
 shopt -s histappend
