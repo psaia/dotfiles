@@ -22,6 +22,21 @@ hs() {
 	history | grep "${1}"
 }
 
+# Make gpg key id more accessible
+export KEYID=DED8ACAB0256BA11
+
+secret () {
+  output="${1}".$(date +%s).enc
+  gpg --encrypt --armor --output ${output} \
+    -r $KEYID "${1}" && echo "${1} -> ${output}"
+}
+
+reveal () {
+  output=$(echo "${1}" | rev | cut -c16- | rev)
+  gpg --decrypt --output ${output} "${1}" && \
+    echo "${1} -> ${output}"
+}
+
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/petesaia/code/google-cloud-sdk/path.bash.inc' ]; then . '/Users/petesaia/code/google-cloud-sdk/path.bash.inc'; fi
 
