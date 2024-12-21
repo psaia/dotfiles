@@ -40,8 +40,7 @@ reveal () {
 # env
 export PS1=$(prompt_line)
 export CODE_PATH="${HOME}/code"
-export GO111MODULE=on
-export GOROOT="${HOME}/go/go1.22.3"
+export GOROOT="${HOME}/go/go1.23.4"
 export GOBIN="${GOROOT}/bin"
 export GOPATH="${GOROOT}/versioned_packages"
 export N_PREFIX="${CODE_PATH}/node_versions"
