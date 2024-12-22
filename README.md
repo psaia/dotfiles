@@ -2,14 +2,13 @@
 
 This is how I use a computer.
 
+I use [kitty](https://sw.kovidgoyal.net/kitty/).
+
 ## Brew Installs
 
 ```bash
 brew bundle
 ```
-
-Open up iterm2 and install the [profile](.iterm2/Profiles.json) so fonts look
-nice.
 
 ## Non-brew installs
 

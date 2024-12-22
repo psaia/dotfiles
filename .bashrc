@@ -46,6 +46,8 @@ export GOPATH="${GOROOT}/versioned_packages"
 export N_PREFIX="${CODE_PATH}/node_versions"
 export PATH="${GOBIN}:$PATH:${CODE_PATH}/istio-1.16.1/bin"
 export NVM_DIR="$HOME/.nvm"
+export EDITOR=nvim
+export SHELL=kitty
 
 # Required by gpg2 in order to sign commits
 export GPG_TTY=$(tty)
@@ -60,7 +62,6 @@ if [[ -d "$HOME/.cargo" ]]; then . "$HOME/.cargo/env"; fi
 alias k=kubectl
 alias vim="nvim"
 alias vi="nvim"
-export EDITOR=nvim
 
 # history: always append, a lot of lines, and important stuff
 shopt -s histappend
