@@ -1,12 +1,13 @@
 return {
   {
-    "navarasu/onedark.nvim",
+    "rebelot/kanagawa.nvim",
+    priority = 1000,
     config = function()
-      require('onedark').setup {
-        style = 'warm',
-        toggle_style_key = "<leader>ts",
-      }
-      require("onedark").load()
+      require('kanagawa').setup({
+        theme = "lotus" -- wave | dragon (super dark) | lotus (light)
+      })
+      require('kanagawa').load()
+      -- vim.cmd("colorscheme kanagawa")
     end,
   },
   "tpope/vim-sleuth",
@@ -42,7 +43,7 @@ return {
           }
         },
         options = {
-          theme = "onedark"
+          theme = "auto"
         },
       })
     end,
