@@ -23,18 +23,46 @@ hs() {
 }
 
 # Make gpg key id more accessible
-export KEYID=DED8ACAB0256BA11
+KEYID=$(gpg -k --with-colons "Pete Saia <iam@petesaia.com>" | awk -F: '/^pub:/ { print $5; exit }')
+export KEYID=$KEYID
 
-secret () {
-  output="${1}".$(date +%s).enc
-  gpg --encrypt --armor --output ${output} \
-    -r $KEYID "${1}" && echo "${1} -> ${output}"
+encrypt() {
+  local input="$1"
+  local output
+  
+  if [[ -d "$input" ]]; then
+    # Archive the directory into a tar.gz file
+    tar_file="${input%/}.$(date +%s).tar.gz"
+    tar czf "$tar_file" "$input"
+    input="$tar_file"
+  fi
+  
+  # Generate the encrypted file name
+  output="${input}.enc"
+  
+  # Encrypt the input
+  gpg --encrypt --armor --output "$output" -r "$KEYID" "$input" && \
+    echo "$input -> $output"
 }
 
-reveal () {
-  output=$(echo "${1}" | rev | cut -c16- | rev)
-  gpg --decrypt --output ${output} "${1}" && \
-    echo "${1} -> ${output}"
+decrypt() {
+  local input="$1"
+  local output
+  
+  # Generate the decrypted file name by stripping the last `.enc`
+  output=$(echo "$input" | rev | cut -d '.' -f 2- | rev)
+  
+  # Decrypt the input
+  gpg --decrypt --output "$output" "$input" && \
+    echo "$input -> $output"
+  
+  # Check if the decrypted file is a tar.gz and extract it
+  if [[ "$output" == *.tar.gz ]]; then
+    extracted_dir="${output%.tar.gz}"
+    mkdir -p "$extracted_dir"
+    tar xzf "$output" -C "$extracted_dir" && \
+      echo "Extracted $output to $extracted_dir"
+  fi
 }
 
 # env
@@ -44,7 +72,7 @@ export GOROOT="${HOME}/go/go1.23.4"
 export GOBIN="${GOROOT}/bin"
 export GOPATH="${GOROOT}/versioned_packages"
 export N_PREFIX="${CODE_PATH}/node_versions"
-export PATH="${GOBIN}:$PATH:${CODE_PATH}/istio-1.16.1/bin"
+export PATH="${GOBIN}:/usr/local/bin:$PATH"
 export NVM_DIR="$HOME/.nvm"
 export EDITOR=nvim
 export SHELL=kitty
