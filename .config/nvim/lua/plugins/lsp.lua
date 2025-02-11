@@ -123,18 +123,45 @@ return {
         }
       })
 
-      local languages = require('efmls-configs.defaults').languages()
+      -- Enable efm-language-server
+      local eslint = require("efmls-configs.linters.eslint")
+      local black = require("efmls-configs.formatters.black")
+      local flake8 = require("efmls-configs.linters.flake8")
+      local shfmt = require("efmls-configs.formatters.shfmt")
+      local shellcheck = require("efmls-configs.linters.shellcheck")
+      local prettier = require("efmls-configs.formatters.prettier")
+      local markdown = require("efmls-configs.linters.markdownlint")
 
       lspconfig.efm.setup({
-        filetypes = vim.tbl_keys(languages),
         on_attach = require("lsp-format").on_attach,
         settings = {
-          rootMarkers = { '.git/' },
-          languages = languages,
+            rootMarkers = { ".git/" },
+            languages = {
+                sh = { shellcheck, shfmt },
+                python = { black, flake8 },
+                css = { prettier },
+                html = { prettier },
+                json = { eslint },
+                markdown = { markdown },
+                yaml = { prettier },
+            },
+        },
+        filetypes = {
+          "css",
+          "sh",
+          "html",
+          "python",
+          "json",
+          "markdown",
+          "yaml"
         },
         init_options = {
           documentFormatting = true,
           documentRangeFormatting = true,
+          hover = true,
+          documentSymbol = true,
+          codeAction = true,
+          completion = true,
         },
       })
     end,
