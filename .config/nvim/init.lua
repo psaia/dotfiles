@@ -13,10 +13,28 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
+-- customize the diagnostic window a bit
+vim.diagnostic.config({
+    virtual_text = false,
+    float = {
+        focusable = false,
+        style = "minimal",
+        border = "rounded",
+        source = "always",
+        header = "",
+        prefix = "",
+    },
+    signs = true,
+    underline = true,
+    update_in_insert = true,
+    severity_sort = false,
+})
+
 -- some fundamental mappings to make life better for me
 vim.g.mapleader = ','
 
 require("lazy").setup("plugins")
+
 
 vim.opt.number = true
 vim.opt.mouse = "a"
@@ -34,6 +52,9 @@ vim.api.nvim_set_keymap('n', 'th', ':tabnext<CR>', { noremap = true, silent = tr
 vim.api.nvim_set_keymap('n', 'td', ':tabclose<CR>', { noremap = true, silent = true })
 
 vim.api.nvim_set_keymap('n', '<Space>', 'za', { noremap = true, silent = true })
+
+-- make diagnostic window more accessible
+vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float)
 
 -- disable netrw at the very start of your init.lua
 vim.g.loaded_netrw = 1
