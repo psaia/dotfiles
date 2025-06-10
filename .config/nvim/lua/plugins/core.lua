@@ -120,9 +120,9 @@ return {
     end
   },
   {
-    dir = "~/code/github.com/psaia/prompt-ai.vim",
-    name = "prompt-ai.vim",
-    -- "psaia/qc-ai",
+    -- dir = "~/code/github.com/psaia/prompt-ai.vim",
+    -- name = "prompt-ai.vim",
+    "psaia/prompt-ai.vim",
     cmd = { "P", "PClearHistory", "PClearCache" },
     config = function()
       require("prompt_ai").setup()
