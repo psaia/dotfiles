@@ -160,7 +160,7 @@ return {
                 html = { prettier },
                 json = { eslint },
                 markdown = { markdown },
-                yaml = { prettier },
+                -- yaml = { prettier },
             },
         },
         filetypes = {
@@ -170,7 +170,7 @@ return {
           "python",
           "json",
           "markdown",
-          "yaml"
+          -- "yaml"
         },
         init_options = {
           documentFormatting = true,

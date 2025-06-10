@@ -105,4 +105,27 @@ return {
     "nvim-pack/nvim-spectre",
     dependencies = { "nvim-lua/plenary.nvim" },
   },
+  {
+    "madox2/vim-ai",
+    config = function()
+      vim.g.vim_ai_chat = {
+        options = {
+          model = "gpt-4.1-mini",
+          stream = 0,
+          temperature = 1,
+          max_completion_tokens = 25000,
+          initial_prompt = "",
+        },
+      }
+    end
+  },
+  {
+    dir = "~/code/github.com/psaia/prompt-ai.vim",
+    name = "prompt-ai.vim",
+    -- "psaia/qc-ai",
+    cmd = { "P", "PClearHistory", "PClearCache" },
+    config = function()
+      require("prompt_ai").setup()
+    end,
+  }
 }
