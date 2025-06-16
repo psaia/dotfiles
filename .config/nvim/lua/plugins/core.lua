@@ -1,5 +1,9 @@
 return {
   {
+    "folke/trouble.nvim",
+    opts = { use_diagnostic_signs = true },
+  },
+  {
     "rebelot/kanagawa.nvim",
     priority = 1000,
     config = function()
@@ -99,25 +103,12 @@ return {
       vim.api.nvim_set_keymap('n', '<leader>ff', ':Telescope find_files<CR>', {})
       vim.api.nvim_set_keymap('n', '<leader>fg', ':Telescope live_grep<CR>', {})
       vim.api.nvim_set_keymap('n', '<leader>fh', ':Telescope help_tags<CR>', {})
+      vim.api.nvim_set_keymap('n', '<leader>fb', ':Telescope buffers<CR>', {})
     end,
   },
   {
     "nvim-pack/nvim-spectre",
     dependencies = { "nvim-lua/plenary.nvim" },
-  },
-  {
-    "madox2/vim-ai",
-    config = function()
-      vim.g.vim_ai_chat = {
-        options = {
-          model = "gpt-4.1-mini",
-          stream = 0,
-          temperature = 1,
-          max_completion_tokens = 25000,
-          initial_prompt = "",
-        },
-      }
-    end
   },
   {
     -- dir = "~/code/github.com/psaia/prompt-ai.vim",
@@ -127,5 +118,37 @@ return {
     config = function()
       require("prompt_ai").setup()
     end,
-  }
+  },
+  {
+    "olimorris/codecompanion.nvim",
+    opts = {
+      strategies = {
+        chat = {
+          adapter = "openai",
+        },
+        inline = {
+          adapter = "openai",
+        },
+        cmd = {
+          adapter = "openai",
+        }
+      },
+      display = {
+        action_palette = {
+          width = 95,
+          height = 10,
+          prompt = "Prompt ", -- Prompt used for interactive LLM calls
+          provider = "telescope",
+          opts = {
+            show_default_actions = true, -- Show the default actions in the action palette?
+            show_default_prompt_library = true, -- Show the default prompt library in the action palette?
+          },
+        },
+      },
+    },
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+    },
+  },
 }

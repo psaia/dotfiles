@@ -108,37 +108,6 @@ return {
       lspconfig.pylsp.setup({})
       lspconfig.ts_ls.setup({})
       lspconfig.buf_ls.setup({})
-      lspconfig.rust_analyzer.setup({
-        settings = {
-          ["rust-analyzer"] = {
-            ["cargo"] = {
-                ["loadOutDirsFromCheck"] = true
-            },
-            ["procMacro"] = {
-                enable = true
-            },
-            ["checkOnSave"] = {
-                enable = true
-            },
-            ["completion"] = {
-                enableAutoimport = true
-            },
-            ["inlayHints"] = {
-                typeHints = true
-            },
-            ["cargo-watch"] = {
-                enable = true
-            },
-            workspace = {
-              symbol = {
-                search = {
-                  kind = "all_symbols"
-                }
-              }
-            }
-          },
-        }
-      })
 
       -- Enable efm-language-server
       local eslint = require("efmls-configs.linters.eslint")
@@ -186,7 +155,6 @@ return {
   "ChiliConSql/neovim-stylus",
   "kblin/vim-fountain",
   "hashivim/vim-terraform",
-  "simrat39/rust-tools.nvim",
   "mfussenegger/nvim-dap",
   {
     "nvim-treesitter/nvim-treesitter",
@@ -239,5 +207,10 @@ return {
   },
   {
     'varnishcache-friends/vim-varnish'
+  },
+  {
+    'mrcjkb/rustaceanvim',
+    version = '^6', -- Recommended
+    lazy = false, -- This plugin is already lazy
   }
 }
