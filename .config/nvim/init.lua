@@ -53,6 +53,8 @@ vim.api.nvim_set_keymap('n', 'td', ':tabclose<CR>', { noremap = true, silent = t
 
 vim.api.nvim_set_keymap('n', '<Space>', 'za', { noremap = true, silent = true })
 
+vim.keymap.set('n', '<leader>cc', ':CodeCompanionChat Toggle<CR>', { noremap = true, silent = true })
+
 -- make diagnostic window more accessible
 vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float)
 
