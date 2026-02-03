@@ -41,29 +41,25 @@ return {
     end,
   },
 
-  -- LSP
+  -- LSP (Native Neovim 0.11+ API)
   {
-    "neovim/nvim-lspconfig",
-    cmd = "LspInfo",
+    "hrsh7th/cmp-nvim-lsp",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
-      { "hrsh7th/cmp-nvim-lsp", "lukas-reineke/lsp-format.nvim" },
+      "lukas-reineke/lsp-format.nvim",
+      "creativenull/efmls-configs-nvim",
     },
     config = function()
-      -- Configure all servers here.
-      local lspconfig = require('lspconfig')
+      -- Global capabilities for all LSP servers
+      vim.lsp.config('*', {
+        capabilities = vim.tbl_deep_extend(
+          'force',
+          vim.lsp.protocol.make_client_capabilities(),
+          require('cmp_nvim_lsp').default_capabilities()
+        )
+      })
 
-      -- Add cmp_nvim_lsp capabilities settings to lspconfig
-      -- This should be executed before you configure any language server
-      local lspconfig_defaults = lspconfig.util.default_config
-      lspconfig_defaults.capabilities = vim.tbl_deep_extend(
-        'force',
-        lspconfig_defaults.capabilities,
-        require('cmp_nvim_lsp').default_capabilities()
-      )
-
-      -- This is where you enable features that only work
-      -- if there is a language server active in the file
+      -- LSP keybindings on attach
       vim.api.nvim_create_autocmd('LspAttach', {
         desc = 'LSP actions',
         callback = function(event)
@@ -79,11 +75,28 @@ return {
           vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
           vim.keymap.set({'n', 'x'}, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
           vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
+
+          -- Handle lsp-format for EFM
+          local client = vim.lsp.get_client_by_id(event.data.client_id)
+          if client and client.name == 'efm' then
+            require("lsp-format").on_attach(client)
+          end
         end,
       })
 
-      -- Configure language servers.
-      lspconfig.gopls.setup({
+      -- Terraform format-on-save
+      vim.api.nvim_create_autocmd({"BufWritePre"}, {
+        pattern = {"*.tf", "*.tfvars"},
+        callback = function()
+          vim.lsp.buf.format()
+        end,
+      })
+
+      -- Configure language servers
+      vim.lsp.config('gopls', {
+        cmd = { 'gopls' },
+        filetypes = { 'go', 'gomod', 'gowork', 'gotmpl' },
+        root_markers = { 'go.work', 'go.mod', '.git' },
         settings = {
           gopls = {
             completeUnimported = true,
@@ -96,20 +109,38 @@ return {
           },
         },
       })
-      lspconfig.terraformls.setup({})
-      vim.api.nvim_create_autocmd({"BufWritePre"}, {
-        pattern = {"*.tf", "*.tfvars"},
-        callback = function()
-          vim.lsp.buf.format()
-        end,
-      })
-      -- lspconfig.yamlls.setup({})
-      lspconfig.bashls.setup({})
-      lspconfig.pylsp.setup({})
-      lspconfig.ts_ls.setup({})
-      lspconfig.buf_ls.setup({})
 
-      -- Enable efm-language-server
+      vim.lsp.config('terraformls', {
+        cmd = { 'terraform-ls', 'serve' },
+        filetypes = { 'terraform', 'terraform-vars', 'tf' },
+        root_markers = { '.terraform', '.git' },
+      })
+
+      vim.lsp.config('bashls', {
+        cmd = { 'bash-language-server', 'start' },
+        filetypes = { 'sh', 'bash' },
+        root_markers = { '.git' },
+      })
+
+      vim.lsp.config('pylsp', {
+        cmd = { 'pylsp' },
+        filetypes = { 'python' },
+        root_markers = { 'pyproject.toml', 'setup.py', 'requirements.txt', '.git' },
+      })
+
+      vim.lsp.config('ts_ls', {
+        cmd = { 'typescript-language-server', '--stdio' },
+        filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
+        root_markers = { 'tsconfig.json', 'jsconfig.json', 'package.json', '.git' },
+      })
+
+      vim.lsp.config('buf_ls', {
+        cmd = { 'buf', 'beta', 'lsp' },
+        filetypes = { 'proto' },
+        root_markers = { 'buf.yaml', '.git' },
+      })
+
+      -- EFM language server (formatters/linters)
       local eslint = require("efmls-configs.linters.eslint")
       local black = require("efmls-configs.formatters.black")
       local flake8 = require("efmls-configs.linters.flake8")
@@ -118,29 +149,10 @@ return {
       local prettier = require("efmls-configs.formatters.prettier")
       local markdown = require("efmls-configs.linters.markdownlint")
 
-      lspconfig.efm.setup({
-        on_attach = require("lsp-format").on_attach,
-        settings = {
-            rootMarkers = { ".git/" },
-            languages = {
-                sh = { shellcheck, shfmt },
-                python = { black, flake8 },
-                css = { prettier },
-                html = { prettier },
-                json = { eslint },
-                markdown = { markdown },
-                -- yaml = { prettier },
-            },
-        },
-        filetypes = {
-          "css",
-          "sh",
-          "html",
-          "python",
-          "json",
-          "markdown",
-          -- "yaml"
-        },
+      vim.lsp.config('efm', {
+        cmd = { 'efm-langserver' },
+        filetypes = { 'css', 'sh', 'html', 'python', 'json', 'markdown' },
+        root_markers = { '.git' },
         init_options = {
           documentFormatting = true,
           documentRangeFormatting = true,
@@ -149,10 +161,32 @@ return {
           codeAction = true,
           completion = true,
         },
+        settings = {
+          rootMarkers = { '.git/' },
+          languages = {
+            sh = { shellcheck, shfmt },
+            python = { black, flake8 },
+            css = { prettier },
+            html = { prettier },
+            json = { eslint },
+            markdown = { markdown },
+          },
+        },
+      })
+
+      -- Enable all language servers
+      vim.lsp.enable({
+        'gopls',
+        'terraformls',
+        'bashls',
+        'pylsp',
+        'ts_ls',
+        'buf_ls',
+        'efm',
       })
     end,
   },
-  "ChiliConSql/neovim-stylus",
+  "iloginow/vim-stylus",
   "kblin/vim-fountain",
   "hashivim/vim-terraform",
   "mfussenegger/nvim-dap",
@@ -172,7 +206,6 @@ return {
     "ray-x/go.nvim",
     dependencies = { -- optional packages
       "ray-x/guihua.lua",
-      "neovim/nvim-lspconfig",
       "nvim-treesitter/nvim-treesitter",
     },
     event = { "CmdlineEnter" },
@@ -200,10 +233,6 @@ return {
       "nvim-treesitter/nvim-treesitter",
       "nvim-telescope/telescope.nvim", -- optional
     },
-  },
-  {
-    'creativenull/efmls-configs-nvim',
-    dependencies = { 'neovim/nvim-lspconfig' },
   },
   {
     'varnishcache-friends/vim-varnish'

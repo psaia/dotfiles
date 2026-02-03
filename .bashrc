@@ -111,3 +111,4 @@ eval "$(direnv hook bash)"
 if [[ -f "$HOME/.bashrcs" ]]; then
 	source $HOME/.bashrcs
 fi
+export PATH="$HOME/.local/bin:$PATH"
