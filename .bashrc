@@ -69,15 +69,21 @@ decrypt() {
 	fi
 }
 
+# gpg: prompt for the YubiKey PIN now and cache it, so later signing
+# operations (e.g. unattended commits from Claude) don't prompt.
+gpg-unlock() {
+	echo "" | gpg --clearsign >/dev/null 2>&1 &&
+		echo "gpg unlocked — signing won't prompt for ~24h"
+}
+
 # env
 export PS1=$(prompt_line)
 export CODE_PATH="${HOME}/code"
 export GOROOT="${HOME}/go/go${GO_VERSION}"
 export GOBIN="${GOROOT}/bin"
 export GOPATH="${GOROOT}/versioned_packages"
-export N_PREFIX="${CODE_PATH}/node_versions"
-export PATH="${GOBIN}:/usr/local/bin:$PATH"
-export NVM_DIR="$HOME/.nvm"
+export N_PREFIX="$HOME/.n"
+export PATH="${GOBIN}:${N_PREFIX}/bin:/usr/local/bin:$PATH"
 export EDITOR=nvim
 export SHELL=$(which bash)
 

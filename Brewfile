@@ -1,7 +1,6 @@
 # Taps
 
 tap "boz/repo"
-tap "homebrew/cask-fonts"
 
 # Casks
 
@@ -9,45 +8,48 @@ cask "kitty"
 cask "font-meslo-lg-nerd-font"
 cask "blender"
 cask "unity-hub"
-cask "unity"
 cask "spotify"
 cask "docker"
 
-# Misc
+# CLI tools
 
-brew "helm"
-brew "boz/repo/kail"
 brew "ffmpeg"
 brew "lsd"
 brew "ripgrep"
 brew "fzf"
 brew "fd"
-brew "node"
 brew "jq"
 brew "yq"
 brew "git"
-brew "telnet"
-brew "certbot"
-brew "pyenv"
-brew "kustomize"
 brew "gnu-sed"
-brew "efm-langserver"
 brew "shellcheck"
 brew "shfmt"
-brew "nvm"
 brew "neovim"
-brew "rustup-init"
-brew "python"
-brew "gnupg"
-brew "yubikey-personalization"
-brew "ykman"
-brew "pinentry-mac"
 brew "wget"
-brew "dotenv"
+brew "direnv"
 brew "bufbuild/buf/buf"
+
+# Languages & version managers
+
+brew "n"
+brew "pyenv"
+brew "rustup-init"
+
+# Kubernetes
+
+brew "helm"
+brew "boz/repo/kail"
+brew "kustomize"
+
+# Security / GPG / YubiKey
+
+brew "gnupg"
+brew "pinentry-mac"
+brew "ykman"
 
 # Language Servers
 
+brew "efm-langserver"
 brew "lua-language-server"
 brew "python-lsp-server"
 brew "yaml-language-server"
