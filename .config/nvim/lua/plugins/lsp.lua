@@ -192,6 +192,8 @@ return {
   "mfussenegger/nvim-dap",
   {
     "nvim-treesitter/nvim-treesitter",
+    branch = "master",
+    build = ":TSUpdate",
     config = function()
       require("nvim-treesitter.configs").setup({
         ensure_installed = { "go", "gomod", "gosum", "graphql", "html", "json", "lua", "python", "rust", "sql", "typescript",
