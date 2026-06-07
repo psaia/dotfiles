@@ -192,15 +192,35 @@ return {
   "mfussenegger/nvim-dap",
   {
     "nvim-treesitter/nvim-treesitter",
-    branch = "master",
+    branch = "main",
+    lazy = false, -- the main branch does not support lazy-loading
     build = ":TSUpdate",
     config = function()
-      require("nvim-treesitter.configs").setup({
-        ensure_installed = { "go", "gomod", "gosum", "graphql", "html", "json", "lua", "python", "rust", "sql", "typescript",
-                              "dockerfile", "javascript", "perl", "ocaml", "make", "markdown", "scala", "yaml" },
-        highlight = {
-          enable = true
-        }
+      require("nvim-treesitter").setup()
+
+      -- Install the parsers we use (async; skips already-installed ones).
+      -- markdown_inline is required for markdown highlighting to work.
+      require("nvim-treesitter").install({
+        "go", "gomod", "gosum", "graphql", "html", "json", "lua", "python",
+        "rust", "sql", "typescript", "dockerfile", "javascript", "perl",
+        "ocaml", "make", "markdown", "markdown_inline", "scala", "yaml",
+      })
+
+      -- On the main branch the old `configs.setup({ highlight = { enable } })`
+      -- module is gone -- you start highlighting/indentation yourself.
+      -- Start treesitter for any buffer whose filetype has a parser available.
+      vim.api.nvim_create_autocmd("FileType", {
+        callback = function(args)
+          local buf = args.buf
+          local lang = vim.treesitter.language.get_lang(vim.bo[buf].filetype)
+          if not lang then
+            return
+          end
+          if not pcall(vim.treesitter.start, buf, lang) then
+            return -- parser not installed yet; will work once :TSUpdate finishes
+          end
+          vim.bo[buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+        end,
       })
     end,
   },
